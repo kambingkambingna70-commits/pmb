@@ -11,6 +11,7 @@
 
 # Text and markdown files (exclude except thesis-related)
 *.md
+!README.md
 !tugasakhir/**/*.md
 !Latex-TA-IF-ITERA-main/**/*.md
 
@@ -18,5 +19,8 @@
 *.txt
 *.aux
 *.log
+
+# Keep deployment configs
+!render.yaml
 
 # Keep only tugasakhir and Latex-TA-IF-ITERA-main

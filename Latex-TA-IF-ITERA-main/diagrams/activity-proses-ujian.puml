@@ -1,0 +1,42 @@
+@startuml
+skinparam backgroundColor white
+skinparam swimlaneBackgroundColor white
+skinparam swimlaneTitleBackgroundColor white
+skinparam activityBackgroundColor white
+skinparam activityBorderColor #666666
+skinparam arrowColor #444444
+skinparam fontName "Times New Roman"
+
+|Camaba|
+start
+:Masukkan Token Ujian;
+
+|Sistem|
+:Validasi Token;
+
+if (Token valid?) then (Tidak)
+  :Peringatan Token Tidak Valid
+  atau Sudah Kadaluarsa;
+  stop
+else (Ya)
+  :Tampilkan Halaman Ujian
+  (Google Form dari sistem);
+endif
+
+|Camaba|
+:Submit Hasil Ujian;
+
+|Sistem|
+:Simpan Hasil Ujian;
+
+|Admin|
+:Verifikasi Hasil Ujian;
+:Tentukan Status Kelulusan;
+
+|Sistem|
+:Update Status Kelulusan;
+:Tampilkan Status
+Kelulusan ke Camaba;
+stop
+
+@enduml

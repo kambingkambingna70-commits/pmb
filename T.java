@@ -1,0 +1,1 @@
+﻿import java.nio.file.*; public class T { public static void main(String[] a) { try { Paths.get("uploads","999","test|bad.jpg"); System.out.println("NO EXCEPTION"); } catch (Exception e) { System.out.println("EX: " + e.getClass().getSimpleName() + ": " + e.getMessage()); }}}

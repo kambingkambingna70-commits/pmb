@@ -1,0 +1,65 @@
+@startuml
+skinparam backgroundColor white
+skinparam swimlaneBackgroundColor white
+skinparam swimlaneTitleBackgroundColor white
+skinparam activityBackgroundColor white
+skinparam activityBorderColor #666666
+skinparam arrowColor #444444
+skinparam fontName "Times New Roman"
+
+|Camaba|
+start
+:Login dengan
+Email dan Password;
+
+|Sistem|
+:Verifikasi Login;
+:Menampilkan Dashboard;
+
+|Camaba|
+:Pilih Menu Pendaftaran;
+
+|Sistem|
+:Cek Status Gelombang;
+
+if (Gelombang aktif?) then (Tidak)
+  :Menampilkan Pesan
+  Gelombang Tutup;
+  stop
+else (Ya)
+  :Tampilkan Pilihan
+  Jenis Seleksi;
+endif
+
+|Camaba|
+:Pilih Jenis Seleksi;
+:Isi Formulir Pendaftaran
+dan Upload Dokumen;
+:Submit Formulir;
+
+|Sistem|
+:Simpan Formulir Pendaftaran;
+:Generate Nomor
+Virtual Account (BRIVA);
+:Kirim Email
+Notifikasi VA ke Camaba;
+
+|Camaba|
+:Bayar via BRIVA;
+
+|Sistem|
+:Verifikasi Pembayaran;
+
+if (Pembayaran valid?) then (Tidak)
+  :Notifikasi Gagal
+  ke Camaba;
+  stop
+else (Ya)
+  :Update Status
+  Menjadi Lunas;
+  :Notifikasi Berhasil
+  ke Camaba;
+  stop
+endif
+
+@enduml

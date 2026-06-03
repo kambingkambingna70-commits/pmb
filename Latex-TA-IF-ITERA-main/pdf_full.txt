@@ -1,0 +1,4285 @@
+Total pages: 157
+--- PAGE 1 ---
+PENGEMBANGAN SISTEM TERINTEGRASI PENERIMAAN 
+MAHASISWA BARU BERBASIS WEB MENGGUNAKAN METODE 
+PROTOTYPE (STUDI KASUS : UNIVERSITAS HKBP NOMMENSEN ) 
+ 
+TUGAS  AKHIR  
+ 
+MYCHAEL  DANIEL  N  
+122140104  
+ 
+ 
+PROGRAM  STUDI  TEKNIK  INFORMATIKA  
+ FAKULTAS TEKNOLOGI INDUSTRI  
+INSTITUT TEKNOLOGI SUMATERA  
+LAMPUNG SELATAN  
+2025
+
+--- PAGE 2 ---
+2  
+DAFTAR  ISI 
+DAFTAR  ISI ................................ ................................ ................................ ..................  2 
+DAFTAR  GAMBAR  ................................ ................................ ................................ ...... 5 
+DAFTAR  TABEL  ................................ ................................ ................................ ..........  8 
+DAFTAR  RUMUS  ................................ ................................ ................................ ....... 11 
+DAFTAR  LAMPIRAN  ................................ ................................ ................................  12 
+BAB I  PENDA HULUAN  ................................ ................................ ...........................  13 
+ Latar Belakang Masalah  ................................ ................................ ....................  13 
+ Rumusan Masalah  ................................ ................................ .............................  15 
+ Tuju an Penelitian ................................ ................................ ...............................  15 
+ Batasan Masalah  ................................ ................................ ................................  15 
+ Manfaat Penelitian ................................ ................................ .............................  16 
+ Sistematika Penulisan  ................................ ................................ ........................  17 
+1.6.1  Bab I ................................ ................................ ................................ .........  17 
+1.6.2  Bab II ................................ ................................ ................................ ........  17 
+1.6.3  Bab III ................................ ................................ ................................ ....... 17 
+1.6.4  Bab IV ................................ ................................ ................................ ...... 17 
+1.6.5  Bab V ................................ ................................ ................................ ........  17 
+BAB I I  TINJAUAN  PUSTAKA  ................................ ................................ ................  19 
+2.1 Tinjauan Pustaka  ................................ ................................ ...............................  19 
+2.2 Dasar Teori  ................................ ................................ ................................ ........  22 
+2.2.1  Manajemen  Proyek  Teknologi  Informasi  ................................ .................  22 
+2.2.2.  Aplikasi Penerimaan Mahasiswa Baru  ................................ .....................  23 
+2.2.3.  Model Pengembangan Perangkat Lunak  ................................ ..................  23 
+2.2.4.  Object -Oriented Programming (OOP) dalam Java  ................................ .. 27 
+2.2.5.  Model -View -Controller  ................................ ................................ ............  27 
+
+--- PAGE 3 ---
+3  
+2.2.6.  Spring Framewok  ................................ ................................ .....................  28 
+2.2.7.  HyperText  Markup  Language  (HTML)  dan Cascading  Style  Sheets  (CSS)
+ 29 
+2.2.8.  Database Relasional (MySQL)  ................................ ................................ . 29 
+2.2.9.  Pengujian Sistem  ................................ ................................ ......................  31 
+2.2.9.2  Usability Testing  ................................ ................................ ......................  32 
+2.2.10  Perancangan UML ................................ ................................ ....................  34 
+2.2.11  Figma  ................................ ................................ ................................ ........  38 
+2.2.12  Integrasi Layanan Eksternal (REST API, SMTP, BRIVA)  .....................  39 
+2.2.13  Framework Front -end ( Bootstrap)  ................................ ...........................  40 
+2.2.14  Visual Studio Code sebagai Alat Pengembangan  ................................ .... 40 
+2.2.15  Data Flow Diagram (DFD)  ................................ ................................ ...... 40 
+BAB III  METODE  PENELITIAN  ................................ ................................ ............  42 
+3.1 Metode Penelitian  ................................ ................................ ..............................  42 
+3.1.1  Alur Penelitian dan Pemilihan Metode  ................................ ....................  42 
+3.1.2  Analisis Pemilihan Metode  ................................ ................................ ...... 43 
+3.1.3  Hasil Analisis dan Kesimpulan Pemilihan Metode  ................................ .. 45 
+3.2 Penjabaran Alur  Penelitian  ................................ ................................ ................  45 
+3.2.1  Identifikasi Masalah  ................................ ................................ .................  45 
+3.2.2 Studi Literatur  ................................ ................................ ...........................  46 
+3.2.3  Analisis Kebutuhan  ................................ ................................ ..................  46 
+3.2.4  Perancangan Prototype  ................................ ................................ .............  49 
+3.2.5  Pengujian dan Evaluasi Prototype  ................................ ............................  49 
+3.2.6  Implementasi  ................................ ................................ ............................  50 
+3.2.7  Pengujian Sistem  ................................ ................................ ......................  50 
+3.2.8  Pemeliharaan dan Evaluasi Akhir  ................................ ............................  50 
+
+--- PAGE 4 ---
+4  
+3.2.9  Dokumentasi dan Penyusunan Laporan  ................................ ...................  51 
+3.3 Alat dan Bahan  ................................ ................................ ................................ .. 51 
+3.3.1  Alat ................................ ................................ ................................ ...........  51 
+3.3.2  Bahan  ................................ ................................ ................................ ........  52 
+3.4 Analisis Kebutuhan Sisitem  ................................ ................................ ..............  52 
+3.4.1  Kebutuhan  Fungsional  ................................ ................................ ..............  52 
+3.4.2  Kebutuhan Non -Fungsional  ................................ ................................ ...... 57 
+3.4.3  Karakteristik Pengguna  ................................ ................................ .............  58 
+3.5 Perancangan Sistem ................................ ................................ ...........................  59 
+3.5.1  Rancangan Arsitektur  MVC Sistem PMB  ................................ ................  59 
+3.5.2  Use Case Diagram  ................................ ................................ ....................  61 
+3.5.3  Activity Diagram  ................................ ................................ ......................  66 
+3.5.4  Flowchart Proses  ................................ ................................ ......................  76 
+3.5.5  Class Diagram  ................................ ................................ ..........................  80 
+3.5.6  Sequence Diagram ................................ ................................ ....................  82 
+3.5.7  Context  Diagram  ................................ ................................ ......................  88 
+3.5.8  Data Flow Diagram  ................................ ................................ ..................  90 
+3.5.9 ERD (Entity Relationship Diagram)  ................................ ......................  121 
+3.5.10  Rancangan Antarmuka Pengguna  ................................ ..........................  121 
+3.6 Pengujian Sistem  ................................ ................................ .............................  137 
+3.6.1  Tujuan  Pengujian  ................................ ................................ ....................  137 
+3.6.2  Jenis Pengujian  ................................ ................................ .......................  137 
+3.6.3  Skema Pengujian Sistem  ................................ ................................ ........  137 
+DAFTAR  PUSTAKA  ................................ ................................ ................................  145 
+DAFTAR  LAMPIRAN  ................................ ................................ .............................  150 
+ 
+
+--- PAGE 5 ---
+5  
+DAFTAR  GAMBAR  
+Gambar 2. 1 Metode Prototype  ................................ ................................ ...............  25 
+Gambar 2.2 Diagram Umum Arsitektur Model –View –Controller (MVC)  ............  28 
+Gambar 3.1. Diagram Alur Penelitian  ................................ ................................ ..... 43 
+Gambar 3. 2 Diagram Arsitektur MVC  ................................ ................................ ... 60 
+Gambar 3. 3 Diagram Use Case  ................................ ................................ ..............  61 
+Gambar 3. 4 Activity Diagram Login Camaba  ................................ ........................  66 
+Gambar 3. 5 Activity Diagram Pembayaran Formulir Camaba  ...............................  67 
+Gambar 3. 6 Activity Diagram Pengisian Formulir dan Generate Kartu Ujian  ....... 69 
+Gambar 3. 7 Activity Diagram Proses Ujian Camaba  ................................ .............  71 
+Gambar 3.8 Activity Diagram Proses Ujian Camaba  ................................ .............  72 
+Gambar 3.9 Activity Diagram Konfigurasi Sistem dan Pengelolaan Akun oleh 
+Admin Pusat  ................................ ................................ ................................ ............  73 
+Gambar 3.10 Activity Diagram Ekspor Data oleh Admin Validasi  ........................  74 
+Gambar 3.1 1 Flowchart Camaba Regristasi akun , Pembelian Formulir, dan 
+Melaksanakan Ujian  ................................ ................................ ................................  76 
+Gambar 3.12 Flowchart Camaba Melakukan Daftar Ulang  ................................ .... 77 
+Gambar 3.13 Flowchart Admin Validasi  ................................ ................................  78 
+Gambar 3.14 Flowchart Admin Pusat  ................................ ................................ ..... 79 
+Gambar 3.15 Class Diagram  ................................ ................................ ...................  80 
+Gambar 3.16 User Login  ................................ ................................ .........................  82 
+Gambar 3.17 Camaba Melakukan Pengisian Formulir dan Melakukan Ujian  ....... 84 
+Gambar 3.18 Camaba Daftar Ulang  ................................ ................................ ........  85 
+Gambar 3.1 9 Admin Validasi Melakukan Validasi  ................................ ................  86 
+Gambar 3. 20 Admin Pusat Melakukan Konfigurasi Menu dan Daftar Akun  .........  87 
+Gambar 3. 21 Diagram Konteks Sub sistem Penerimaan Mahasiswa Baru .............  89 
+
+--- PAGE 6 ---
+6  
+Gambar 3. 22 DFD Level 0 Sub sistem Penerimaan Mahasiswa Baru  ....................  90 
+Gambar 3. 23 DFD level 1 Proses 1  ................................ ................................ .........  92 
+Gambar 3. 24 DFD level 2 Proses 1.1: Registrasi Akun Camaba  ............................  92 
+Gambar 3. 25 DFD level 2 Proses 1.2: Login & Autentikasi Role  ..........................  93 
+Gambar 3. 26 DFD level 2 Proses 1.3: Lupa Password/Username  ..........................  93 
+Gambar 3. 27 DFD Level 1 Proses 2: Pe mbelian formulir & VA  ...........................  94 
+Gambar 3. 28 DFD Level 2 Proses 2.2: Aktivasi & Hitung Va berdasarkan jenis 
+formulir ................................ ................................ ................................ ....................  94 
+Gambar 3. 29 DFD Level 1 Proses 3: Pengisian Formulir & Kartu Ujian  ..............  95 
+Gambar 3. 30. DFD Level 2 Proses 3.2: Isi Formulir & Upload  .............................  95 
+Gambar 3. 31. DFD Level 1 Proses 4: Ujian dan Hasil Seleksi  ...............................  96 
+Gambar 3. 32. DFD Level 2 Proses 4.6: Ambil nilai Ujian dri Gform  ....................  96 
+Gambar 3. 33. DFD Level 1 Proses 5: Daftar Ulang  ................................ ...............  97 
+Gambar 3. 34. DFD Level 2 Proses 5.2: Isi Formulir Pendaftaran Ulang  ...............  97 
+Gambar 3. 35. DFD Level 2 Proses 5.6: Aktivasi VA cicilan Uang Kuliah  ............  98 
+Gambar 3. 36. DFD Level 2 Proses 5.4: Validasi Berkas Prestasi oleh Admin 
+Validasi ................................ ................................ ................................ ....................  99 
+Gambar 3. 37. DFD Level 1 Proses 6: Validasi Berkas Prestasi oleh Admin 
+Validasi ................................ ................................ ................................ ....................  99 
+Gambar 3. 38. DFD Level 1 Proses 7: KOnfigurasi Sistem & Informasi  ..............  100 
+Gambar 3. 39. DFD Level 2 Proses 7.1: Kelola Periode Pendaftaran  ...................  100 
+Gambar 40 Entity Relationship Diagram  ................................ ..............................  121 
+Gambar 3. 41. Halaman Dashboard Calon Mahasiswa Baru  ................................ . 122 
+Gambar 3. 42. Halaman Pilih Gelombang Pendaftaran  ................................ .........  123 
+Gambar 3. 43. Halaman Pembelian Formulir Pendaftaran  ................................ .... 124 
+Gambar 3.4 4. Halaman Pop Out Rincian Pembayaran  ................................ .........  125 
+
+--- PAGE 7 ---
+7  
+Gambar 3. 45. Halaman Status Pembayaran Diproses  ................................ ...........  126 
+Gambar 3. 46. Halaman Status Pembayaran Berhasi l ................................ ............  127 
+Gambar 3. 47. Halaman Pengisian Data Pribadi Formulir  ................................ ..... 128 
+Gambar 3. 48. Halaman Pengisian Data Diri Pendidikan  ................................ ...... 129 
+Gambar 3. 49. Halaman Pengisian Data Wali dan Upload Dokumen  ...................  130 
+Gambar 3. 50. Halaman Kartu Ujian ................................ ................................ ...... 131 
+Gambar 3. 51. Halaman Login Daftar Ulang PMB ................................ ................  132 
+Gambar 3. 52. Halaman Pengisian Data Diri untuk Daftar Ulang  .........................  133 
+Gambar 3. 53. Halaman Status Daftar Ulang  ................................ .........................  134 
+Gambar 3. 54. Halaman Validasi Data Daftar Ulang  ................................ .............  135 
+Gambar 3. 55. Halaman Kelola Akun User  ................................ ...........................  136 
+Gambar D.1 Pembuatan Manual LMS  ................................ ................................ .. 150 
+Gambar D.2 Bukti Wawancara dengan pihak PSI UHN  ................................ ...... 151 
+Gambar D. 3 Tampilan PMB UHN  ................................ ................................ ........  152 
+Gambar D. 4 Tampilan Pendaftaran Ulang UHN  ................................ ...................  153 
+Gambar D. 5 Bukti Surat Balasan Permohonan Izin Penelitian  .............................  153 
+Gambar D. 6 Tampilan Permohonan Izin Penelitan  ................................ ..............  154 
+Gambar D. 7 Ketentuan PMB terbaru  ................................ ................................ .... 155 
+Gambar D.8 Data Pendaftar Ulang  ................................ ................................ ....... 156 
+Gambar D.9 Lampiran SKPL  ................................ ................................ ................  157 
+  
+
+--- PAGE 8 ---
+8  
+DAFTAR  TABEL  
+Tabel  2.1 Daftar  Jurnal  Terkait  ................................ ................................ ................  19  
+Tabel 2.2 Perbandingan Model Pengembangan Perangkat Lunak  ..........................  24 
+Table 2. 3 Simbol  ER diagram  ................................ ................................ .................  30 
+Tabel 2. 4 Skala Penilaian  SUS ................................ ................................ ................  33 
+Tabel 2.5 Simbol Use Case  ................................ ................................ .....................  35 
+Tabel 2.6 Simbol Activity  ................................ ................................ .......................  36 
+Tabel 2.7 Simbol Sequence  ................................ ................................ .....................  37 
+Tabel 2.8 Simbol Class ................................ ................................ ............................  38 
+Tabel  2.9 Simbol DFD  ................................ ................................ ............................  41 
+Tabel 3. 1 Penilaian Kesesuaian Metode Berdasarkan Kriteria Lapangan  ..............  43 
+Tabel 3.2. Daftar Pertanyaan Wawancara dengan Pihak Pusat Sistem Informasi 
+UHN  ................................ ................................ ................................ ........................  47 
+Tabel 3. 3. Daft ar Pertanyaan Kuesioner Mahasiswa  ................................ ..............  48 
+Tabel 3. 4 Kebutuhan Fungsional  ................................ ................................ ............  52 
+Tabel  3.5 Kebutuhan  Non-Fungsional  ................................ ................................ ..... 57 
+Tabel 3. 6 Karakteristik Pengguna  ................................ ................................ ...........  58 
+Tabel 3. 7 Definisi Aktor Use Case ................................ ................................ ..........  61  
+Tabel 3 .8 Definisi Use Case  ................................ ................................ ....................  62 
+Tabel 3. 9 Analisis Sistem (IPO) U se Case  ................................ ..............................  64 
+Tabel 3.1 0 PSPEC Proses 1.1 – Registrasi Akun Calon Mahasiswa Baru  ...........  100 
+Tabel 3.1 1. PSPEC Proses 1.2 – Login & Autentikasi Role  ................................ . 101 
+Tabel 3.1 2 PSPEC Proses 1.3 – Pemulihan Akun (Lupa Password)  ....................  101 
+Tabel 3.1 3. PSPEC Proses 1.4 – Pemilihan Gelombang Pendaftaran  ..................  101 
+Tabel 3.1 4. PSPEC Proses 1.5 – Pemilihan Jenis Formulir Pendaftaran  ..............  102 
+Tabel 3.1 5. PSPEC Proses 1.6 – Aktivasi Pembayaran Formulir (BRIVA)  .........  102 
+
+--- PAGE 9 ---
+9  
+Tabel 3.1 6. PSPEC Proses 1.7 – Integrasi API BRIVA (Pembuatan Virtual 
+Account)  ................................ ................................ ................................ ................  103 
+Tabel 3.1 7. PSP EC Proses 1.8 – Pembuatan Virtual Account Manual oleh Admin 
+Validasi ................................ ................................ ................................ ..................  104 
+Tabel 3.1 8. PSPEC Proses 2.5 – Kirim Info VA Melalui Email  ..........................  104 
+Tabel 3. 19. PSPEC Proses 2.6 – Verifikasi Pembayaran Formulir (Callback 
+BRIVA)  ................................ ................................ ................................ .................  105 
+Tabel 3.2 0. PSPEC Proses 3.1 – Cek Status Pembayaran VA  ..............................  105 
+Tabel 3.2 1. PSPEC Proses 3.2 – Isi Fo rmulir & Upload Berkas  ..........................  106 
+Tabel 3.2 2. PSPEC Proses 3.3 – Submit Formulir  ................................ ................  106 
+Tabel 3.2 3. PSPEC Proses 3.4 – Generate Kartu Ujian  ................................ ........  107 
+Tabel 3.2 4. PSPEC Proses 3.5 – Validasi Nomor Ujian  ................................ ....... 107 
+Tabel 3.2 5. PSPEC Proses 4.2 – Validasi T anggal Ujian  ................................ ..... 108 
+Tabel 3.2 6. PSPEC Proses 4.3 – Notifikasi Nomor Ujian Tidak Ditemukan  ....... 108 
+Tabel 3.2 7. PSPEC Proses 4.4 – Akses Google Form Ujian  ................................  108 
+Tabel 3.2 8. PSPEC Proses 4.5 – Tampilkan Notifikasi Ujian Belum Dimulai  .... 109 
+Tabel 3. 29. PSPEC Pro ses 4.6 – Simpan Hasil Ujian  ................................ ...........  109 
+Tabel 3.3 0. PSPEC Proses 4.7 – Evaluasi Nilai Ujian  ................................ ..........  110 
+Tabel 3.3 1. PSPEC Proses 4.8 – Generate Bukti Tidak Lulus  ..............................  110 
+Tabel 3.3 2 PSPEC Proses 4.9 – Generate Nomor Pendaftaran dan Password 
+Tanggal Lahir  ................................ ................................ ................................ ........  110 
+Tabel 3.3 3 PSPEC Proses 4.10 – Atur Jadwal Publikasi Kelulusan dan No 
+Pendaftaran  ................................ ................................ ................................ ............  111 
+Tabel 3.3 4 PSPEC Proses 4.11 – Kirim Email Hasil & Status Kelulusan  ............  111 
+Tabel 3.3 5 PSPEC Proses 5.1 – Login via Email & PW (untuk Bebas Testing)  .. 112 
+Tabel 3.3 6 PSPEC Proses 5.2 – : Isi Formulir Pendaftaran Ulang  .......................  112 
+Tabel 3.37 PSPEC Proses 5.3 – Upload Berkas Ranking SMA dan Formulir 
+
+--- PAGE 10 ---
+10  
+Pendaftaran  ................................ ................................ ................................ ............  113 
+Tabel 3.3 7 PSPEC Proses 5.4 – Validasi Berkas Prestasi oleh Admin Validasi  .. 113 
+Tabel 3.3 8 PSPEC Proses 5.5 – Kirim Notifikasi "Berkas Tidak Valid" ke 
+CAMABA  ................................ ................................ ................................ .............  113 
+Tabel 3. 39. PSPEC Proses 5.6 – Aktivasi VA Cicilan Uang Kuliah  ....................  114 
+Tabel 3.4 0. PSPEC Proses 5.7 – Kirim Email VA Info (Daftar Ulang)  ...............  114 
+Tabel 3.4 1. PSPEC Proses 5.8 – Login via No Pendaftaran & Tgl Lahir  .............  115 
+Tabel 3.4 2. PSPEC Proses 6.1 – Validasi Data CAMABA (Daftar Ulang)  .........  115 
+Tabel 3.4 3 PSPEC Proses 6.2 – Klasifikasi & Rekap Data  ................................ .. 115 
+Tabel 3.4 4. PSPEC Proses 6.3 – Kirim Pe san / Notifikasi (oleh Admin Validasi)
+ ................................ ................................ ................................ ...............................  116 
+Tabel 3.4 5 PSPEC Proses 6.4 – Kirim Pertanyaan (oleh CAMABA)  ..................  116 
+Tabel 3.4 6. PSPEC Proses 6.5 – Jawab Pertanyaan (oleh Admin Validasi)  .........  116 
+Tabel 3.4 7. PSPEC Proses 7.1 – Kelola Periode Pendaftaran  ..............................  117 
+Tabel 3.4 8 PSPEC Proses 7.2 – Kelol a Jenis Seleksi  ................................ ...........  117 
+Tabel 3. 49 PSPEC Proses 7.3 – Kelola Jenis Formulir & Biaya  ..........................  118 
+Tabel 3.5 0. PSPEC Proses 7.4 – Kelola Cicilan per Prodi  ................................ ... 118 
+Tabel 3.5 1 PSPEC Proses 7.5 – Kelola Info Landing Page  ................................ .. 118 
+Tabel 3.5 2 PSPEC Proses 7.6 – Pengumuma n & Notifikasi (untuk CAMABA)  . 119 
+Tabel 3.5 3. PSPEC Proses 7.7 – Pratinjau Tampilan UI  ................................ ...... 119 
+Tabel 3.5 4. Data Store  ................................ ................................ ...........................  119 
+Tabel 3.5 5. Blackbox Testing  ................................ ................................ ...............  137 
+Tabel 3.5 6 Skenario Uji Kebutuhan Non -Fungsional Sistem PMB  .....................  141  
+Tabel 3.5 7 Penilaian Menggunakan Sskala Likert  ................................ ................  143 
+Tabel 3. 5 8  Daftar Pernyataan System Usability Scale (SUS)  .............................  143 
+ 
+
+--- PAGE 11 ---
+11  
+ 
+DAFTAR  RUMUS  
+(Rumus 2.1 Blackbox Test)  ................................ ................................ .....................  32 
+(Rumus 2.2 Usability Testing)  ................................ ................................ ................  33 
+(Rumus 2.3 Integration Testing)  ................................ ................................ .............  34 
+ 
+  
+
+--- PAGE 12 ---
+12  
+DAFTAR  LAMPIRAN  
+Lampiran 1  bukti jawaban responden (Mahasiswa UHN) terhadap form  ...........  150 
+Lampiran 2  Bukti Wawancara dengan pihak PSI UHN  ................................ ...... 151 
+Lampiran 3  website PMB UHN  ................................ ................................ ..........  151 
+Lampiran 4 Halaman  Pendaftaran  Ulang  PMB  ................................ ....................  152 
+Lampiran 5 Bukti surat Balasan Permohonan Izin Penelitian Tugas Akhir  ........  153 
+Lampiran 6  bukti surat Permohonan Izin Penelitian Tugas Akhir  .....................  154 
+Lampiran 7  Surat Ketentuan Penerimaan Mahasiswa Baru  ................................  155 
+Lampiran 8  Data Pendaftar Ulang calon mahasiswa baru UHN  .........................  156 
+Lampiran 9  SKPL PMB UHN  ................................ ................................ .............  157 
+ 
+  
+
+--- PAGE 13 ---
+13  
+BAB I   
+PENDAHULUAN  
+ Latar Belakang Masalah  
+Pendidikan merupakan fondasi utama dalam menciptakan sumber daya 
+manusia yang berkualitas. Perguruan tinggi memiliki peran strategis dalam 
+menyiapkan generasi yang unggul melalui penyelenggaraan pengajaran  yang 
+efektif dan adaptif kepada perkembangan zaman , apalagi di zaman teknologi 
+seperti sekarang . Seirin g dengan kemajuan teknologi informasi, proses digitalisasi 
+menjadi langkah penting untuk meningkatkan mutu dan efisiensi layanan 
+akademik. Penerapan itu dapat membantu perguruan tinggi dalam mengelola data 
+secara lebih cepat, akurat, dan transparan . [1]  
+Salah satu kegiatan penting yang memerlukan dukungan sistem informasi 
+adalah Penerimaan Mahasiswa Baru (PMB) . Proses ini mencakup berbagai 
+tahapan, yaitu mulai dari tahapan pendaftaran akun, pengisian formulir, 
+pembayaran biaya seleksi, pelaksanaan ujian, hingga daftar ulang. Walau 
+meningkatkan efisensi , kendala  sering muncul  akibat tahap yang mungkin 
+terlewatkan atau tidak terhubung. Kendala berupa  keterlambatan administrasi , 
+kesalahan input data, dan kurangnya transparansi informasi kepada calon 
+mahasiswa. Penelitian menunjukkan bahwa penerapan sistem PMB berbasis web 
+mampu mempercepat proses verifikasi dan mengurangi kesalahan input data 
+dibandingkan sistem manual.  [2] Hal ini membuktikan bahwa penggunaan sistem 
+informasi berbasis web dapat menjadi solusi untuk meningkatkan efisiensi dan 
+kualitas pelayanan dalam proses penerimaan mahasiswa baru  jika tahapannya 
+terintegrasi dengan baik . 
+Beberapa p erguruan tinggi di Indonesia juga telah mengembangkan sistem 
+PMB berbasis web untuk mendukung proses pendaftaran secara daring. Sistem 
+PMB terintegrasi dapat mempermudah koordinasi antarunit dan mengurangi 
+waktu pemrosesan data calon mahasiswa [3]. Namun, penelitian lain oleh 
+menemukan bahwa masih banyak sistem PMB yang belum sepenuhnya 
+terintegrasi dan belum dilengkapi dengan fitur automasi notifikasi kepada 
+
+--- PAGE 14 ---
+14  
+pengguna  [4]. Selain itu, dukungan terhad ap sistem pembayaran elektronik juga 
+belum optimal, sehingga proses verifikasi masih dilakukan secara manual oleh 
+petugas administrasi.  
+Permasalahan serupa juga terjadi di  Universitas HKBP Nommensen (UHN) . 
+Berdasarkan hasil wawancara dengan Pusat Sistem In formasi (PSI) UHN  serta 
+melakukan penyebaran formulir kuesioner kepada mahasiswa , didapatkan 
+informasi bahwa  sistem PMB masih berjalan melalui beberapa situs yang berdiri 
+sendiri dan belum terintegrasi. Situs – situs yang terpisah adalah situs PMB untuk 
+daftar camaba, situs pemantauan database camaba yang melakukan pendaftaran 
+dan juga situs Daftar ulang oleh pihak PMB. Proses verifikasi data dilakukan 
+secara manual, sehingga admin harus berpindah antar laman untuk memeriksa 
+status pendaftar. Kondisi ini se ring menyebabkan keterlambatan validasi dan 
+potensi kesalahan input data.  Serta database yang terpisah membuat admin harus 
+mengambil data dari database website PMB dan diinput secara manual ke dalam 
+website daftar ulang, hal ini memungkinkan terjadinya kes alahan input data, 
+Apalagi tidak ada tombol edit pada data – data yang sudah di input.  Tidak 
+tersedianya fitur notifikasi otomatis membuat admin harus menghubungi calon 
+mahasiswa satu per satu melalui pesan instan, yang tentu menghambat efisiensi 
+kerja. Ak ibatnya, calon mahasiswa sering terlambat mendapatkan informasi 
+penting seperti jadwal ujian atau pengumuman hasil seleksi.  
+Melihat kondisi tersebut, dibutuhkan sistem informasi PMB berbasis web yang 
+terintegrasi  di Universitas HKBP Nommensen. Kebaruan penelitian ini ialah 
+pembangunan s istem dirancang agar seluruh proses  ,mulai dari pendaftaran 
+hingga daftar ulan g, dapat dilakukan dalam satu platform terpusat. Fitur notifikasi 
+otomatis melalui email  diharapkan mam pu mempercepat penyampaian informasi, 
+sementara integrasi sistem pembayaran BRIVA  akan mempermudah proses 
+verifikasi keuangan secara real -time. Dengan pengembangan menggunakan 
+metode prototype , sistem ini dapat dikembangkan secara bertahap berdasarkan 
+masu kan pengguna, sehingga hasil akhirnya benar -benar sesuai dengan kebutuhan 
+dan karakteristik proses PMB di UHN . [5] 
+
+--- PAGE 15 ---
+15  
+ Rumusan Masalah  
+Berdasarkan latar belakang yang telah dijelaskan, proses penerimaan 
+mahasiswa baru (PMB) di Univ ersitas HKBP Nommensen saat ini masih berjalan 
+menggunakan beberapa sistem yang terpisah dan belum saling terintegrasi  serta 
+tidak adanya notifikasi yang menimbukan kendala pada pengelolaan gelombang 
+penerimaan . Berdasarkan kondisi tersebut, rumusan masala h dalam penelitian ini 
+dapat diformulasikan sebagai berikut:  
+1. Bagaimana merancang dan membangun sistem informasi berbasis web yang 
+dapat mengintegrasikan seluruh tahapan proses penerimaan mahasiswa baru 
+di Universitas HKBP Nommensen mulai dari pendaftaran, pelaksanaan ujian, 
+hingga daftar ulang ke dalam satu platform terpusat yang dilengkapi dengan 
+notifikasi otomatis melalui email dan sistem pembayaran BRIVA?   
+2. Bagaimana penerapan metode prototype  dapat membantu proses 
+pengembangan sistem agar tahapan analis is kebutuhan, perancangan, 
+implementasi, dan pengujian dapat dilakukan secara sistematis dan 
+menghasilkan aplikasi yang sesuai dengan kebutuhan pengguna?  
+ Tujuan Penelitian  
+Berdasarkan rumusan masalah yang telah dikemukakan, maka tujuan dari 
+penelitian ini adalah sebagai berikut:  
+1. Mengembangkan sistem informasi berbasis web yang terintegrasi untuk 
+proses Penerimaan Mahasiswa Baru (PMB) di Universitas HKBP 
+Nommensen, yang mencakup seluruh tahapan mulai dari pendaftaran, ujian, 
+hingga daftar ulan g dalam satu platform dengan dukungan fitur notifikasi 
+otomatis dan sistem pembayaran BRIVA guna meningkatkan efisiensi 
+layanan.  
+2. Menerapkan metode prototype  sebagai pendekatan pengembangan sistem 
+agar setiap tahapan, mulai dari analisis kebutuhan hingga pengujian, dapat 
+dilakukan secara bertahap, terstruktur, dan menghasilkan aplikasi yang sesuai 
+dengan kebutuhan pengguna.  
+ Batasan Masalah  
+
+--- PAGE 16 ---
+16  
+Agar penelitian ini memiliki ruang lingkup yang jelas dan dapat diselesaikan 
+sesuai waktu yang ditetapkan, maka batasan masalah dalam tugas akhir ini 
+ditetapkan sebagai berikut:  
+1. Penelitian ini difokuskan pada pengembangan sistem informasi Penerimaan 
+Mahasiswa Baru (PMB) di Un iversitas HKBP Nommensen yang mencakup 
+proses  pendaftaran  akun,  pengisian  formulir,  verifikasi  pembayaran,  
+pelaksanaan ujian, dan daftar ulang dalam satu platform web terintegrasi.  
+2. Sistem yang dikembangkan melibatkan tiga jenis pengguna utama, yaitu 
+calon mahasiswa, admin PMB, dan admin PSI. Admin PMB atau admin 
+validasi berperan dalam pengelolaan pendaftaran, verifikasi, serta daftar 
+ulang, sedangkan admin PSI atau admin pusat berperan dalam pemeliharaan 
+sistem dan pengawasan teknis.  
+3. Fitur notifikasi otoma tis yang dikembangkan dibatasi pada pengiriman 
+melalui email kepada calon mahasiswa dan admin sebagai media 
+pemberitahuan status pendaftaran, tanpa mencakup SMS gateway maupun 
+push notification pada perangkat mobile.  
+4. Pembahasan penelitian ini berfokus pada  perancangan dan  fungsionalitas  
+sistem secara keseluruhan untuk meningkatkan efektivitas proses PMB, tanpa 
+menitikberatkan pada aspek teknis tertentu seperti pemilihan bahasa 
+pemrograman, framework, atau infrastruktur server.  
+5. Pengujian sistem dilakukan den gan metode black box testing  dan Integra tion 
+testing  untuk menguji fungsionalitas, serta  metode  SUS ( System Usability 
+Scale ) untuk  menguji  non-fungsionalitas  sistem . 
+ Manfaat  Penelitian  
+Penelitian Penelitian ini diharapkan dapat memberikan manfaat sebagai 
+berikut:  
+1. Memberikan solusi sistem informasi terintegrasi yang menyatukan seluruh 
+tahapan penerimaan mahasiswa baru (PMB) ke dalam satu platform berbasis 
+web, sehingga proses menjadi lebi h efisien dan terstruktur.  
+2. Meningkatkan akurasi dan kecepatan dalam proses validasi serta monitoring  
+
+--- PAGE 17 ---
+17  
+data pendaftar melalui fitur notifikasi otomatis dan integrasi antar -tahapan.  
+3. Mengurangi potensi kesalahan input dan keterlambatan proses akibat 
+perpindahan data antar sistem yang sebelumnya dilakukan secara manual.  
+4. Menjadi referensi dalam pengembangan sistem administrasi akademik serupa 
+yang membutuhkan koordinasi lintas unit secara digital dan terintegrasi.  
+ Sistematika Penulisan  
+Adapun sistematika penulisan yang digunakan adalah sebagai berikut:  
+1.6.1 Bab I 
+Bab ini menjelaskan latar belakang, rumusan masalah, tujuan, manfaat, 
+serta batasan penelitian. Dijelaskan pula alasan pengembangan aplikasi 
+web penerimaan mahasiswa baru di Universi tas HKBP Nommensen. 
+Bagian ini menutup dengan sistematika penulisan laporan penelitian .  
+1.6.2 Bab II 
+Bab ini memuat teori, konsep, dan penelitian terdahulu yang mendasari 
+pengembangan sistem. Dibahas pula teknologi yang digunakan seperti 
+Spring Framework, BRIVA , dan metode prototype . Seluruh teori menjadi 
+dasar ilmiah untuk membangun sistem yang diusulkan.  
+1.6.3 Bab III 
+Bab ini menguraikan tahapan metode prototype  mulai dari analisis 
+kebutuhan hingga perancangan sistem. Dijelaskan pula alat bantu 
+pengembangan serta pe ran masing -masing pengguna, seperti admin 
+validasi dan admin pengelola. Bab ini menjadi pedoman pelaksanaan 
+penelitian dan pengembangan sistem   
+1.6.4 Bab IV 
+Bab ini menyajikan hasil implementasi sistem, meliputi tampilan 
+antarmuka, fitur utama, serta hasil pengu jian. Pembahasan dilakukan untuk 
+menilai sejauh mana sistem memenuhi kebutuhan pengguna dan tujuan 
+penelitian.  
+1.6.5 Bab V 
+Bab ini berisi kesimpulan dari hasil penelitian serta saran untuk 
+
+--- PAGE 18 ---
+18  
+pengembangan sistem di masa mendatang atau penerapannya di 
+lingkungan uni versitas.  
+Sistematika penulisan ini diharapkan dapat membantu pembaca memahami alur 
+berpikir, proses penelitian, dan hasil yang diperoleh secara menyeluruh ..   
+
+--- PAGE 19 ---
+19  
+BAB I I  
+TINJAUAN PUSTAKA  
+2.1 Tinjauan Pustaka  
+Sebelum Tinjauan pustaka dilakukan untuk memperoleh landasan teoritis dan 
+empiris yang mendukung penelitian ini. Berbagai studi terdahulu dijadikan acuan 
+dalam mengembangkan sistem informasi penerimaan mahasiswa baru (PMB) 
+berbasis web yang terintegrasi dan sesuai dengan kebutuhan pengguna. Ringk asan 
+beberapa penelitian yang relevan disajikan pada Tabel 2.1 di bawah ini:  
+Tabel  2.1 Daftar  Jurnal  Terkait  
+No. Penulis 
+[Tahun] 
+[Judul]  Permasalahan 
+dan Tujuan  Metode  Kontribusi  Kekurangan  
+1 Nugraha, D., 
+Fitriani, A., & 
+Sari, R. [2024] 
+[Rancang 
+Bangun Sistem 
+Informasi 
+Penerimaan 
+Mahasiswa Baru 
+Berbasis Web 
+Menggunakan 
+Laravel 8 di 
+Politeknik 
+Indorama]  [6] Jurnal ini 
+membahas 
+pengembangan 
+website 
+Penerimaan 
+Mahasiswa 
+Baru di 
+Politeknik 
+Indorama 
+awalnya 
+dilakukan 
+semi -manual 
+dan tidak 
+efisien. Maka 
+penelitian 
+bertujuan 
+membuat Laravel 
+8, 
+MySQL, 
+MVC  Sistem mampu 
+menangani 
+proses 
+pendaftaran 
+secara digital 
+dengan 
+tampilan 
+sederhana dan 
+pemrosesan 
+cepat.  Belum ada 
+integrasi 
+dengan sistem 
+pembayaran 
+otomatis 
+(misal 
+BRIVA), dan 
+tidak 
+mendukung 
+manajemen 
+data dinamis 
+seperti 
+gelombang & 
+harga.  
+
+--- PAGE 20 ---
+20  
+sistem PMB 
+Laravel 8 yang 
+efisiensi input 
+& validasi 
+data.  
+2 Novianto, M. A. 
+[2022] [Analisis 
+dan 
+Implementasi 
+RESTful API 
+guna 
+Pengembangan 
+Sistem 
+Informasi 
+Akademik 
+Perguruan 
+Tinggi]  [7] Sistem 
+akademik 
+tidak 
+terintegrasi 
+dan lambat. 
+Tujuan: 
+menerapkan 
+REST API 
+dengan Spring 
+agar sistem 
+lebih modular 
+dan scalable.  Spring 
+Framewo
+rk, 
+RESTful 
+API Sistem dapat 
+digunakan 
+sebagai 
+fondasi 
+pengembangan 
+modul sepert i 
+PMB yang 
+lebih fleksibel 
+dan mudah 
+diintegrasikan.  Fokus masih 
+pada API 
+backend, 
+belum 
+mencakup UI, 
+notifikasi 
+email, atau 
+pengelolaan 
+PMB secara 
+end-to-end. 
+3 Adji, L. S., & 
+Mailoa, E. 
+[2024] 
+[Pembuatan 
+REST API 
+Manajemen 
+Data Karyawan 
+Berbasis 
+Website  
+Menggunakan 
+Spring Boot]  [8] Sistem 
+pengelolaan 
+data karyawan 
+kurang efisien. 
+Tujuan: 
+membangun 
+REST API 
+menggunakan 
+Spring Boot 
+untuk proses 
+CRUD yang 
+rapi dan aman.  Spring 
+Boot, 
+PostgreS
+QL, 
+REST 
+API Memberikan 
+arsitektur 
+REST API 
+yang bisa 
+diadaptasi 
+untuk PMB 
+berbasis 
+Spring dengan 
+keamanan dan 
+efisiensi 
+tinggi.  Fokus studi 
+bukan pada 
+PMB; tidak 
+membahas 
+UI/UX, soal 
+ujian, atau 
+sistem 
+pembayaran 
+otomatis.  
+
+--- PAGE 21 ---
+21  
+4 Yulianto, R. 
+[2024] 
+[Performance 
+Comparison 
+Analysis of 
+SpringBoot and 
+Laravel 
+Frameworks 
+Using API Web 
+Service]  [9] Permasalahan 
+perbandingan 
+performa 
+antara dua 
+framework 
+populer. 
+Tujuan: 
+menganalisis 
+performa, 
+respons API, 
+dan efisiensi 
+masing -masing 
+framework.  Laravel 
+vs 
+SpringBo
+ot, 
+Postman, 
+Benchma
+rk API  Memberi 
+insight teknis 
+mendalam 
+untuk memilih 
+framework 
+terbaik dalam 
+membangun 
+sistem seperti 
+PMB.  Tidak 
+membahas 
+implementasi 
+nyata sistem 
+PMB; hanya 
+membandingk
+an performa 
+framework.  
+5 Rohman, T. W., 
+Pitria, P., 
+Styan igrum, A., 
+Sarmembi, A., 
+& Irmaya, S. D. 
+[2025] 
+[Rancang 
+Bangun Sistem 
+Pendaftaran 
+Siswa Baru 
+SMK Citra 
+Negara Depok 
+Menggunakan 
+Metode 
+Waterfall )] [10]  Sistem PPDB 
+SMK 
+sebelumnya 
+tidak 
+terdigitalisasi. 
+Tujuan: 
+membangun 
+sistem Laravel 
+8 untuk 
+digitalisasi 
+penuh proses 
+pendaftaran.  Laravel 
+8, 
+MySQL, 
+Blade  Menyediakan 
+contoh 
+penerapan 
+Laravel dalam 
+konteks PPDB 
+(setara PMB) 
+dengan form 
+pendaftaran, 
+upload berkas, 
+dan validasi.  Tidak ada 
+fitur integrasi 
+BRIVA, 
+notifikasi 
+email, a tau 
+modul admin 
+yang bisa 
+mengatur 
+gelombang & 
+formulir 
+secara 
+dinamis.  
+
+--- PAGE 22 ---
+22  
+Beberapa penelitian sebelumnya menjadi dasar dalam pengembangan sistem 
+Penerimaan Mahasiswa Baru (PMB) berbasis web ini. Pada penelitan Nugraha et 
+al. (2024) membangun sistem PMB berbasis Laravel 8  untuk mempermudah 
+proses pendaftaran yang sebelumnya semi -manual. Sistem tersebut efisien, namun 
+belum mendukung pembayaran otomatis.  
+Novianto (2022) menerapkan RESTful API  berbasis Spring Framework  untuk 
+meningkatkan integrasi dan skalabilitas sistem akademik. Meski hasilnya modular 
+dan stabil, penelitian ini be lum membahas antarmuka pengguna dan fitur 
+notifikasi. Sementara itu, Adji & Mailoa (2024) membuat REST API dengan 
+Spring Boot  untuk manajemen data karyawan yang lebih aman dan efisien, tetapi 
+belum mencakup fitur front -end atau proses seleksi peserta seper ti pada PMB.  
+Selanjutnya, Yulianto (2024) membandingkan performa Laravel  dan Spring 
+Boot  dan menemukan bahwa Spring Boot  lebih unggul dari sisi kecepatan dan 
+skalabilitas. Namun, penelitian tersebut hanya bersifat analisis performa tanpa 
+penerapan sistem n yata. Adapun Rohman et al. (2025) mengembangkan sistem 
+PPDB berbasis Laravel 8  dengan fitur pendaftaran dan validasi, tetapi belum 
+dilengkapi pembayaran otomatis, notifikasi email, atau pengaturan jadwal.  
+Dari kelima penelitian itu, dapat disimpulkan bahwa  belum ada sistem PMB 
+yang benar -benar terintegrasi penuh, terutama dalam hal pembayaran otomatis 
+(BRIVA), ujian daring, notifikasi email, dan manajemen konten dinamis. Selain 
+itu, belum ada yang menggunakan metode Prototype  untuk menyesuaikan sistem 
+berda sarkan umpan balik pengguna. Karena itu, penelitian ini mengembangkan 
+sistem PMB berbasis Spring Framework  dengan pendekatan Prototype , agar 
+hasilnya lebih interaktif, efisien, dan sesuai kebutuhan Universitas HKBP 
+Nommensen.  
+2.2 Dasar Teori  
+2.2.1 Manajemen  Proyek  Teknologi  Informasi  
+Manajemen proyek teknologi informasi (TI) merupakan penerapan ilmu dan 
+teknik untuk merencanakan, melaksanakan, memantau, dan mengendalikan 
+
+--- PAGE 23 ---
+23  
+proyek berbasis TI agar tujuan organisasi tercapai secara efektif dan efisien [11]. 
+Berbagai metode manajemen proyek seperti Waterfall dan Agile diterapkan sesuai 
+dengan kebutuhan organisasi  [11] . Namun dalam praktiknya, implementasi 
+proyek TI kerap menghadapi tantangan seperti koordinasi tim dan pengendalian 
+perubahan, terutama dalam situasi dinamis seperti masa pandemi  [12]. 
+2.2.2.  Aplikasi Penerimaan Mahasiswa Baru  
+Aplikasi berbasis web untuk proses penerimaan mahasiswa baru dirancang 
+untuk memfasilitasi pendaftaran daring, pengelolaan da ta calon peserta, dan 
+administrasi secara efisien. Sistem ini mengintegrasikan komponen seperti 
+formulir online, validasi dokumen, pengelolaan gelombang, dan notifikasi 
+otomatis melalui antarmuka web. Keunggulan utama dari sistem ini adalah 
+efisiensi waktu  pendaftaran, kemudahan akses, dan pengelolaan data yang lebih 
+terstruktur dan akurat  [13]. 
+2.2.3.  Model Pengembangan Perangkat Lunak  
+2.2.3.1  Analisis Perbandingan Model Pengembangan Perangkat Lunak  
+Dalam pengembangan perangkat lunak, pemilihan model pengembangan yang 
+tepat berperan penting dalam menentukan kualitas hasil akhir. Model 
+pengembangan digunakan sebagai panduan untuk mengatur tahapan kerja mulai 
+dari analisis kebutuhan, perancangan, implementasi, hingga pengujian sistem. 
+Oleh sebab itu, pemilihan model harus disesuaikan dengan karakteristik sistem 
+yang dibangun, terutama jika sistem bersifat berbasis web, melibatkan interaksi 
+langsung dengan pengguna, serta memerlukan proses iteratif untuk memastikan 
+kesesuaian fungsi dan kin erja. Berbagai model pengembangan perangkat lunak 
+yang umum diterapkan antara lain Waterfall , V-Model , Rapid Application 
+Development (RAD) , Incremental , Spiral , Agile (Scrum) , Modified Waterfall , dan 
+Prototype . Setiap model memiliki karakteristik, kelebiha n, serta kekurangannya 
+masing -masing sebagaimana ditampilkan pada Tabel 2. 2 berikut.  
+
+--- PAGE 24 ---
+24  
+Tabel 2.2 Perbandingan Model Pengembangan Perangkat Lunak  
+No Metode  Karakteristik  Kelebihan  Kekurangan  
+1 Waterfall 
+[14] Linear, tiap 
+tahap tidak 
+dapat diulang  Terstruktur 
+dan mudah 
+dikelola  Sulit direvisi saat tahap 
+lanjut  
+2 V-Model 
+[15] Turunan linear 
+dengan fokus 
+pada validasi  Memastikan 
+pengujian di 
+setiap tahap  Tidak fleksibel terhadap 
+perubahan kebutuh an 
+3 RAD [16] Linear di fase 
+prototyping 
+cepat  Waktu 
+pengembangan 
+relatif singkat  Tidak cocok untuk sistem 
+kompleks dan iterasi 
+panjang  
+4 Incremental  
+[17]  Pengembangan 
+bertahap 
+berdasarkan 
+modul  Cocok untuk 
+sistem 
+modular  Membutuhkan 
+manajemen versi yang 
+disiplin  
+5 Spiral [18] Iteratif dengan 
+analisis risiko  Cocok untuk 
+proyek 
+berisiko tinggi  Kompleks dan 
+memerlukan banyak 
+dokumentasi  
+6 Agile 
+(Scrum ) 
+[19] Iteratif dan 
+kolaboratif  Fleksibel 
+terhadap 
+perubahan 
+kebutuhan  Membutuhkan tim besar 
+dan koordinasi intensif  
+7 Modified 
+Waterfall 
+[20] Linear dengan 
+ruang umpan 
+balik terbatas  Lebih fleksibel 
+dibanding 
+Waterfall  Masih kurang adaptif 
+terhadap revisi besar  
+8 Prototype 
+[21] Iteratif, 
+berfokus pada 
+pembuatan 
+model awal  Dapat 
+divalidasi 
+langsung oleh 
+pengguna, Membutuhkan iterasi 
+berulang dan waktu 
+pengembangan lebih 
+panjang  
+
+--- PAGE 25 ---
+25  
+No Metode  Karakteristik  Kelebihan  Kekurangan  
+fleksibel untuk 
+revisi cepat  
+2.2.3.2  Metode prototype  
+Metode Prototype merupakan pendekatan dalam pengembangan perangkat 
+lunak yang menitikberatkan pada pembuatan model awal dari sistem yang akan 
+dibangun. Model ini berfungsi sebagai gambaran awal agar pengguna dapat 
+memahami bentuk dan fungsi dasar sistem sejak tahap awal. Melalui prototype 
+tersebut, pengguna dapat memberikan masukan langsung terhadap tampilan 
+maupun alur sistem, sehingga pengembang dapat melakukan p enyesuaian sebelum 
+sistem dikembangkan secara penuh.  Berbeda dengan model Waterfall yang 
+berjalan secara berurutan dan jarang memungkinkan perubahan di tengah proses, 
+metode Prototype bersifat lebih fleksibel dan interaktif.  [22] Setiap tahap dapat 
+diulang sesuai kebutuhan hingga sistem benar -benar sesuai dengan harapan 
+pengguna. Penelitian  menyebutkan bahwa proses prototyping mencakup lima 
+aspek penting, yaitu tujuan, ruang lingkup, media, pengg unaan oleh pemangku 
+kepentingan, serta strategi eksplorasi. Kelima aspek tersebut membantu 
+memastikan bahwa pengembangan sistem berjalan selaras dengan kebutuhan dan 
+pengalaman pengguna.  [23] 
+Gambar 2. 1 Metode Prototype  
+Menur ut Bjarnason et al. [23], metode Prototype  terdiri dari beberapa tahap 
+
+--- PAGE 26 ---
+26  
+yang dilakukan secara iteratif untuk memastikan sistem yang dikembangkan 
+sesuai dengan kebutuhan pengguna. Setiap tahap memungkinkan adanya umpan 
+balik yan g cepat agar sistem dapat diperbaiki sebelum tahap implementasi akhir. 
+Adapun tahapan -tahapan utama dalam metode ini adalah sebagai berikut  : 
+1. Komunikasi (Communication)  
+Tahap awal bertujuan untuk mengidentifikasi kebutuhan pengguna melalui 
+diskusi, wawancara, atau observasi. Aktivitas ini membantu pengembang 
+memahami permasalahan dan ekspektasi pengguna terhadap sistem yang akan 
+dibuat.  
+2. Perancangan Cepat (Quick Design)  
+Pada tahap ini dibuat rancangan awal sistem dalam bentuk sketsa, diagram alur, 
+atau model antarmuka sederhana. Rancangan ini digunakan untuk 
+menggambarkan gambaran umum sistem kepada pengguna sebelum dilakukan 
+pengembangan lebih lanjut.  
+3. Pembuatan Prototype (Building Prototype)  
+Rancangan awal kemudian dikembangkan menjadi prototype  seder hana yang 
+mewakili fungsi utama sistem. Tujuan dari tahap ini bukan untuk menghasilkan 
+produk akhir, melainkan alat bantu evaluasi dan validasi kebutuhan.  
+4. Evaluasi oleh Pengguna (User Evaluation)  
+Prototype diuji secara langsung oleh pengguna untuk memperol eh umpan balik 
+mengenai fungsionalitas, tampilan, dan kemudahan penggunaan. Hasil evaluasi 
+digunakan untuk memperbaiki rancangan sistem.  
+5. Perbaikan Prototype (Refinement)  
+Berdasarkan masukan pengguna, prototype diperbarui agar lebih sesuai dengan 
+kebutuhan yang sebenarnya. Proses ini dapat dilakukan berulang kali sampai 
+sistem dinilai memuaskan.  
+6. Implementasi dan Pengujian Akhir (Implementation and Final Testing)  
+Setelah prototype akhir disetujui, sistem dikembangkan secara penuh dan diuji 
+secara menyeluruh m enggunakan metode yang sesuai, seperti black -box testing  
+atau usability testing , guna memastikan fungsionalitas berjalan dengan baik.  
+
+--- PAGE 27 ---
+27  
+2.2.4.  Object -Oriented Programming (OOP)  dalam Java  
+Pemrograman berorientasi objek (Object -Oriented Programming/OOP) 
+merupakan paradigma yang memandang perangkat lunak sebagai kumpulan objek 
+yang saling berinteraksi. Setiap objek memiliki atribut dan metode yang 
+merepresentasikan data serta perilaku dalam s atu kesatuan. Pendekatan ini 
+berlandaskan pada empat prinsip utama, yaitu encapsulation  (pengemasan data 
+dan perilaku dalam satu entitas), inheritance  (pewarisan sifat dari kelas induk ke 
+kelas turunan), polymorphism  (kemampuan objek untuk berperilaku berb eda 
+tergantung konteks), dan abstraction  (penyembunyian detail implementasi agar 
+fokus pada fungsi utama).` .   
+Paradigma OOP memberikan cara yang efektif untuk merancang perangkat 
+lunak yang terstruktur dan mudah dikembangkan karena tanggung jawab sistem 
+dibagi menjadi kelas -kelas yang saling berhubungan namun independen.  [24] . 
+Penelitian lain menambahkan bahwa pendekatan ini mempermudah pengelolaan 
+sistem berskala besar, sebab setiap komponen dapat diuji dan diperbarui tanpa 
+mengganggu bagian lain.  [25] 
+Bahasa pemrograman Java menjadi salah satu implementasi paling populer dari 
+konsep OOP. Java dikenal karena sifatnya yang platform independent  melalui 
+prinsip “Write Once, Run Anywh ere”. Selain itu, Java dilengkapi fitur exception 
+handling  untuk menangani kesalahan saat runtime  dan garbage collection  untuk 
+pengelolaan memori otomatis, yang menjadikan pengembangan perangkat lunak 
+lebih stabil dan efisien. Penerapan konsep OOP pada Jav a memungkinkan 
+rancangan kode yang modular, mudah dirawat, serta fleksibel untuk 
+dikembangkan lebih lanjut . [26] 
+2.2.5.  Model -View -Controller  
+Model –View –Controller (MVC) merupakan pola arsitektur perangkat lunak 
+yang membagi sistem menjadi tiga komponen utama, yaitu  Model , View , dan 
+Controller . Model bertanggung jawab terhadap pengelolaan data serta logika 
+
+--- PAGE 28 ---
+28  
+bisnis, View menampilkan data dalam bentuk antarmuka pengguna, sedangkan 
+Controller mengatur aliran data dan interaksi ant ara Model dan View.  
+Menurut Ismail  [27], penerapan pola MVC dalam pengembangan aplikasi web 
+memberikan kejelasan struktur dan meningkatkan efisiensi pengelolaan kode 
+karena setiap komponen memiliki tanggung jawab yang terpisah.  Sementara itu, 
+penelitian oleh Necula [28] menegaskan bahwa arsitektur MVC meningkatkan 
+skalabilitas , reusability , serta  maintainability  pada aplikasi web interaktif.  
+Secara umum, struktur hubungan antar komponen pada arsitekt ur MVC 
+digambarkan seperti pada Gambar 2.2  berikut.  
+ 
+Gambar 2.2 Diagram Umum Arsitektur Model –View –Controller (MVC)  
+Arsitektur MVC memisahkan setiap tanggung jawab sistem agar mudah 
+dikembangkan, diuji, serta dipelihara. Pola ini banyak digunakan pada framework 
+modern seperti Spring Boot, Laravel, dan Django karena kemampuannya dalam 
+menjaga modularitas dan fleksibilitas sistem.  
+2.2.6.  Spring Framewok  
+Spring Framework merupakan kerangka kerja open -source  berbasis Java yang 
+dirancang untuk pengembangan aplikasi berskala besar dengan arsitektur yang 
+modular, terstruktur, dan mudah dikelola  [29]. Framework ini menyediakan 
+
+
+--- PAGE 29 ---
+29  
+berbagai modul pendukung, seperti Spring Boot yang menyede rhanakan 
+konfigurasi dan mempercepat proses pengembangan, serta Spring Security yang 
+menangani autentikasi dan otorisasi pengguna. Dalam penerapannya, Spring 
+Framework memungkinkan pengembang membangun API secara efisien, 
+mengelola integrasi dengan basis d ata seperti MySQL atau PostgreSQL, serta 
+memisahkan tanggung jawab sistem ke dalam lapisan controller , service , dan 
+repository . Pendekatan ini membantu menjaga kode tetap rapi, mudah diuji, serta 
+memudahkan pemeliharaan saat terjadi perubahan kebutuhan apl ikasi.  
+2.2.7.  HyperText  Markup  Language  (HTML)  dan Cascading  Style  Sheets  
+(CSS)  
+HyperText Markup Language  (HTML) digunakan untuk membangun struktur 
+dasar halaman web dengan menyusun elemen seperti formulir, tombol, maupun 
+kolom input. Bahasa markup ini menentukan bagaimana konten ditampilkan 
+secara semantik di peramban (browser), sehingga menjadi fondasi utam a dalam 
+pembuatan antarmuka pengguna  [30]. Sementara itu, Cascading Style Sheets  
+(CSS) berperan dalam mengatur tampilan visual dari elemen -elemen HTML, 
+mencakup tata letak, warna, margin, padding, jenis dan ukuran huruf, serta 
+pengaturan responsivitas agar halaman tetap nyaman diakses dari berbagai 
+perangkat [30]. Kombinasi antara HTML dan CSS memungkinkan perancang web 
+menghasilkan tampilan antarmuka yang terstruktur, konsisten, dan menarik secara 
+visual. Penggunaan kedua teknologi ini secara tepat juga dapat meningkatkan 
+kenyamanan serta pengalaman pengguna dalam berinteraksi dengan sistem yang 
+dikembangkan.  
+2.2.8.  Database Relasional (MySQL)  
+Database relasional merupakan sistem penyimpanan data yang menyu sun 
+informasi dalam bentuk tabel -tabel yang saling berhubungan. Setiap tabel berisi 
+kolom dan baris yang merepresentasikan atribut serta entitas data, dan 
+keterkaitannya diatur melalui relasi seperti primary key  dan foreign key  [ [31]. 
+
+--- PAGE 30 ---
+30  
+Sistem ini biasanya digunakan untuk mengelola data terstruktur secara efisien, 
+mulai dari penyimpanan hingga pengolahan dan penampilan informasi. 
+Pengelolaan dilakukan menggunakan bahasa SQL ( Structured Query Language ), 
+dengan perintah dasar seper ti SELECT  untuk menampilkan data, INSERT  untuk 
+menambah data, UPDATE  untuk mengubah data, dan DELETE  untuk menghapus 
+data. Struktur yang teratur membuat database relasional banyak diterapkan dalam 
+berbagai sistem informasi modern.   
+Entity –Relationship Diagram (ERD) digunakan untuk memodelkan hubungan 
+antarentitas dalam sistem basis data. Menurut peneliti an , ERD berperan penting 
+dalam menggambarkan struktur logis data serta hubungan antarobjek sehingga 
+mempermudah proses perancangan dan implementasi basis data yang konsisten.  
+[32], 
+Table 2. 3 Simbol  ER diagram  
+Simbol  Deskripsi  
+ Menunjukkan objek utama yang 
+datanya disimpan, seperti pengguna 
+atau transaksi.  
+ Menjelaskan properti atau karakteristik 
+dari suatu entitas, misalnya nama atau 
+tanggal.  
+ Atribut unik yang digunakan untuk 
+mengidentifikasi setiap data secara 
+spesifik.  
+ Atribut yang dapat memiliki lebih dari 
+satu nilai, misalnya nomor telepon.  
+ Menunjukkan hubungan antarentitas, 
+seperti “memiliki” atau “mengelola”.  
+
+
+--- PAGE 31 ---
+31  
+Simbol  Deskripsi  
+Kardinalitas (Multiplicity)  
+ Menggambarkan jumlah  
+keterhubungan antarentitas, seperti 
+satu-ke-banyak atau banyak -ke-
+banyak.  
+ Entitas yang tidak dapat berdiri sendiri 
+tanpa bergantung pada entitas lain 
+karena tidak memiliki atribut kunci 
+unik.  
+ Relasi yang menghubungkan entitas 
+lemah dengan entitas kuat, 
+menandakan  ketergantungan 
+eksistensial antara keduanya.  
+2.2.9.  Pengujian Sistem  
+Pengujian sistem merupakan tahap penting dalam pengembangan perangkat 
+lunak untuk memastikan seluruh fungsi berjalan sesuai kebutuhan serta 
+memberikan pengalaman pengguna yang optimal. Beberapa metode yang umum 
+digunakan antara lain Black -box Testing, Usability Testing (System Usability 
+Scale/SUS), dan Integration  Testing  
+2.2.9.1  Blackbox  Test 
+Metode Black -box berfokus pada pengujian fungsionalitas perangkat lunak 
+tanpa melihat struktur internal  atau kode program . Pendekatan ini menilai apakah 
+keluaran sistem sesuai dengan masukan yang diberikan pengguna. Contohnya 
+mencakup pengujian validasi input, navigasi menu, serta proses autentikasi. 
+Penelitian  menunjukkan bahwa penerapan metode ini dengan acuan standar 
+ISO/IEC 25010 dapat membantu memastikan kualitas fungsionalitas perangkat 
+lunak berjalan sesuai harapan . [33] 
+Ada berbagai teknik yang digunakan dalam Black -Box Testing, antara lain  
+
+
+--- PAGE 32 ---
+32  
+[34]: 
+1. Equivalence Partitioning (ECP): membagi domain input menjadi beberapa 
+kelas ekivalen (valid dan invalid) sehingga pengujian dapat dilakukan 
+secara efisien tanpa menguji semua kemungkinan input.  
+2. Boundary Value Analysis (BV A): menguji nilai -nilai di sekitar batas 
+domain input karena kesalahan sering muncul pada titik ekstrem.  
+3. Decision Table Testing: menggunakan tabel keputusan untuk 
+menggambarkan kombinasi kondisi input dan aksi yang diharapkan.  
+4. State Transition Testing : memeriksa perubahan status sistem berdasarkan 
+input dan kondisi sebelumnya.  
+Penelitian empiris yang dilakukan oleh Santi et al.  [34] menunjukkan bahwa 
+kombinasi teknik Equivalence Partitioning  dan Boundary Value Analysis  efektif 
+dalam menemukan kesalahan pada sistem akademik berbasis web, khususnya 
+dalam pengujian validasi input dan batas nilai ekstrem. Rumus skoring yang 
+umum digunakan dalam pengujian black -box adalah:  
+𝑃𝑟𝑒𝑠𝑒𝑛𝑡𝑎𝑠𝑒  𝐾𝑒𝑏𝑒𝑟 ℎ𝑎𝑠𝑖𝑙𝑎𝑛 =Jumlah  Test  Case  yang  Berhasil
+Total  Test  Case 𝑥 100%  
+(Rumus 2.1 Blackbox Test)  
+Sebagai contoh, jika dari 322 kasus uji terdapat 242 yang berhasil, maka 
+tingkat keberhasilan mencapai 75,16%.  Karena metode pengembangan 
+prototyping bersifat iteratif dan memungkinkan evaluasi cepat terhadap fungsi 
+antarmuka, maka penerapan teknik -teknik seperti ECP dan BVA sangat sesuai.  
+2.2.9.2  Usability Testing  
+Metode usability testing digunakan untuk mengevaluasi sej auh mana sistem 
+mudah digunakan dan dipahami oleh pengguna. Pengujian ini berfokus pada 
+efektivitas, efisiensi, serta kepuasan pengguna dalam berinteraksi dengan 
+antarmuka. Menurut Weichbroth  [35], usability testing membantu 
+mengidentifikasi masalah desain sejak tahap awal agar sistem lebih ramah 
+pengguna . 
+
+--- PAGE 33 ---
+33  
+Salah satu metode yang umum digunakan dalam usability testing adalah 
+System Usability Scale (SUS), yang dikembangkan oleh John Brooke pada tahun 
+1986. Metode ini menggunakan s epuluh pernyataan standar dengan lima pilihan 
+jawaban berbasis skala Likert, seperti ditunjukkan pada Tabel 2. 4 berikut . [36] 
+Tabel 2. 4 Skala Penilaian  SUS 
+No Pilihan Jawaban  Skor  
+1 Sangat Tidak Setuju  1 
+2 Tidak Setuju  2 
+3 Netral  3 
+4 Setuju  4 
+5 Sangat Setuju  5 
+Dalam metode SUS, terdapat dua kelompok pertanyaan:  
+1. Pertanyaan dengan nomor ganjil (1, 3, 5, 7, 9) bersifat positif, di mana skor 
+akhir untuk setiap item adalah (nilai jawaban - 1). 
+2. Pertanyaan dengan nomor genap (2, 4, 6, 8, 10) bersifat negatif, sehingga 
+skor akhirnya adalah (5 - nilai jawaban) . 
+Setelah se luruh nilai dikonversi, hasilnya dijumlahkan dan dikalikan dengan 
+2,5 untuk mendapatkan skor akhir. Rumus perhitungan dapat dituliskan sebagai 
+berikut:  
+𝑆𝑘𝑜𝑟  𝑆𝑈𝑆 =(∑𝑆𝑘𝑜𝑟  𝐼𝑡𝑒𝑚 ) 𝑥 2.5 
+(Rumus 2.2 Usability Testing)  
+Nilai SUS berkisar antara 0 hingga 100. Interpretasi hasil pengujian biasanya 
+sebagai berikut:  
+1. Skor di atas 68 menunjukkan tingkat usability  yang baik.  
+2. Skor 50 –68 dikategorikan cukup.  
+3. Skor di bawah 50 menunjukkan perlu perbaikan signifikan.  
+Dengan metode ini, peneliti dapat menilai s eberapa mudah antarmuka sistem 
+digunakan berdasarkan pengalaman pengguna secara langsung dan kuantitatif.   
+
+--- PAGE 34 ---
+34  
+2.2.9.3  Integration Testing  
+Metode integration testing  bertujuan memastikan bahwa modul -modul sistem 
+yang telah diuji secara terpisah dapat berfungsi dengan baik ketika digabungkan. 
+Pengujian ini penting untuk mendeteksi kesalahan komunikasi antar -modul atau 
+layanan eksternal. Rehman et al. [37] menjelaskan bahwa pengujian integrasi 
+dapat dilakukan dengan pendekatan top-down , bottom -up, atau big bang  
+tergantung pada struktur sistem.  
+Untuk memberikan aspek kuantitatif pada pengujian integrasi, berikut beberapa 
+rumus metrik yang umum digunakan:  
+𝑰𝒏𝒕𝒆𝒈𝒓𝒂𝒕𝒊𝒐𝒏  𝑺𝒖𝒄𝒄𝒆𝒔𝒔  𝑹𝒂𝒕𝒆  (𝑰𝑺𝑹 )= 𝑱𝒖𝒎𝒍𝒂𝒉  𝑴𝒐𝒅𝒖𝒍  𝑩𝒆𝒓𝒉𝒂𝒔𝒊𝒍  𝑻𝒆𝒓𝒊𝒏𝒕𝒆𝒈𝒓𝒂𝒔𝒊
+𝑻𝒐𝒕𝒂𝒍  𝑴𝒐𝒅𝒖𝒍  𝒀𝒂𝒏𝒈   𝑫𝒊𝒖𝒋𝒊 
+𝑰𝒏𝒕𝒆𝒓𝒇𝒂𝒄𝒆  𝑬𝒓𝒓𝒐𝒓  𝑹𝒂𝒕𝒆  (𝑰𝑬𝑹 )= 𝑱𝒖𝒎𝒍𝒂𝒉  𝑲𝒆𝒔𝒂𝒍𝒂𝒉𝒂𝒏  𝑨𝒏𝒕𝒂𝒓 −𝑴𝒐𝒅𝒖𝒍
+𝑻𝒐𝒕𝒂𝒍  𝑰𝒏𝒕𝒆𝒓𝒂𝒌𝒔𝒊  𝒀𝒂𝒏𝒈   𝑫𝒊𝒖𝒋𝒊 𝒙 𝟏𝟎𝟎 % 
+(Rumus 2.3 Integration Testing)  
+Contoh: jika dari 50 modul yang diuji integrasinya 45 berha sil → ISR = (45 ÷ 
+50) × 100% = 90%. Atau jika dari 200 interaksi antar -modul ditemukan 10 
+kesalahan → IER = (10 ÷ 200) × 100% = 5%.  
+Dengan menggunakan metrik seperti ISR dan IER, pengembang dapat 
+memantau efektivitas integrasi modul dan menilai area yang m emerlukan 
+perhatian lebih. Pembentukan modul awal yang diuji lebih cepat dan digabungkan 
+secara bertahap, maka pendekatan pengujian integrasi yang incremental (misalnya 
+top-down atau bottom -up) sangat sesuai. Strategi ini memungkinkan identifikasi 
+masalah integrasi sejak tahap awal penggabungan, menghindari akumulasi 
+kesalahan yang besar.   
+2.2.10  Perancangan UML  
+Bahasa pemodelan Unified Modeling Language (UML) menjadi alat penting 
+dalam mendesain sistem perangkat lunak karena memungkinkan visualisasi 
+struktur maupun perilaku sistem secara terstandarisasi. Menurut studi literatur, 
+penggunaan diagram -UML paling umum  mencakup diagram kelas (class), 
+
+--- PAGE 35 ---
+35  
+diagram use case, diagram aktivitas (activity) dan diagram urutan (sequence) 
+karena diagram -diagram ini mendukung komunikasi antara pemangku 
+kepentingan dan tim pengembang secara lebih efektif.  [38] 
+Di bagian ini akan dibahas empat diagram kunci dalam perancangan sistem: 
+Use Case, Activity, Sequence, dan Class. Untuk setiap diagram disertakan 
+penjelasan singkat, literatur pendukung, serta tabel simbol -notasi yang rele van. 
+2.2.10.1  Diagram Usecase  
+Diagram Use Case menggambarkan fungsionalitas sistem dari sudut pandang 
+aktor eksternal (pengguna atau sistem lain) dan interaksinya dengan sistem. 
+Diagram ini membantu menentukan kebutuhan sistem (functional requirements) 
+dan batasan antar sistem dengan lingkungannya.  [39] 
+Tabel 2.5 Simbol Use Case  
+Simbol  Deskripsi  
+ Entitas eksternal (manusia atau sistem 
+lain) yang berinteraksi dengan sistem.  
+ Fungsi atau layanan sistem yang terlihat 
+oleh aktor.  
+ Garis antara aktor dan use case yang 
+menunjukkan interaksi.  
+ Persegi panjang yang mengelilingi use 
+cases untuk menunjukkan ruang 
+lingkup sistem.  
+ Panah terbuka menunjuk dari khusus ke 
+umum untuk aktor atau use case.  
+ include  untuk menunjukkan bahwa 
+suatu use case selalu memanggil use 
+
+
+--- PAGE 36 ---
+36  
+Simbol  Deskripsi  
+case lain sebagai bagian wajib dari 
+prosesnya.  
+ extend  menunjukkan perilaku tambahan 
+yang bersifat opsional dan hanya 
+dijalankan dalam kondisi tertentu  
+2.2.10.2  Diagram Activity  
+Diagram Activity merepresentasikan alur kerja atau proses bisnis dalam sistem, 
+termasuk aktivitas, keputusan, paralelisme, dan akhir proses. Diagram ini cocok 
+untuk memodelkan logika proses yang bersifat kondisional atau berulang. [40] 
+Tabel 2.6 Simbol Activity  
+Simbol  Deskripsi  
+ 
+Node awal  Lingkaran hitam kecil yang menunjukkan mulai proses.  
+ Persegi panjang dengan sudut melengkung yang mewakili 
+kerja yang dilakukan.  
+ 
+Keputusan  Belah ketupat yang menunjukkan kondisi/percabangan.  
+Fork / Join   Garis vertikal atau horizontal yang menunjukkan 
+pembagian atau penggabungan alur paralel.  
+ 
+Node akhir  Lingkaran hitam kecil berbingkai luar yang menunjukkan 
+akhir proses.  
+2.2.10.3  Diagram Sequence  
+Diagram Sequence menggambarkan interaksi antar objek atau komponen 
+sistem secara urut berdasarkan waktu. Diagram ini menampilkan lifeline , pesan 
+
+
+--- PAGE 37 ---
+37  
+antar objek, dan aktivasi. Sangat berguna untuk memodelkan skenario fungsional 
+yang melibatkan beberapa objek d alam urutan tertentu.  [41] 
+Tabel 2.7 Simbol Sequence  
+Simbol  Deskripsi  
+ Pihak eksternal yang berinteraksi langsung dengan sistem.  
+ Entitas atau komponen yang terlibat dalam proses pertukaran 
+pesan.  
+ Komponen antarmuka yang menghubungkan pengguna dengan 
+sistem.  
+ Objek yang mewakili data atau tabel dalam sistem.  
+ 
+Activation  Persegi panjang tipis di atas lifeline yang menunjukkan objek 
+sedang melakukan proses.  
+ Objek pengendali alur logika, seperti pengambi lan keputusan 
+atau pemanggilan fungsi.  
+ Panah horizontal yang menunjukkan pengiriman pesan atau 
+data antar objek.  
+ 
+2.2.10.4  Diagram Class  
+Diagram Class adalah bagian dari diagram struktural yang menggambarkan 
+kelas -kelas dalam sistem, atribut, operasi (metode), serta hubungan antar kelas 
+seperti asosiasi, pewarisan, agregasi, dan komposisi. Ini merupakan fondasi untuk 
+
+
+--- PAGE 38 ---
+38  
+desain kode objek -orien ted dan basis data objek.  [42] 
+Tabel 2.8 Simbol Class  
+Simbol  Deskripsi  
+ Representasi dasar dari objek yang memiliki atribut 
+dan operasi.  
+ Kelas yang memiliki aktivitas mandiri atau thread 
+eksekusi sendiri.  
+ Kelas sederhana tanpa hubungan kompleks atau 
+pewarisan.  
+ Kumpulan operasi tanpa implementasi yang 
+digunakan untuk kontrak antar kelas.  
+ Interface dengan satu atau sedikit metode yang 
+spesifik pada fungsi tertentu.  
+2.2.11  Figma  
+Figma merupakan aplikasi berbasis web  yang digunakan untuk merancang 
+antarmuka pengguna (UI) dan pengalaman pengguna (UX) secara kolaboratif. 
+Alat ini memungkinkan beberapa desainer bekerja secara bersamaan dalam satu 
+proyek, sehingga mempercepat proses iterasi desain. Figma mendukung 
+pembuat an wireframe, prototipe interaktif, serta integrasi dengan berbagai 
+komponen desain sistem. Berdasarkan  penelitian, penggunaan Figma 
+meningkatkan efisiensi komunikasi antara tim desain dan pengembang karena 
+
+
+--- PAGE 39 ---
+39  
+setiap perubahan dapat terlihat secara real -time tanpa perlu sinkronisasi manual.  
+[43] 
+2.2.12  Integrasi Layanan Eksternal (REST API, SMTP, BRIVA)  
+Integrasi layanan eksternal merupakan salah satu aspek penting dalam 
+pengembangan aplikasi berbasis web modern. Pendekatan ini memungkinkan 
+sistem untuk berinteraksi dengan layanan lain secara otomatis, seperti pengiriman 
+data, notifikasi, maupun verifikasi transaksi. Beberapa teknologi yang umum 
+digunakan dalam proses integrasi tersebut antara lain REST API, SMTP, dan 
+BRIVA.   
+REST ( Representational State Transfer ) merupakan arsitektur komunikasi 
+berbasis protokol HTTP yang digunakan untuk pertukaran data antara klien dan 
+server  [44]. REST API memungkinkan sistem frontend dan backend 
+berkomunikasi se cara efisien melalui format data seperti JSON atau XML. 
+Dengan konsep ini, aplikasi dapat menampilkan, mengubah, atau memperbarui 
+informasi tanpa perlu melakukan pembaruan halaman secara keseluruhan, 
+sehingga kinerja sistem menjadi lebih cepat dan responsi f. 
+Selanjutnya, Simple Mail Transfer Protocol  (SMTP) merupakan protokol 
+standar yang digunakan untuk mengirimkan email melalui jaringan internet. 
+Protokol ini banyak diterapkan dalam sistem untuk proses otomatisasi pengiriman 
+pesan, seperti notifikasi pend aftaran, konfirmasi transaksi, serta pemberitahuan 
+sistem secara real -time. Dengan adanya integrasi SMTP, proses komunikasi 
+digital dapat dilakukan secara langsung dan konsisten tanpa campur tangan 
+manual [45]. 
+Sementara itu, B RIVA ( BRI Virtual Account ) merupakan sistem pembayaran 
+berbasis virtual account  yang disediakan oleh Bank BRI [46]. Teknologi ini 
+memungkinkan transaksi dilakukan secara otomatis dan terverifikasi langsung 
+oleh sistem. Setiap p engguna memperoleh nomor virtual account  unik yang dapat 
+digunakan untuk memastikan keakuratan serta kecepatan proses pembayaran. 
+Integrasi BRIVA membantu mengurangi kesalahan pencatatan sekaligus 
+
+--- PAGE 40 ---
+40  
+meningkatkan efisiensi pengelolaan transaksi keuangan dalam  aplikasi.  
+2.2.13  Framework Front -end ( Bootstrap)  
+Bootstrap merupakan framework front -end berbasis HTML, CSS, dan 
+JavaScript yang berfungsi mempercepat proses pengembangan antarmuka 
+pengguna ( user interface ). Framework ini menyediakan komponen siap pakai 
+seperti tombol, formulir, dan navigasi yang responsif terhadap berbagai ukuran 
+layar. Dalam penelitian ini, Bootstrap digunakan untuk merancang tampilan 
+antarmuka sistem agar responsif, konsisten, dan mudah diakses di berbagai 
+perangkat. Framework ini juga memudah kan integrasi dengan framework back -
+end seperti Spring Boot.  Penelitian menunjukkan bahwa penerapan Bootstrap 
+dalam pengembangan aplikasi web secara signifikan meningkatkan kecepatan 
+desain antarmuka serta konsistensi tampilan antar perangkat . [47] 
+2.2.14  Visual Studio Code sebagai Alat Pengembangan  
+Visual Studio Code (VS Code) merupakan integrated development 
+environment  (IDE) lintas -platform yang ringan dan fleksibel untuk pengembangan 
+aplikasi modern. VS Code mendukung berbagai bahasa pemrograman serta 
+dilengkapi dengan fitur ekstensi, debugging , version control , dan integrasi 
+terminal bawaan yang memudahkan proses pengembangan perangkat lunak. 
+Penelitian oleh  Liu et al. (2024)  menjelaskan bahwa VS Code menjadi salah sat u 
+IDE paling populer karena arsitektur ekstensinya yang kuat dan kemampuannya 
+mendukung kolaborasi lintas bahasa pemrograman dalam pengembangan 
+perangkat lunak modern ( IEEE Access ). [48] 
+2.2.15  Data Flow Diagram (DFD)  
+Data Flow Diagram (DFD) merupakan salah satu alat utama dalam 
+pendekatan perancangan sistem terstruktur yang digunakan untuk 
+menggambarkan aliran data serta hubungan antarproses dalam suatu sistem 
+informasi. DFD memungkinkan analis sistem untuk memetakan t ransformasi data 
+
+--- PAGE 41 ---
+41  
+dari input menjadi output secara logis tanpa memperhatikan aspek fisik 
+implementasi. Notasi yang umum digunakan adalah notasi DeMarco & Yourdon , 
+yang terdiri atas empat komponen utama yaitu external entity, process, data store , 
+dan data fl ow. External entity merepresentasikan pihak luar yang berinteraksi 
+dengan sistem, process menggambarkan aktivitas pengolahan data, data store 
+berfungsi sebagai tempat penyimpanan data, sedangkan data flow menunjukkan 
+arah perpindahan data di antara ketiga komponen lainnya. Dengan menggunakan 
+DFD, pengembang sistem dapat memperoleh pemahaman yang komprehensif 
+mengenai struktur logis sistem serta keterkaitan antar elemen data di dalamnya 
+[49] 
+Tabel  2.9 Simbol DFD  
+Simbol DeMarco & Yourdon  Deskripsi  
+ Merupakan entitas luar (aktor) yang 
+berinteraksi dengan sistem, dapat berupa 
+orang, organisasi, atau sistem lain yang 
+memberikan input atau menerima output dari 
+sistem.  
+ Menunjukkan kegiatan atau proses yang 
+mengubah input menjadi output. Biasanya 
+menggambarkan fungsi utama dari sistem.                                                        
+ Tempat penyimpanan data di dalam sistem, 
+yang digunakan untuk menyimpan dan 
+meng ambil data sesuai kebutuhan proses.  
+ Menunjukkan aliran data antara proses, data 
+store, dan entitas eksternal dalam sistem.  
+  
+
+
+--- PAGE 42 ---
+42  
+BAB III  
+METODE  PENELITIAN  
+3.1 Metode Penelitian  
+3.1.1 Alur Penelitian dan Pemilihan Metode  
+Penelitian ini dilaksanakan melalui beberapa tahapan yang saling berurutan dan 
+berkesinambungan. Tahapan penelitian dimulai dari identifikasi masalah, studi 
+literatur, analisis kebutuhan, pemilihan metode pengembangan sistem, 
+perancangan sistem, implementa si, pengujian, hingga evaluasi hasil. Alur umum 
+penelitian dapat dilihat pada Gambar 3.1 , yang menggambarkan keseluruhan 
+proses pengembangan sistem dari tahap awal hingga tahap akhir.   
+ 
+
+
+--- PAGE 43 ---
+43  
+Gambar 3.1 . Diagram Alur Penelitian  
+Setelah melalui tahap identifikasi masalah dan studi literatur, dilakukan proses 
+pemilihan metode pengembangan sistem yang paling sesuai dengan kebutuhan 
+penelitian.  
+3.1.2 Analisis Pemilihan Metode  
+ Berdasarkan wawancara dengan pihak Pusat Sistem Informasi Universitas 
+HKBP Nommensen , ditemukan bahwa pengembangan sistem PMB menghadapi 
+kendala pada biaya hosting, keterbatasan tenaga pengelola server, serta kebutuhan 
+revisi berulang  sebelum sistem siap dipublikasikan. Pihak instansi menyatakan 
+bahwa sistem sebaiknya diselesaikan, diuji, direvisi, dan diuji kembali secara 
+lokal  agar efisien dari sisi waktu dan biaya.  
+ Dengan kondisi tersebut, metode pengembangan yang bersifat  linear dan kaku  
+seperti  Waterfall, V -Model, dan RAD  dikeluarkan dari tahap seleksi, karena setiap 
+tahapan harus dis elesaikan sepenuhnya sebelum berpindah ke tahap berikutnya. 
+Pendekatan seperti ini tidak menyediakan ruang untuk iterasi tanpa mengulang 
+seluruh proses dari awal.  
+Sementara itu, metode Agile (Scrum ), meskipun populer dan adaptif menurut 
+literatur , tida k dipilih karena penerapannya menuntut  tim besar, pertemuan rutin 
+(daily sprint) , serta keterlibatan pengguna secara langsung di setiap iterasi —
+kondisi yang tidak sesuai dengan penelitian individu dan keterbatasan sumber 
+daya institusi.  
+ Berdasarkan elimin asi awal, metode yang masih dipertimbangkan adalah  
+Modified Waterfall, Incremental,  dan Prototype , karena ketiganya tetap 
+memungkinkan  iterasi terbatas dan revisi pada tahap perancangan maupun 
+pengujian . Untuk menentukan metode paling sesuai, dilakukan ana lisis 
+perbandingan berbasis kriteria lapangan dengan pembobotan seperti pada Tabel 
+3.1. 
+Tabel 3. 1 Penilaian Kesesuaian Metode Berdasarkan Kriteria Lapangan  
+Kriteria  Modified Waterfall  Incremental  Prototype  
+
+--- PAGE 44 ---
+44  
+Kriteria  Modified Waterfall  Incremental  Prototype  
+Fleksibilitas 
+terhadap 
+revisi  3 – Revisi hanya 
+dapat dilakukan 
+setelah satu tahap 
+selesai sepenuhnya, 
+sehingga perubahan 
+di tengah proses sulit 
+dilakukan.  4 – Dapat menambah 
+fitur baru di versi 
+berikutnya, tetapi 
+sulit mengubah fitur 
+lama karena sudah 
+menjadi dasar modul 
+lain. 5 – Setiap versi 
+prototype bisa 
+langsung diperbaiki 
+kapan saja tanpa 
+menunggu tahap 
+selesai.  
+Kesesuaian 
+dengan 
+keterbatasan 
+biaya  3 – Setiap tahap 
+membutuhkan 
+pengujian terpisah 
+sehingga menambah 
+waktu dan biaya.  4 – Cukup efisien 
+karena 
+pengembangan 
+bertahap, tetapi tetap 
+perlu penyebaran per 
+versi.  5 – Dapat diuji 
+lokal tanpa perlu 
+hosting server, 
+sangat hemat biaya 
+untuk instansi.  
+Kesesuaian 
+dengan pola 
+kerja 
+instansi  4 – Proses kerja jelas 
+dan mudah 
+dikontrol, namun 
+revisi mendadak 
+sulit dilakukan.  3 – Cocok untuk  
+proyek modular, 
+tetapi tidak 
+mendukung validasi 
+langsung oleh 
+pengguna.  5 – Sesuai dengan 
+pola kerja instansi 
+yang membutuhkan 
+revisi cepat setelah 
+setiap uji coba.  
+Kemudahan 
+pengujian 
+berulang  3 – Pengujian hanya 
+dilakukan di akhir 
+tahap tertentu, bukan  
+setelah setiap 
+perubahan kecil.  
+  3 – Pengujian 
+dilakukan per modul, 
+sulit untuk menguji 
+sistem secara 
+keseluruhan.  5 – Prototype dapat 
+diuji langsung 
+setelah diperbarui 
+untuk melihat hasil 
+secara instan.  
+Efisiensi 
+waktu dan 
+sumber 4 – Efisien untuk  
+sistem kecil, tetapi 
+lambat jika banyak 4 – Efisien untuk 
+pengembangan 
+modular dengan 4 – Iterasi 
+memerlukan waktu 
+lebih lama, tetapi 
+
+--- PAGE 45 ---
+45  
+Kriteria  Modified Waterfall  Incremental  Prototype  
+daya  revisi diperlukan.  jadwal tetap.  hasil lebih akurat 
+dan stabil.  
+3.1.3 Hasil Analisis dan Kesimpulan Pemilihan Metode  
+Hasil perhitungan menunjukkan bahwa metode Prototype  memperoleh rata-rata 
+total skor yaitu 4.85  dan yang tertinggi diantara metode lainnya , menandakan 
+kesesuaian paling tinggi terhadap kebutuhan penelitian. Pendekatan ini dianggap 
+optimal karena:  
+1. Fleksibe l dan iteratif , memungkinkan revisi cepat berdasarkan hasil pengujian 
+tanpa memulai dari awal.  
+2. Efisien secara biaya dan waktu , dapat diuji secara lokal tanpa harus langsung 
+dihosting ke server.  
+3. Selaras dengan pola kerja instansi , yang mengutamakan pengujia n dan revisi 
+bertahap sebelum implementasi penuh.  
+4. Meminimalkan risiko kesalahan besar , karena setiap versi prototype diuji dan 
+divalidasi terlebih dahulu.  
+Dengan demikian, metode Prototype  dipilih sebagai dasar pengembangan 
+sistem informasi PMB berbasis Spring Framework, karena paling memenuhi 
+aspek fleksibilitas, efisiensi, serta keterlibatan pengguna  dalam setiap tahap 
+penyempurnaan sistem.   
+3.2 Penjabaran Alur  Penelitian  
+Setiap tahapan dalam  alur penelitian memiliki peran penting dalam mendukung 
+keberhasilan pengembangan sistem PMB berbasis Spring Framework. Berikut 
+penjabaran detail dari setiap tahap dalam metode Prototype:  
+3.2.1 Identifikasi Masalah  
+Tahap awal penelitian dilakukan dengan mengamati dan menganalisis 
+permasalahan pada sistem penerimaan mahasiswa baru (PMB) Universitas HKBP 
+Nommensen (UHN).  Peneliti melakukan wawancara langsung  dengan pihak 
+
+--- PAGE 46 ---
+46  
+Pusat Sistem Informasi , yakni Parulian Sirait, M.Kom , selaku Network 
+Administrator  dan pengelola server yang juga terlibat dalam pengembangan serta 
+pengelolaan website PMB. Beliau menjadi pihak yang sering menerima laporan 
+kendala dari panitia PMB dan calon mahasiswa baru (camaba), termasuk 
+membantu mereka secara langsung melalui WhatsApp d alam proses daftar ulang  . 
+Selain itu, dilakukan perbandingan eksternal  melalui wawancara dengan pihak 
+PMB Institut Teknologi Sumatera (ITERA)  untuk mengukur urgensi dan efisiensi 
+sistem PMB di UHN dibanding kampus lain.  Peneliti juga menyebarkan kuesioner  
+daring (Google Form)  kepada calon mahasiswa baru dan mahasiswa aktif Prodi 
+Informatika  guna mengidentifikasi kendala yang mereka alami saat proses 
+pendaftaran, verifikasi, maupun daftar ulang .  
+3.2.2 Studi Literatur  
+Kajian literatur dilakukan terhadap berbagai referensi ilmiah, jurnal, serta 
+dokumentasi resmi terkait pengembangan aplikasi berbasis Spring Boot , 
+MySQL/PostgreSQL , BRIVA API , dan SMTP . Selain itu, penelitian terdahulu 
+tentang sistem informasi akademik dan  metode pengembangan Prototype  juga 
+menjadi acuan dalam menentukan rancangan serta tahapan sistem PMB yang 
+efisien dan terintegrasi.  
+3.2.3 Analisis Kebutuhan  
+Tahap ini bertujuan memperkuat hasil identifikasi masalah menjadi data yang 
+lebih akurat dan meyakinkan.  Pengumpulan data dilakukan melalui wawancara 
+dan kuesioner agar kebutuhan sistem yang dirancang benar -benar sesuai dengan 
+kondisi lapangan  . 
+1. Wawancara Internal (Pusat Sistem Informasi UHN)   
+Peneliti melakukan wawancara langsung ( WWC ) dengan pihak Pusat 
+Sistem Informasi Universitas HKBP Nommensen , yaitu  Bapak Parulian 
+Sirait, M.Kom , selaku  Network Administrator  dan pengelola server PMB. 
+Beliau merupakan pihak yang menangani kendala sistem PMB, menerima 
+laporan dari admin, serta berinteraksi langsung dengan calon mahasiswa 
+
+--- PAGE 47 ---
+47  
+melalui WhatsApp terkait daftar ulang.  Wawancara ini bertujuan menggali 
+permasalahan sistem lama, alur kerja admin, serta kebutuhan fitur baru pada 
+sistem PMB.  Daftar pertanyaan wawancara dapat dilihat di tabel 3. 2. 
+Tabel 3. 2. Daftar Pertanyaan Wawancara dengan Pihak Pusat Sistem 
+Informasi UHN  
+No Pertanyaan  
+1 Bagaimana alur pendaftaran calon mahasiswa baru dilakukan melalui 
+sistem PMB saat ini?  
+2 Apakah sistem PMB saat ini sudah terintegrasi dengan sistem 
+akademik atau keuangan universitas?  
+3 Jika belum terintegrasi, apa kendala utama yang menyebabkan hal 
+tersebut?  
+4 Bagaimana proses admin dalam memverifikasi data calon mahasiswa 
+dan status pembayaran?  
+5 Apakah proses verifikasi dan daftar ulang masih dilakukan secara 
+manual oleh admin?  
+6 Apa dampak dari proses manual tersebut terhadap waktu dan akurasi 
+validasi data?  
+7 Apakah sistem PMB memiliki fitur notifikasi otomatis kepada calon 
+mahasiswa dan admin?  
+8 Jika tidak ada, bagaimana pengaruhnya terha dap keterlambatan daftar 
+ulang dan komunikasi?  
+9 Seberapa besar kesulitan admin dalam memantau seluruh tahapan 
+pendaftaran dari awal hingga daftar ulang karena sistem terpisah?  
+10 Apakah sering terjadi keterlambatan atau kesalahan input akibat 
+sistem yan g belum terhubung antar modul?  
+11 Bagaimana komunikasi biasanya dilakukan antara admin dan calon 
+mahasiswa ketika terjadi kendala?  
+12 Menurut Bapak, fitur apa yang paling mendesak untuk diterapkan 
+
+--- PAGE 48 ---
+48  
+No Pertanyaan  
+pada sistem PMB agar lebih efisien dan terintegrasi?  
+13 Seberapa penting menurut Bapak penerapan sistem PMB terintegrasi 
+berbasis web bagi UHN ke depannya?  
+ 
+2. Kuesioner Mahasiswa (Calon Mahasis wa Baru dan Mahasiswa Prodi 
+Informatika)  
+Selain wawancara, peneliti juga menyebarkan kuesioner  daring (Google 
+Form) kepada calon mahasiswa baru tahun berjalan dan mahasiswa aktif 
+Prodi Informatika UHN untuk mengetahui pengalaman pengguna secara 
+langsung terhadap sistem PMB saat ini.  Daftar pertanyaan wawancara dapat 
+dilihat di tabel 3. 3. 
+Tabel 3. 3. Daftar Pertanyaan Kuesioner Mahasiswa  
+No Pertanyaan  
+1 Apakah proses pendaftaran PMB mudah dipahami tanpa harus 
+meminta bantuan admin?  
+2 Apakah Anda pernah mengalami kesulitan saat mengisi formulir atau 
+mengunggah berkas pendaftaran?  
+3 Apakah informasi tahapan pendaftaran tersedia secara jelas di website 
+PMB?  
+4 Apakah Anda pernah mengalami keterlambatan dalam konfirmasi 
+pendaftaran atau pembayaran?  
+5 Apakah sistem memberikan notifikasi otomatis mengenai status 
+pendaftaran Anda?  
+6 Jika tidak, apakah An da harus menghubungi admin secara manual 
+(melalui WhatsApp atau media lain)?  
+7 Apakah proses daftar ulang berjalan lancar tanpa kesalahan data atau 
+keterlambatan?  
+
+--- PAGE 49 ---
+49  
+8 Apakah tampilan dan navigasi website PMB mudah digunakan di 
+berbagai perangkat (desktop/mobile)?  
+9 Apa kendala utama yang menurut Anda paling menghambat proses 
+pendaftaran mahasiswa baru di UHN?  
+10 Seberapa puas Anda terhadap sistem PMB UHN saat ini (skala 1 –5)? 
+3.2.4 Perancangan  Prototype  
+Tahap perancangan prototype dilakukan berdasarkan hasil analisis kebutuhan 
+yang diperoleh dari wawancara dan kuesioner. Pada tahap ini, peneliti menyusun 
+rancangan awal sistem Penerimaan Mahasiswa Baru (PMB) dengan menerapkan 
+konsep dasar arsitektur Model –View –Controller (MVC) sebagai kerangka logis 
+dalam pengembangan sistem . Perancangan dilakukan melalui proses quick design  
+dengan pendekatan berorientasi objek (OOP) dan pemodelan menggunakan 
+Unified Modeling Language  (UML).   
+Hasil dari tahap ini berupa dia gram konteks, use case diagram , activity 
+diagram , class diagram , serta rancangan antarmuka sistem dalam bentuk low-
+fidelity  dan high-fidelity prototype . Selain itu, Prototype yang dihasilkan 
+menampilkan alur kerja sistem secara menyeluruh melalui dummy sys tem 
+sederhana yang mensimulasikan interaksi antara tampilan ( View ), data ( Model ), 
+dan pengendali proses ( Controller ). 
+3.2.5 Pengujian dan Evaluasi Prototype  
+Setelah prototype awal selesai dibuat, dilakukan pengujian internal untuk 
+memastikan setiap komponen dasar berjalan sesuai rancangan. Prototype 
+kemudian dievaluasi oleh pihak pengguna (instansi) guna memperoleh masukan 
+terkait fitur, tampilan, dan kemudahan penggunaan.  Apabila ditemukan 
+ketidaksesuaian dengan kebutuhan pengguna, dilakukan perbaik an dan 
+penyesuaian pada desain hingga diperoleh kesepakatan bahwa prototype telah 
+sesuai. Proses ini dapat berlangsung secara berulang (iteratif) sampai pengguna 
+menyetujui hasil rancangan.  
+
+--- PAGE 50 ---
+50  
+3.2.6 Implementasi  
+Tahap implementasi dilakukan setelah prototype dinyat akan sesuai dengan 
+kebutuhan pengguna. Sistem dibangun menggunakan Java dan Spring Boot pada 
+sisi backend, serta HTML dan CSS  untuk  antarmuka  pengguna.  Pada  tahap  ini 
+juga dilakukan integrasi penuh dengan BRIVA untuk pembayaran dan SMTP 
+untuk pengiriman no tifikasi email otomatis.  
+3.2.7 Pengujian Sistem  
+Setelah  Setelah sistem selesai diimplementasikan, dilakukan pengujian 
+menyeluruh untuk memastikan kualitas dan keandalan sistem. Pengujian 
+dilakukan melalui tiga pendekatan utama, yaitu:  
+1. Black -Box Testing - digunak an untuk menguji fungsionalitas sistem tanpa 
+melihat struktur internal kode. Pengujian ini berfokus pada kesesuaian antara 
+input dan output, seperti validasi data, proses autentikasi, serta alur transaksi.  
+2. Usability Testing (SUS Method) – bertujuan menilai  kemudahan penggunaan 
+sistem dari sisi pengguna. Pengujian dilakukan menggunakan metode System 
+Usability Scale (SUS)  dengan lima skala penilaian, menghasilkan skor yang 
+menggambarkan tingkat kepuasan dan kelayakan sistem dari perspektif 
+pengguna akhir.  
+3. Integration Testing – digunakan untuk memastikan bahwa setiap modul atau 
+komponen sistem yang telah diuji secara terpisah dapat saling berinteraksi 
+dengan baik. Pendekatan ini memastikan integrasi antar -lapisan seperti 
+controller, service, repository, dan layanan eksternal berjalan sesuai 
+rancangan.  
+Ketiga metode tersebut saling melengkapi untuk memastikan sistem berfungsi 
+dengan benar, mudah digunakan, dan memiliki integrasi yang stabil.   
+3.2.8 Pemeliharaan dan Evaluasi Akhir  
+Sistem yang telah diuji diterapkan pada lingkungan simulasi atau riil untuk 
+memastikan  stabilitas  dan keandalan.  Evaluasi  akhir dilakukan  untuk 
+menilai  kesesuaian  sistem  terhadap  tujuan  penelitian.  Masukan  dari pengguna  
+
+--- PAGE 51 ---
+51  
+digunakan sebagai bahan perbaikan di versi selanjutnya.  
+3.2.9 Dokumentasi dan Penyusunan Laporan  
+Seluruh proses penelitian, mulai dari analisis hingga implementasi, 
+didokumentasikan secara sistematis dalam laporan akhir sebagai bentuk 
+pertanggungjawaban ilmiah terhadap hasil pengembangan sistem.  
+3.3 Alat dan  Bahan  
+Penelitian ini memanfaatkan berbagai alat dan bahan yang berfungsi sebagai 
+penunjang dalam proses perancangan dan pengembangan sistem aplikasi 
+Penerimaan Mahasiswa Baru (PMB) berbasis web. Adapun rincian alat dan bahan 
+yang digunakan adalah sebagai berikut:  
+3.3.1 Alat 
+Berikut  Alat yang digunakan dalam penelitian ini terdiri dari perangkat  keras 
+(hardware) dan perangkat lunak (software) yang mendukung proses desain, 
+pengembangan, dan pengujian aplikasi.:  
+1. Perangkat Lunak (Software):  
+1. Spring Tool Suite (STS) – sebagai Integrated Development Environment 
+(IDE) untuk mengembangkan aplikasi berbasis Spring Boot.  
+2. MySQL Workbench / pgAdmin – untuk pengelolaan dan visualisasi 
+database MySQL/PostgreSQL.  
+3. Visual  Studio  Code  – untuk  editing  file HTML/CSS  dan dokumentasi  
+ringan.  
+4. Edge - sebagai browser utama untuk pengujian sistem  
+5. Gmail  SMTP  – untuk  layanan  pengiriman  email  secara  otomatis  dari 
+sistem.  
+2. Perangkat  Keras  (Hardware)   
+Perangkat keras yang digunakan untuk menunjang penelitian ini  adalah laptop 
+ASUS TUF Gaming F15  dengan spesifikasi sistem operasi Windows 11 , 
+prosesor Intel Core i7 -11800H , memori 16 GB DDR4 , GPU NVIDIA GeForce 
+
+--- PAGE 52 ---
+52  
+RTX 3050 Ti , dan penyimpanan SSD berkapasitas 512 GB . 
+3.3.2 Bahan  
+Bahan yang digunakan dalam penelitian ini terdiri dari berbag ai data dan 
+dokumen penunjang, baik yang diperoleh dari studi sebelumnya maupun dari 
+institusi terkait. Bahan -bahan tersebut adalah::  
+1. Dokumen Panduan Pendaftaran Mahasiswa Baru – berupa file PDF dan 
+petunjuk alur pendaftaran resmi yang diperoleh dari hasil  wawancara  
+dengan pihak Pusat Sistem Informasi Universitas HKBP Nommensen 
+sebagai dasar perancangan sistem.  
+2. Referensi Penelitian Sebelumnya – berupa jurnal dan artikel ilmiah terkait 
+pengembangan sistem PMB menggunakan Laravel, Spring Boot, serta studi 
+perbandingan arsitektur.  
+3. Standar Format Data – seperti struktur formulir pendaftaran, informasi 
+jadwal gelombang, dan format pengiriman notifikasi.  
+4. Data Simulasi Pengguna – berupa dummy data calon mahasiswa untuk 
+kebutuhan pengujian fitur sistem seperti pendaftaran, login, dan 
+pembayaran.  
+5. Template Email Notifikasi – untuk kebutuhan pengujian pengiriman email 
+menggunakan protokol SMTP Gmail.  
+3.4 Analisis Kebutuhan Sisitem  
+3.4.1 Kebutuhan  Fungsional  
+Tabel 3. 4 Kebutuhan Fungsional  
+ID Kebutuhan  Penjelasan  
+PMB01 -
+F001  Pratinjau tampilan 
+admin validasi dan 
+camaba  Admin pusat dapat melihat tampilan 
+sistem dari perspektif admin validasi 
+maupun camaba untuk memastikan hasil 
+perubahan tampil dengan benar.  
+PMB01 - Pengelolaan periode Admin pusat dapat menambah, 
+
+--- PAGE 53 ---
+53  
+ID Kebutuhan  Penjelasan  
+F002  penerimaan  mengedit, dan menghapus periode 
+pendaftaran beserta tanggal mulai dan 
+akhir pendaftaran.  
+PMB01 -
+F003  Penentuan jenis 
+seleksi per periode  Admin pusat dapat menentukan jenis 
+seleksi di setiap periode  (bebas testing, 
+bebas testing dengan syarat ranking, 
+atau testing).  
+PMB01 -
+F004  Penentuan harga 
+formulir  Admin pusat menetapkan harga formulir 
+pendaftaran berdasarkan jenis jalur dan 
+perbedaan antara fakultas kedokteran 
+dan non -kedokteran.  
+PMB01 -
+F005  Pengelolaan informasi 
+terbaru  Admin pusat mengelola konten pada 
+halaman utama seperti jadwal, 
+pengumuman, dan informasi umum 
+lainnya.  
+PMB01 -
+F006  Pengaturan field 
+formulir dinamis  Admin pusat dapat menambah, 
+mengedit, atau menonaktifkan field 
+formulir secara langsung melalui UI 
+admin.  
+PMB01 -
+F007  Pengaturan link 
+GForm ujian  Admin pusat dapat mengubah tautan 
+GForm ujian yang akan diarahkan 
+otomatis oleh sistem ketika camaba 
+mengikuti ujian.  
+PMB01 -
+F008  Pengelolaan konten 
+daftar ulang  Admin pusat mengatur isi dan 
+pengumuman daftar ulang yang akan 
+muncul di halaman camaba.  
+PMB01 -
+F009  Penjadwalan 
+publikasi hasil Admin pusat menentukan waktu 
+publikasi hasil kelulusan, baik per 
+
+--- PAGE 54 ---
+54  
+ID Kebutuhan  Penjelasan  
+kelulusan  periode maupun secara serentak.  
+PMB01 -
+F010  Manajemen akun 
+admin validasi  Admin pusat dapat menambah atau 
+menghapus akun admin validasi.  
+PMB01 -
+F011  Penetapan tarif cicilan 
+per program studi  Admin pusat menetapkan nominal 
+cicilan berdasarkan program studi yang 
+dipilih.  
+PMB01 -
+F012  Aktivas i virtual 
+account berdasarkan 
+cicilan dan prodi  Sistem menentukan total pembayaran 
+VA sesuai jumlah cicilan dan program 
+studi.  
+PMB01 -
+F013  Penayangan status 
+kelulusan sesuai 
+waktu  Sistem menampilkan hasil kelulusan 
+hanya pada waktu yang telah 
+dijadwalkan.  
+PMB01 -
+F014  Pop-up informasi 
+daftar ulang  Sistem menampilkan pengumuman 
+resmi melalui pop -up di halaman daftar 
+ulang camaba.  
+PMB01 -
+F015  Email notifikasi 
+virtual account  Sistem mengirim email otomatis berisi 
+detail VA dan panduan pembayaran.  
+PMB01 -
+F016  Halaman informasi 
+virtual account  Sistem menampilkan informasi VA, 
+nominal, tenggat waktu, dan panduan 
+pembayaran.  
+PMB01 -
+F017  Generate dan 
+verifikasi pembayaran 
+BRIVA  Sistem membuat nomor VA untuk setiap 
+camaba dan memverifikasi pembayaran 
+melalui API BRIVA.  
+PMB01 -
+F018  Pembuatan kartu 
+ujian otomatis  Setelah formulir dikirim, sistem 
+otomatis menghasilkan kartu ujian yang 
+bisa diunduh.  
+PMB01 -
+F019  Email hasil ujian dan 
+nomor pendaftaran  Jika dinyatakan lulus, sistem 
+mengirimkan nomor pendaftaran dan 
+
+--- PAGE 55 ---
+55  
+ID Kebutuhan  Penjelasan  
+panduan daftar ulang melalui email.  
+PMB01 -
+F020  Notifikasi sistem  Sistem memberikan notifikasi kepada 
+camaba terkait status kelulusan, 
+pengisian data, dan aktivasi VA.  
+PMB01 -
+F021  Redirect ke GForm 
+dengan prefilled 
+nomor ujian  Sistem mengarahkan camaba ke GForm 
+dengan nomor ujian otomatis terisi 
+melalui parameter prefilled.  
+PMB01 -
+F022  Validasi nomor ujian 
+sebelum akses GForm  Sistem memverifikasi nomor ujian 
+sebelum mengizinkan akses ke halaman  
+ujian.  
+PMB01 -
+F023  Validasi oleh admin 
+validasi  Sistem menampilkan daftar camaba 
+yang perlu divalidasi oleh admin 
+validasi.  
+PMB01 -
+F024  Pembatasan akses 
+data diri  Camaba tidak dapat mengedit data diri 
+setelah formulir dikirim, kecuali jika 
+ditolak oleh admin validasi.  
+PMB01 -
+F025  Generate nomor 
+pendaftaran dan 
+password  Sistem otomatis membuat nomor 
+pendaftaran dan password (tanggal 
+lahir) untuk camaba yang lulus, lalu 
+dikirim via email.  
+PMB01 -
+F026  Sinkronisasi hasil 
+ujian GForm  Nilai ujian dari GFo rm otomatis masuk 
+ke sistem dan digunakan untuk 
+pembuatan halaman hasil ujian.  
+PMB01 -
+F027  Generate VA manual  Admin validasi dapat membuat VA 
+manual jika proses otomatis gagal, 
+dengan memasukkan nominal biaya 
+secara manual.  
+PMB01 - Validasi berkas jalur Admin validasi memeriksa bukti 
+
+--- PAGE 56 ---
+56  
+ID Kebutuhan  Penjelasan  
+F028  ranking  ranking yang diunggah oleh camaba 
+jalur bebas testing dengan syarat 
+ranking.  
+PMB01 -
+F029  Akses data peserta 
+ujian  Admin validasi dapat melihat dan 
+mengekspor daftar peserta ujian.  
+PMB01 -
+F030  Akses data camaba 
+lulus  Admin validasi dapat melihat data 
+camaba yang sudah melakukan 
+pembayaran dan pendaftaran ulang.  
+PMB01 -
+F031  Klasifikasi data 
+berdasarkan fakultas 
+dan prodi  Sistem menampilkan data camaba 
+terkelompok berdasarkan fakultas d an 
+program studi.  
+PMB01 -
+F032  Ekspor data camaba  Data camaba yang telah lengkap dan 
+terverifikasi dapat diekspor dalam 
+format .csv atau .xlsx.  
+PMB01 -
+F033  Penolakan data diri 
+camaba  Admin validasi dapat menolak data yang 
+belum lengkap agar camaba 
+memperbaikinya.  
+PMB01 -
+F034  Pesan ke camaba  Admin validasi dapat mengirim pesan 
+langsung ke email atau notifikasi sistem 
+camaba.  
+PMB01 -
+F035  Menjawab pertanyaan 
+camaba  Semua admin validasi dapat membalas 
+pertanyaan camaba dan melihat status 
+pesan yang belu m dijawab.  
+PMB01 -
+F040  Pembuatan akun 
+camaba  Camaba dapat membuat akun baru, satu 
+email hanya untuk satu akun.  
+PMB01 -
+F041  Lupa password atau 
+username  Camaba dapat menggunakan fitur 
+pemulihan akun melalui email.  
+PMB01 - Login multi -level  Admin pusat, admin validasi, dan 
+
+--- PAGE 57 ---
+57  
+ID Kebutuhan  Penjelasan  
+F042  camaba dapat login sesuai hak aksesnya.  
+PMB01 -
+F043  Pembelian formulir 
+dan VA  Camaba dapat membeli formulir 
+pendaftaran dan memperoleh VA sesuai 
+jalur yang dipilih.  
+PMB01 -
+F044  Pengiriman 
+pertanyaan  Camaba dapat mengirim pe rtanyaan 
+kepada admin melalui sistem.  
+PMB01 -
+F045  Mengikuti ujian  Camaba yang telah membeli formulir 
+dapat mengikuti ujian sesuai jadwal, 
+dengan sistem yang otomatis 
+menampilkan status waktu ujian dan 
+tombol “Mulai Ujian”.  
+PMB01 -
+F046  Halaman pendaftaran 
+ulang  Camaba yang lulus dapat masuk ke 
+halaman pendaftaran ulang untuk 
+melengkapi berkas yang diperlukan.  
+PMB01 -
+F047  Pengisian formulir  Camaba dapat mengisi formulir 
+pendaftaran awal maupun ulang, 
+termasuk pengunggahan berkas untuk 
+jalur ranki ng. 
+PMB01 -
+F048  Hasil ujian dapat 
+dicetak  Sistem menghasilkan halaman hasil 
+ujian yang menampilkan data diri, nilai, 
+dan status kelulusan camaba.  
+3.4.2 Kebutuhan Non -Fungsional  
+Tabel  3.5 Kebutuhan  Non-Fungsional  
+ID Parameter  Kebutuhan  
+KKR04 -
+NF01  Availability  Sistem dapat diakses pengguna selama 24 jam 
+penuh.  
+KKR04 -
+NF02  Ergonomy  Tampilan dirancang menarik, rapi, dan mudah 
+digunakan.  
+
+--- PAGE 58 ---
+58  
+ID Parameter  Kebutuhan  
+KKR04 -
+NF03  Language  Menyediakan dua pilihan bahasa, yaitu 
+Indonesia dan Inggris.  
+KKR04 -
+NF04  Portability  Kompatibel dengan berbagai jenis perangkat.  
+KKR04 -
+NF05  Security  Menolak input ID atau password yang salah 
+saat login.  
+KKR04 -
+NF06  Scalability  Mampu diperluas untuk menangani 
+peningkatan jumlah pengguna.  
+KKR04 -
+NF07  Response Time  Pembaruan data berlangsung maksimal 6 
+detik.  
+KKR04 -
+NF08  Response Time  Kode unik dikirim kurang dari 30 detik 
+setelah konfirmasi selesai.  
+KKR04 -
+NF09  Response Time  Perpindahan halaman terjadi tidak lebih dari 3 
+detik.  
+KKR04 -
+NF10  Real Time 
+Update  Sub sistem dapat melakukan pembaruan 
+secara real time ketika terjadi   pembaruan  
+data 
+3.4.3 Karakteristik Pengguna  
+Tabel 3. 6 Karakteristik Pengguna  
+Kategori 
+Pengguna  Tugas / Fungsi  Hak Akses ke Aplikasi  
+Camaba  - Membuat akun dan login  
+- Membeli formulir serta melakukan 
+pembayaran melalui BRIVA  
+- Mengisi data pendaftaran dan 
+mencetak kartu ujian  
+- Melihat status kehadiran, nilai, dan 
+hasil kelulusan  - Akses ke halaman 
+pendaftaran, status 
+ujian, dan daftar ulang  
+- Fitur cetak kartu ujian 
+dan ekspor hasil ujian  
+
+--- PAGE 59 ---
+59  
+Kategori 
+Pengguna  Tugas / Fungsi  Hak Akses ke Aplikasi  
+- Melengkapi data daftar ulang  
+Admin 
+Pusat  - Menentukan jumlah gelombang, 
+syarat ujian, dan tanggal penting  
+- Mengelola informasi publik dan 
+field formulir  
+- Menyusun serta mengumumkan 
+hasil kelulusan - Menentukan waktu 
+publikasi hasil ujian  
+- Mengelola akun Admin Val idasi  
+- Melihat pratinjau tampilan sebagai 
+camaba atau admin validasi  - Akses penuh ke panel 
+administrasi pusat  
+- Manajemen 
+konfigurasi sistem dan 
+struktur data  
+- Kontrol proses seleksi 
+dan publikasi kelulusan  
+- Pengelolaan akun 
+pengguna sistem 
+lainnya  
+Admin 
+Validasi  - Melakukan validasi data daftar ulang 
+camaba  
+- Melihat dan mengekspor data 
+camaba berdasarkan fakultas dan 
+program studi  - Akses ke daftar ulang 
+camaba dan data ujian  
+- Validasi serta 
+klasifikasi data 
+berdasarkan 
+fakultas/prodi  
+3.5 Perancangan Sistem  
+3.5.1 Rancangan  Arsitektur  MVC Sistem PMB  
+ 
+
+
+--- PAGE 60 ---
+60  
+Gambar 3. 2 Diagram Arsitektur MV C 
+Gambar 3.2 menampilkan arsitektur Model -View -Controller (MVC) yang 
+diterapkan pada sistem Penerimaan Mahasiswa Baru berbasis Spring Boot. Pola 
+ini digunakan untuk memisahkan antara tampilan, pengendali logika, dan 
+pengelolaan data agar pengembangan sistem menjadi lebih teratur, mudah dirawat, 
+serta terbuka untuk pengembangan selanjutnya.  
+Pada sistem ini, pengguna yang terdiri dari admin dan calon mah asiswa baru 
+berinteraksi melalui antarmuka web menggunakan Thymeleaf  atau HTML . Setiap 
+tindakan seperti login, pendaftaran, dan validasi pembayaran dikirim sebagai 
+permintaan dari tampilan menuju lapisan pengendali.  
+Bagian Controller (misalnya CamabaContro ller dan AdminController ) 
+berfungsi menerima permintaan dari pengguna, lalu meneruskannya ke bagian 
+yang menangani logika bisnis di Model atau Service Layer . Model berperan 
+sebagai penghubung antara pengendali dan basis data, berisi struktur data, entitas, 
+serta repositori yang digunakan untuk menjalankan perintah query . Misalnya, 
+Camaba Model  mengelola data pendaftaran mahasiswa baru, sedangkan 
+Pembayaran Mo del memproses transaksi dan validasi BRIVA.  
+Alur proses sistem dimulai dari pengguna yang berinteraksi dengan tampilan, 
+kemudian permintaan dikirim ke Controller . Setelah itu, Controller  memanggil 
+fungsi yang diperlukan pada Model  untuk memproses atau mengambil data dari 
+basis data SQL. Hasilnya dik embalikan ke Controller , lalu diteruskan ke tampilan 
+untuk disajikan kembali kepada pengguna.  
+Penerapan arsitektur ini membuat sistem PMB lebih mudah dikelola karena 
+setiap komponen memiliki tanggung jawab yang jelas. Selain itu, struktur ini 
+mendukung int egrasi layanan tambahan seperti BRIVA API untuk pembayaran 
+dan SMTP Gmail untuk pengiriman notifikasi secara otomatis, sehingga sistem 
+dapat berjalan secara efisien dan terkoordinasi.  
+  
+
+--- PAGE 61 ---
+61  
+3.5.2 Use Case Diagram  
+ 
+Gambar 3. 3 Diagram Use Case  
+Penjelasan Use Case  
+1. Definisi Aktor  
+Tabel 3. 7 Definisi Aktor Use Case  
+Aktor  Deskripsi  
+
+
+--- PAGE 62 ---
+62  
+Aktor  Deskripsi  
+CAMABA  Aktor utama yang merupakan calon mahasiswa baru. Dapat 
+melakukan registrasi akun, login, memilih dan mengisi formulir 
+pendaftaran, melakukan pembayaran, mengikuti ujian, serta 
+melakukan daftar ulang setelah dinyatakan lulus.  
+Admin 
+Validasi  Bertugas melakukan validasi data pendaftaran CAMABA, 
+mengelola data pendaftaran, memvalidasi ujian, dan 
+memberikan konfirmasi kelulusan kepada CAMABA.  
+Admin 
+Pusat  Memiliki akses penuh untuk mengelola seluruh sistem PMB, 
+termasuk periode pendaftaran, jenis formulir, informasi 
+halaman utama, dan konfigurasi sistem.  
+BRIVA  Sistem eksternal yang mengelola pembayaran virtual account 
+(VA) otomatis dan manual untuk proses formulir pendaftaran.  
+GForm  Platform Google Form yang terintegrasi untuk pelaksanaan 
+ujian online dan pengumpulan data ujian CAMABA.  
+2. Definisi Use Case  
+Tabel 3 .8 Definisi Use Case  
+Use Case  Deskripsi  
+Registrasi  Proses pembuatan akun baru oleh CAMABA dengan 
+mengisi data diri untuk mendapatkan akses ke sistem 
+PMB.  
+Login  Seluruh pengguna sistem harus melakukan login terlebih 
+dahulu untuk mengakses fitur sesuai hak aksesnya.  
+Informasi 
+Pendaftaran dan 
+Ujian CAMABA  Menyediakan informasi lengkap mengenai tahapan 
+pendaftaran, persyaratan, serta jadwal ujian bagi 
+CAMABA.  
+Mengelola 
+Informasi  Admin Pusat dapat menambah, mengubah, atau 
+menghapus informasi pada halaman utama sistem PMB.  
+Memilih Periode CAMABA memilih periode pendaftaran yang sedang 
+
+--- PAGE 63 ---
+63  
+Use Case  Deskripsi  
+Pendaftaran  aktif sebelum memulai proses pendaftaran.  
+Memilih Jenis 
+Formulir  CAMABA menentukan jenis formulir sesuai dengan jalur 
+masuk atau program studi yang dipilih.  
+Mengelola Jenis 
+Formulir  Admin Pusat mengatur daft ar jenis formulir yang tersedia 
+di sistem PMB.  
+Mengelola Isi 
+Formulir  Admin Pusat menambah, mengubah, atau menghapus isi 
+dari setiap formulir pendaftaran.  
+Membeli Formulir 
+Ujian & VA  CAMABA membeli formulir ujian yang secara otomatis 
+menghasilkan nomor v irtual account (VA) untuk 
+pembayaran.  
+Membuat VA 
+Otomatis  Sistem secara otomatis membuat virtual account melalui 
+integrasi dengan BRIVA saat CAMABA melakukan 
+pembelian formulir.  
+Membuat VA 
+Manual  Admin membuat virtual account secara manual apabila 
+proses  otomatis mengalami kendala.  
+Mengisi Formulir 
+Ujian  CAMABA mengisi formulir ujian secara daring dengan 
+data yang sesuai ketentuan.  
+Mengisi Data 
+Pendaftaran / 
+Daftar Ulang  CAMABA melengkapi data pendaftaran setelah 
+dinyatakan lulus seleksi ujian.  
+Melakukan 
+Validasi  Admin Validasi memeriksa dan memverifikasi data 
+pendaftaran CAMABA. Jika valid, sistem mengirimkan 
+notifikasi hasil validasi ke email CAMABA.  
+Mengirim 
+Notifikasi ke 
+Email  Sistem secara otomatis mengirimkan notifikasi email 
+kepada CAMABA  terkait hasil validasi atau status 
+pendaftaran.  
+Melaksanakan 
+Ujian  CAMABA mengikuti ujian secara online melalui integrasi 
+sistem dengan Google Form.  
+
+--- PAGE 64 ---
+64  
+Use Case  Deskripsi  
+Menentukan 
+Kelulusan  Sistem menentukan status kelulusan berdasarkan hasil 
+ujian  
+ 
+3. Analisis Sistem (Input -Process -Output / IPO)  
+Tabel 3. 9 Analisis Sistem (IPO) Use Case  
+Aktor  Use Case  Input  Proses  Output  
+CAMABA  Registrasi  Data diri 
+(nama, email, 
+password)  Sistem 
+memvalidasi dan 
+menyimpan akun  Akun 
+CAMABA 
+berhasil 
+dibuat  
+CAMABA  Login  Username 
+dan password  Sistem 
+memverifikasi 
+kredensial dan 
+menentukan peran 
+pengguna  Akses ke 
+halaman 
+sesuai role  
+CAMABA  Memilih 
+Periode 
+Pendaftaran  Periode aktif  Sistem 
+menampilkan 
+daftar periode 
+pendaftaran  Periode 
+pendaftaran 
+terpilih  
+CAMABA  Membeli 
+Formulir & 
+VA Data 
+pembelian 
+formulir  Sistem membuat 
+virtual account 
+otomatis melalui 
+BRIVA  Nomor VA 
+dan bukti 
+pembayaran  
+CAMABA  Mengisi 
+Formulir 
+Ujian  Data ujian 
+online  Sistem menyimpan 
+dan memvalidasi 
+isian  Formulir 
+tersimpan 
+dan valid  
+CAMABA  Mengisi Data 
+Pendaftaran  Data daftar 
+ulang  Sistem menyimpan 
+data dan menandai Status 
+pendaftaran 
+
+--- PAGE 65 ---
+65  
+Aktor  Use Case  Input  Proses  Output  
+status daftar ulang  diperbarui  
+Admin 
+Validasi  Melakukan 
+Validasi  Data dan 
+berkas 
+CAMABA  Sistem 
+menampilkan data, 
+admin memeriksa, 
+dan mengirim hasil  Status 
+validasi dan 
+notifikasi 
+email  
+Admin 
+Pusat  Mengelola 
+Informasi  Data 
+informasi 
+baru Sistem menyimpan 
+atau memperbarui 
+informasi  Halaman 
+utama 
+diperbarui  
+Admin 
+Pusat  Mengelola  
+Jenis/Isi 
+Formulir  Data formulir 
+baru atau 
+ubahan  Sistem menyimpan 
+konfigurasi 
+formulir  Formulir 
+baru 
+tersedia  
+Sistem  Membuat VA 
+Otomatis  Data 
+pendaftaran 
+CAMABA  Sistem terintegrasi 
+dengan BRIVA  Virtual 
+account 
+otomatis 
+dibuat  
+Admin  Membuat VA 
+Manual  Data 
+pendaftaran 
+CAMABA  Admin membuat 
+VA manual  Virtual 
+account 
+berhasil 
+dibuat  
+Sistem  Menentukan 
+Kelulusan  Hasil ujian 
+CAMABA  Sistem menghitung 
+hasil dan 
+memvalidasi data  Status 
+kelulusan 
+ditentukan 
+dan dikirim 
+ke email  
+  
+
+--- PAGE 66 ---
+66  
+3.5.3 Activity Diagram  
+3.5.3.1  Login  Camaba  
+ 
+Gambar 3. 4 Activity Diagram Login Camaba  
+Saat calon mahasiswa membuka halaman login sistem PMB, sistem 
+menampilkan form untuk memasukkan email dan kata sandi. Jika belum memiliki 
+akun, pengguna dapat melakukan registrasi dengan mengisi data diri. Apabila lupa 
+
+
+--- PAGE 67 ---
+67  
+kata sandi, sistem akan memverifikasi email dan mengirim tautan pemulihan ke 
+Gmail. Setelah login, sistem memeriksa kecocokan data. Jika tidak valid, muncul 
+peringatan kesalahan; jika benar, sistem menentukan role pengguna dan 
+menampilka n halaman dashboard sesuai hak akses masing -masing.  
+3.5.3.2  Registrasi dan Pembelian Formulir PMB UHN  
+ 
+Gambar 3. 5 Activity Diagram Pembayaran Formulir Camaba  
+Proses dimulai ketika calon mahasiswa melakukan login ke sistem PMB. 
+Setelah data login diverifikasi, sistem menentukan role pengguna dan 
+
+
+--- PAGE 68 ---
+68  
+menampilkan halaman dashboard. Dari sana, pengguna memilih menu 
+pendaftaran dan menentukan gelombang yang diinginkan. Sistem kemudian 
+memeriksa status gelombang, apakah masih aktif atau sudah ditutup. Jika masih 
+aktif, sistem berkomunikasi dengan layanan BRIVA untuk menghasilkan nomor 
+Virtual Account (VA).  
+Setelah nomor VA diterima, pengguna dapat melakukan pembayaran. Si stem 
+akan memverifikasi hasil transaksi melalui BRIVA. Jika pembayaran gagal, 
+muncul peringatan di halaman pengguna. Namun jika pembayaran berhasil, sistem 
+menampilkan halaman formulir pendaftaran sebagai tanda bahwa proses 
+pembayaran telah selesai dan val id. 
+  
+
+--- PAGE 69 ---
+69  
+3.5.3.3  Pengisian Formulir dan Generate Kartu Ujian  
+ 
+Gambar 3. 6 Activity Diagram Pengisian Formulir dan Generate Kartu Ujian  
+Proses dimulai ketika calon mahasiswa mengakses formulir pendaftaran sesuai 
+gelombang yang aktif. Sistem menampilkan halaman isian data diri dan unggahan 
+
+
+--- PAGE 70 ---
+70  
+berkas. Setelah data dikirim, sistem melakukan validasi terhadap penulisan serta 
+kelengkapan. Jika ada  kesalahan input, muncul peringatan agar pengguna 
+memperbaikinya. Namun bila valid, data disimpan dan sistem menghasilkan kartu 
+ujian lengkap dengan QR code yang bisa diunduh.  
+Calon mahasiswa dapat kembali mengakses formulir pada gelombang 
+berikutnya untuk  melengkapi data tambahan, mengunggah berkas nilai, dan 
+mengikuti ujian. Setelah seluruh proses selesai, sistem mengirimkan notifikasi ke 
+admin sebagai laporan bahwa data dan berkas telah berhasil diunggah oleh 
+pengguna.  
+3.5.3.4  Proses  Ujian  
+ 
+
+
+--- PAGE 71 ---
+71  
+Gambar 3. 7 Activity Diagram Proses Ujian Camaba  
+Proses dimulai ketika calon mahasiswa memasukkan nomor ujian pada sistem. 
+Sistem melakukan validasi untuk memastikan nomor yang diinput benar. Jika 
+tidak sesuai, sistem menampilkan peringatan kesalahan. Bila valid, sis tem 
+memeriksa kesesuaian jadwal ujian. Jika waktu ujian belum dimulai, pengguna 
+akan mendapatkan pemberitahuan penundaan. Namun jika sudah sesuai, sistem 
+mengarahkan pengguna ke halaman ujian yang terhubung dengan Google Form.  
+Setelah diarahkan, calon mahasiswa dapat mengerjakan soal dan mengirimkan 
+jawaban melalui Google Form. Hasil ujian dikirim kembali ke sistem untuk 
+dievaluasi. Sistem kemudian menentukan status kelulusan dan mengirimkan 
+notifikasi hasil ujian beserta informasi acara selanjutnya kep ada calon mahasiswa.  
+  
+
+--- PAGE 72 ---
+72  
+3.5.3.5  Daftar Ulang  
+ 
+Gambar 3.8 Activity Diagram Proses Ujian Camaba  
+Proses  dimulai ketika camaba  kembali  memilih login di pilihan daftar ulang 
+namun  memasukkan nomor ujian serta tanggal lahir. Nantinya Sistem melakukan 
+validasi data dan m enyesuaikan data yang dimasukkan , lalu sistem menampilkan 
+menu pilihan untuk mengganti password dan mengisi form daftar ulang. Setelah 
+form diisi dan data dikirim, sistem menyimpan data serta mengirimkan notifikasi 
+ke admin validasi.  Admin validasi kemudia n melakukan konfirmasi terhadap data 
+daftar ulang. Jika data sudah benar, status dinyatakan terverifikasi dan notifikasi 
+dikirim ke camaba serta admin pusat. Namun, jika data belum sesuai, admin 
+memberikan status “Perlu Revisi”, dan camaba akan menerima no tifikasi untuk 
+memperbaiki data sebelum proses validasi diulang kembali.  
+
+
+--- PAGE 73 ---
+73  
+3.5.3.6  Konfigurasi  Sistem dan akun oleh Admin Pusat  
+ 
+Gambar 3.9 Activity Diagram Konfigurasi Sistem dan Pengelolaan Akun oleh 
+Admin Pusat  
+Proses diawali ketika admin pusat melakukan login dengan memasukkan 
+username dan password. Sistem akan memeriksa data login; jika salah, sistem 
+menampilkan peringatan kesalahan. Jika benar, sistem menampilkan dashboard 
+
+
+--- PAGE 74 ---
+74  
+utama. Dari dashboard, admin pusat da pat mengelola akun pengguna dengan 
+menekan tombol akun pengguna, menambahkan user baru melalui pop -up tambah 
+akun, kemudian mengisi username dan password untuk disimpan ke sistem. 
+Admin juga dapat mengedit atau menghapus akun admin validasi yang sudah ada.  
+Selain itu, admin pusat dapat melakukan konfigurasi sistem, seperti mengatur 
+jadwal gelombang pendaftaran, menetapkan harga formulir, menambah atau 
+menghapus field form, serta mengatur status wajib pada field tertentu . 
+3.5.3.7  Ekspor Data oleh Admin Validasi  
+ 
+Gambar 3.10 Activity Diagram Ekspor Data oleh Admin Validasi  
+Proses dimulai ketika admin validasi melakukan login ke sistem dengan 
+memasukkan username dan password. Sistem akan memeriksa data login; jika 
+
+
+--- PAGE 75 ---
+75  
+salah, sistem menampilkan peringatan kesalahan. Jika  benar, sistem menampilkan 
+dashboard utama. Dari dashboard, admin validasi memilih menu ekspor data dan 
+menentukan filter berdasarkan fakultas, program studi, atau gelombang 
+pendaftaran.  
+Selanjutnya, admin memilih format file ekspor (CSV atau Excel) dan me nekan 
+tombol ekspor. Sistem kemudian melakukan query pada database sesuai dengan 
+filter yang ditetapkan, menghasilkan file dalam format yang dipilih, dan 
+mengirimkan file tersebut ke admin validasi. Admin validasi dapat memilih untuk 
+mengunduh file langsun g atau mengirimkannya ke admin pusat melalui email 
+untuk keperluan rekapitulasi data pusat.  
+
+--- PAGE 76 ---
+76  
+3.5.4 Flowchart Proses  
+ 
+Gambar 3. 11 Flowchart Camaba Regristasi akun , Pembelian Formulir, dan 
+Melaksanakan Ujian  
+Flowchart pada Gambar 3.30 menampilkan alur utama sistem PMB Universitas 
+HKBP Nommensen, mulai dari pendaftaran akun hingga pengelolaan sistem oleh 
+admin. Proses diawali saat calon mahasiswa baru membuat akun dengan mengisi 
+
+
+--- PAGE 77 ---
+77  
+email, kata sandi, dan data veri fikasi. Setelah divalidasi, sistem menyimpan 
+informasi tersebut ke basis data akun pengguna. Camaba yang sudah terdaftar 
+kemudian masuk ke sistem untuk melanjutkan proses berikutnya.  
+Tahap selanjutnya adalah pembelian formulir dan aktivasi Virtual Account 
+(VA). Sistem berinteraksi dengan layanan BRIVA untuk menghasilkan nomor VA 
+dan mencatat status pembayaran. Setelah transaksi dikonfirmasi, pengguna dapat 
+mengisi formulir pendaftaran dan mencetak kartu ujian sesuai template yang 
+tersedia. Ujian seleksi dil akukan melalui Google Form, dan hasilnya diambil 
+otomatis oleh sistem untuk disimpan dalam data nilai ujian. Berdasarkan hasil 
+tersebut, sistem menampilkan pengumuman kelulusan melalui dashboard atau 
+mengirimkan pemberitahuan melalui email.  
+ 
+Gambar 3.12 F lowchart Camaba Melakukan Daftar Ulang  
+Bagi yang dinyatakan lulus, proses berlanjut ke tahap daftar ulang  seperti pada 
+gambar 3.12 . Calon mahasiswa mengisi kembali data pribadi untuk verifikasi, 
+kemudian sistem menyimpannya di basis data daftar ulang.  
+
+
+--- PAGE 78 ---
+78  
+ 
+Gambar 3.13 Flowchart Admin Validasi  
+Admin Validasi akan memeriksa kelengkapan data, memberikan status 
+verifikasi, dan mengekspor hasilnya ke Admin Pusat  sesuai dengan alur pada 
+gambar 3.13 .  
+
+
+--- PAGE 79 ---
+79  
+ 
+Gambar 3.14 Flowchart Admin Pusat  
+Sementara itu, Admin Pusat bertanggung jawab terhadap pengaturan sistem, 
+seperti menentukan periode penerimaan, harga formulir, serta pengelolaan akun 
+admin lainnya  serta melakukan ekspor data . Setiap perubahan disimpan ke basis 
+data konfigurasi dan memengaruhi keseluruhan alur pene rimaan mahasiswa baru  
+seperti di gambar 3.14 .s 
+  
+
+
+--- PAGE 80 ---
+80  
+ 
+3.5.5 Class Diagram  
+ 
+Gambar 3.15 Class Diagram  
+ 
+Pada gambar 3.15, class diagram sistem pendaftaran mahasiswa baru ini 
+menggambarkan hubungan antara beberapa kelas utama, yaitu User, Camaba, 
+
+
+--- PAGE 81 ---
+81  
+AdminValidasi, dan AdminPusat. Kelas User berfungsi sebagai induk yang 
+menyimpan atribut umum seperti email, passw ord, dan role. Dari kelas ini, 
+diturunkan tiga kelas turunan dengan fungsi khusus: Camaba untuk melakukan 
+proses pendaftaran hingga daftar ulang, AdminValidasi untuk memeriksa dan 
+memverifikasi data camaba, serta AdminPusat yang bertanggung jawab atas 
+peng elolaan pengguna dan konfigurasi sistem. Selain kelas pengguna, terdapat 
+pula kelas pendukung seperti FormulirPendaftaran, NilaiUjian, DataDaftarUlang, 
+dan KonfigurasiSistem. Setiap Camaba berhubungan satu -ke-satu dengan formulir 
+pendaftaran, nilai ujian, dan data daftar ulang. Sementara itu, AdminPusat 
+memiliki relasi satu -ke-banyak dengan KonfigurasiSistem, karena satu admin 
+dapat mengatur beberapa konfigurasi periode penerimaan. Hubungan -hubungan 
+ini menunjukkan alur data dan tanggung jawab antar kompone n dalam sistem 
+secara terstruktur dan efisien.  
+  
+
+--- PAGE 82 ---
+82  
+3.5.6 Sequence  Diagram  
+Sequence diagram dari sistem Penerimaan Mahasiswa Baru (PMB) Universitas 
+HKBP Nommensen  yang akan dibangun adalah sebagai berikut.  
+3.5.6.1  Sequence Diagram User Register dan Login  
+ 
+Gambar 3.16 User Login  
+Pada diagram di atas, alur dimulai ketika calon mahasiswa baru (Camaba) 
+membuka website sistem PMB. Sistem kemudian menampilkan form register 
+yang dapat diisi oleh pengguna dengan username dan password. Setelah pengguna 
+mengisi data dan menekan tombol Register, sistem akan mengirimkan permintaan 
+ke Control Register untuk memproses pendaftaran. Data yang dimasukkan akan 
+divalidasi oleh Database. Jika validasi gagal, sistem menampilkan pesan gagal 
+register. Namun, jika vali dasi berhasil, data pengguna akan disimpan, dan sistem 
+memberikan respon berhasil register kepada pengguna.  
+Setelah berhasil mendaftar, pengguna dapat melanjutkan ke form login dengan 
+mengisi username dan password yang telah dibuat. Saat tombol Login ditek an, 
+
+
+--- PAGE 83 ---
+83  
+sistem akan mengirimkan data ke Control Login untuk dilakukan proses 
+autentikasi ke Database. Jika data yang dimasukkan tidak valid, sistem 
+menampilkan pesan gagal login, dan pengguna diminta untuk mengulang proses 
+login. Sebaliknya, jika validasi berh asil, sistem akan mengirimkan respon berhasil 
+login dan menampilkan dashboard sebagai tanda bahwa pengguna telah berhasil 
+masuk ke sistem.  
+3.5.6.2  Sequence Diagram Proses Pendaftaran hingga Melakukan Ujian  
+ 
+
+
+--- PAGE 84 ---
+84  
+Gambar 3.17 Camaba Melakukan Pengisian Formulir dan Melakukan Ujian  
+Pada diagram di atas, alur dimulai ketika Calon Mahasiswa Baru (Camaba) 
+berhasil login ke sistem PMB. Setelah berhasil masuk, sistem menampilkan 
+halaman utama (dashboard PMB). Camaba kemudian memilih menu Pembelian 
+Formulir, yang akan diter uskan ke PMB Controller untuk memproses permintaan 
+tersebut. Selanjutnya, sistem menampilkan opsi untuk memilih dan membeli 
+formulir, kemudian melakukan request ke BRIVA guna mendapatkan nomor 
+Virtual Account (VA). Nomor VA tersebut dikirimkan kembali dan ditampilkan 
+kepada Camaba. Setelah itu, Camaba melakukan pembayaran melalui BRIVA.  
+Jika pembayaran gagal, sistem akan menampilkan notifikasi pembelian gagal. 
+Namun, apabila pembayaran berhasil, BRIVA akan mengirimkan notifikasi 
+pembayaran ke sistem. Notifi kasi ini diproses oleh PMB Controller, yang 
+kemudian menyimpan data pembayaran ke Database dan memperbarui status 
+pembelian menjadi lunas. Setelah status pembayaran lunas, Camaba dapat 
+melanjutkan untuk mengisi formulir pendaftaran dan mengunggah dokumen y ang 
+dibutuhkan. Data formulir yang telah diisi akan disimpan oleh sistem melalui 
+PMB Controller ke Database. Setelah penyimpanan berhasil, sistem akan 
+melakukan generate kartu ujian dan menampilkan kartu ujian serta tautan (link) 
+Google Form untuk pelaksan aan ujian.  
+Camaba kemudian mengikuti ujian melalui Google Form, dan setelah selesai, 
+nilai ujian akan diambil oleh sistem dan disimpan ke Database. Terakhir, sistem 
+akan menampilkan notifikasi kelulusan kepada Camaba berdasarkan hasil ujian 
+yang tersimpan.  
+  
+
+--- PAGE 85 ---
+85  
+3.5.6.3  Sequence Diag ram Proses  Daftar Ulang  
+ 
+Gambar 3. 18 Camaba Daftar Ulang  
+Pada diagram di atas, proses dimulai ketika Calon Mahasiswa Baru (User) 
+berhasil login ke sistem PMB. Setelah berhasil masuk, sistem menampilkan 
+halaman utama (dashboard PM B). Pengguna kemudian memilih menu Daftar 
+Ulang untuk melanjutkan proses pendaftaran ulang  dan data base akan memeriksa 
+akun sudah melakukan ujian . Sistem melalui PMB Controller akan mengambil 
+data formulir pendaftaran dari Database dan menampilkannya kepada pengguna. 
+Selanjutnya, Camaba mengisi formulir daftar ulang dan mengunggah data yang 
+dibutuhkan. Setelah semua data diisi, sistem akan menyimpan data daftar ulang ke 
+Database dan menampilkan notifikasi bahwa data telah berhasil disimp an. 
+
+
+--- PAGE 86 ---
+86  
+Langkah berikutnya, sistem mengirimkan permintaan ke Admin Validasi untuk 
+melakukan proses verifikasi data. Admin memeriksa kelengkapan dan kebenaran 
+data yang dikirim. Jika data tidak valid, sistem menampilkan notifikasi gagal 
+daftar ulang kepada peng guna. Namun, apabila data diverifikasi, maka Admin 
+menyimpan hasil verifikasi ke Database, dan sistem menampilkan status 
+terverifikasi beserta notifikasi final kepada Camaba.  
+3.5.6.4  Sequence Diagram Proses Validasi Data  
+ 
+Gambar 3.1 9 Admin Validasi Melakukan Vali dasi  
+Pada diagram di atas, proses dimulai ketika Admin Validasi berhasil login ke 
+sistem PMB. Setelah masuk, sistem menampilkan dashboard PMB, dan admin 
+memilih menu Validasi. Sistem kemudian mengambil data calon mahasiswa 
+(Camaba) dari Database melalui Validas i Controller dan menampilkan hasilnya. 
+Admin melakukan pemeriksaan data dan memberikan keputusan berupa 
+persetujuan atau revisi. Setelah status diperbarui, sistem menyimpan perubahan 
+tersebut ke Database dan memberikan konfirmasi penyimpanan. Terakhir, sis tem 
+
+
+--- PAGE 87 ---
+87  
+menampilkan notifikasi sukses kepada admin sebagai tanda bahwa proses validasi 
+telah selesai dilakukan.   
+3.5.6.5  Sequence Diagram Proses Konfigurasi Sistem dan Ekstrak File  
+ 
+Gambar 3. 20 Admin Pusat Melakukan Konfigurasi Menu dan Daftar Akun  
+Pada diagram di atas, proses dimulai ketika Admin Pusat berhasil login ke 
+sistem PMB. Setelah masuk, sistem menampilkan dashboard admin yang berisi 
+berbagai menu pengelolaan. Admin kemudian memilih me nu konfigurasi, dan 
+sistem melalui Konfigurasi Controller mengambil data konfigurasi saat ini dari 
+Database untuk ditampilkan dalam bentuk form.  
+Selanjutnya, Admin dapat mengubah parameter konfigurasi sesuai kebutuhan, 
+lalu mengirimkan data perubahan tersebut ke sistem. Konfigurasi Controller 
+menyimpan perubahan ke Database, dan setelah penyimpanan berhasil, sistem 
+memberikan konfirmasi simpan serta menampilkan pesan berhasil kepada admin.  
+
+
+--- PAGE 88 ---
+88  
+Selain konfigurasi, Admin Pusat juga dapat memilih me nu kelola akun untuk 
+melakukan pengaturan daftar akun pengguna. Admin mengirimkan data akun yang 
+telah diperbarui atau ditambahkan, kemudian sistem menyimpannya ke Database. 
+Setelah proses selesai, sistem menampilkan pesan berhasil sebagai tanda bahwa 
+data akun telah berhasil diperbarui.  
+3.5.7 Context  Diagram  
+Diagram konteks berikut menggambarkan hubungan antara Sub -sistem 
+Penerimaan Mahasiswa Baru (PMB) Universitas HKBP Nommensen dengan 
+berbagai entitas eksternal yang terlibat dalam proses PMB. Diagram ini 
+menun jukkan aliran data utama dari dan ke sistem, serta fungsi masing -masing 
+pihak yang berinteraksi.  
+Terdapat  lima entitas  utama  yang  berinteraksi  langsung  dengan  sistem:  
+● Camaba  (Calon  Mahasiswa  Baru):  Melakukan  registrasi,  
+pembelian  formulir, pengisian data, mengikuti ujian, daftar ulang, dan 
+menerima hasil seleksi.  
+● Admin Pusat: Mengelola konfigurasi sistem seperti periode 
+penerimaan, jenis seleksi, informasi publik, akun admin validasi, dan 
+dapat melihat pratinjau tampilan sistem.  
+● Admin Valida si: Bertugas melakukan validasi data camaba, 
+memverifikasi jalur ranking, mengelola VA manual, serta menolak atau 
+menerima data pendaftaran.  
+● BRIVA: Sebagai sistem eksternal yang digunakan untuk menghasilkan 
+dan memverifikasi Virtual Account (VA) secara oto matis.  
+● Google Form (GForm): Platform eksternal yang digunakan untuk 
+pelaksanaan ujian online camaba dengan integrasi nomor ujian secara 
+otomatis (prefilled).  
+
+--- PAGE 89 ---
+89  
+Setiap entitas terhubung dengan  sistem  melalui  dua jalur data utama:  data 
+masuk (input)  dan data keluar  (output),  yang  diringkas  dalam  panah  dengan  
+label masing -masing. Interaksi dirancang agar sesuai dengan prinsip sistem 
+terintegrasi, efisien, dan mudah dikelola oleh seluruh pihak terkait .  
+Gambar 3.21 Diagram Konteks Sub sistem Penerimaan Mahasiswa Baru  
+  
+
+--- PAGE 90 ---
+90  
+3.5.8 Data Flow Diagram  
+3.5.8.1  DFD  Level  0 
+Meskipun sistem dikembangkan menggunakan pendekatan berorientasi objek, 
+DFD tetap digunakan untuk menjelaskan aliran data secara konseptual dan 
+mempermudah pemahaman pros es sistem oleh pihak non -teknis.  
+Gambar 3. 22 DFD Level 0 Sub sistem Penerimaan Mahasiswa Baru  
+Proses Dimulai dari pengunjung atau admin yang login sesuai data yang 
+tersimpan dalam data Store Akun Pengguna. Kemudian Pada Role camaba akan 
+masuk ke proses pembelian formulir yang nanti jenis formular dan log pelunasan 
+VA akan disimpan di data store Formulir & VA. Setelah itu camaba akan  lanjut  
+ke proses isi formular dan kartu ujian. Jenis Template Formulir kan diambil di 
+data Stor e Formulir & VA, dan setelah itu berdasarkan jenis template tersebut 
+
+
+--- PAGE 91 ---
+91  
+camaba akan  mengisi  formulirnya  dan setelah  selesai  mengisi  formular  
+camaba  akan digenerate kartu ujian yang akan disimpan di dat store Kartu ujian 
+dan dapat di akses Camaba. Apabila lulu s camaba bisa lanjut ke Proses daftar 
+ulang yang  dengan mengisi dat dat yang sebelumnya ada di formulir sekaligus 
+melakukan Crosscheck pada data sebelumnya. Kemudian data daftar ulang 
+disimpan di data store data daftar ulang, admin validsi jug dapat mengak ses dn 
+mengeksport data daftar ulang untuk keperluan dta mahasiswa baru. Setelah itu 
+pada role pengaws ujian Ketika selesi melakukan login akan langsung ke  proses  
+pengelolaan  nilai dan absensi dan catatan ujian. Yang bisa dilakukan Pengawas 
+ujian adalah melakukan absensi dan memberikan catatan pada camaba camaba 
+tertentu apabila terindikasi melakukan kecurangan, kemudian data data tersebut 
+dimasukkan ke dalam data store absensi dan catatan.  Lalu admin  validasi  setelah  
+selesai  melakukan  login  akan l anjut ke proses relasi pengawas peserta dan 
+distribusi otomatis peserta. Admin vlidsi dapat menentuka jumlah stu kelsny dan 
+Ketika camaba mendaftar maka di kan tergenerate ke kelas yang acak. Lalau admi 
+validasi juga dapat melakukan penginputn data nilai a pabila dilakukan 
+dilakukukan penilaian offline.selanjutnya pada role admin pusat Ketika dia selesai 
+.
+
+--- PAGE 92 ---
+92  
+3.5.8.2  DFD  Proses  1 
+3.5.8.2.1  DFD  Level  1 Proses  1 : Registarsi  
+Gambar 3. 23 DFD level 1 Proses 1  
+3.5.8.2.2  DFD Level 2 Proses 1.1 : Regristasi Akun Camaba  
+ 
+Gambar 3. 24 DFD level 2 Proses 1.1: Registrasi Akun Camaba  
+3.5.8.2.3  DFD Level 2 Proses 1.2: Login & Autentikasi Role  
+
+
+--- PAGE 93 ---
+93  
+ 
+Gambar 3. 25 DFD level 2 Proses 1.2: Login & Autentikasi Role  
+3.5.8.2.4  DFD Level 2 Proses 1.3: Lupa Password / Username  
+ 
+Gambar 3. 26 DFD level 2 Proses 1.3: Lupa Password/Username  
+3.5.8.3  DFD  Proses  2 
+
+
+--- PAGE 94 ---
+94  
+3.5.8.3.1  DFD  Level  1 Proses  2: Pembelian  formulir  & VA 
+Gambar 3. 27 DFD Level 1 Proses 2: Pembelian formulir & VA  
+3.5.8.3.2  DFD Level  2 Proses 2.2: Aktivasi & Hitung Va berdasarkan jenis 
+formulir  
+ 
+Gamba r 3.28 DFD Level 2 Proses 2.2: Aktivasi & Hitung Va berdasarkan jenis 
+formulir  
+3.5.8.4  DFD  Proses 3  
+
+
+--- PAGE 95 ---
+95  
+3.5.8.4.1  DFD  Level  1 Proses  3: Pengisian  Formulir  & Kartu  Ujian  
+Gambar 3.29 DFD Level 1 Proses 3: Pengisian Formulir & Kartu Ujian  
+3.5.8.4.2  DFD  Level 2 Proses 3.2: Isi Formulir & Upload  
+ 
+Gambar 3.30. DFD Level 2 Proses 3.2: Isi Formulir & Upload  
+3.5.8.5  DFD Proses 4  
+3.5.8.5.1  DFD  Level  1 Proses  4: Ujian  & Hasil  Seleksi  
+
+
+--- PAGE 96 ---
+96  
+ 
+Gambar 3. 31. DFD Level 1 Proses 4: Ujian dan Hasil Seleksi  
+3.5.8.5.2  DFD Level 2 Proses 4.6: Ambil Nilai Ujian dari Gform  
+ 
+Gambar 3.32. DFD Level 2 Proses 4.6: Ambil nilai Ujian dri Gform  
+3.5.8.6  DFD Proses 5 
+
+
+--- PAGE 97 ---
+97  
+3.5.8.6.1  DFD  Level  1 Proses  5: Daftar  Ulang  
+Gambar 3.33. DFD Level 1 Proses 5: Daftar Ulang  
+3.5.8.6.2  DFD level 2 Proses 5.2: Isi Formulir Pendaftaran Ulang  
+ 
+Gambar 3.34. DFD Level 2 Proses 5.2: Isi Formulir Pendaftaran Ulang  
+3.5.8.6.3  DFD  level  2 Proses  5.6 Aktivasi  VA cicilan  uang  kuliah  
+
+
+--- PAGE 98 ---
+98  
+ 
+Gambar 3.35. DFD Level 2 Proses 5.6: Aktivasi VA cicilan Uang Kuliah  
+3.5.8.6.4  DFD Level 2 – Proses 5.4: Validasi Berkas Prestasi oleh Admin 
+Validasi  
+
+
+--- PAGE 99 ---
+99  
+Gambar 3.36. DFD Level 2 Proses 5.4: Validasi Berkas Prestasi oleh Admin 
+Validasi  
+3.5.8.7  DFD Proses 6  
+3.5.8.7.1  DFD  Level  1 Proses  6: Validasi  & Komunikasi  
+Gambar 3.37. DFD Level 1 Proses 6: Validasi Berkas Prestasi oleh Admin 
+Validasi  
+3.5.8.8  DFD Proses 7  
+3.5.8.8.1  DFD  Level  1 Proses  7: Konfigurasi  Sistem  & Informasi  
+
+--- PAGE 100 ---
+100  
+Gambar 3.38. DFD Level 1 Proses 7: KOnfigurasi Sistem & Informasi  
+3.5.8.8.2  DFD Level 2 – Proses 7.1: Kelola Periode Pendaftaran  
+Gambar 3.39. DFD Level 2 Proses 7.1: Kelola Periode Pendaftaran  
+3.5.8.9  Spesfikasi  Proses  (P-SPEC)   
+3.5.8.9.1  PSPEC  Proses  1.1: Registrasi  Akun  Camaba  
+Tabel 3. 10 PSPEC Proses 1.1 – Registrasi Akun Calon Mahasiswa Baru  
+Nama Proses  Registrasi Akun  Camaba  
+Deskripsi 
+Proses  Calon mahasiswa baru melakukan pendaftaran akun untuk 
+pertama kali dengan mengisi data dasar seperti email dan 
+password.  
+Data Input  Email, password, dan data verifikasi.  
+Data Output  Akun calon mahasiswa baru berhasil dibuat atau muncul 
+pesan error jika gagal.  
+Body / 
+Keterangan  Proses ini wajib dilakukan karena calon mahasiswa baru 
+harus memiliki akun terlebih dahulu sebelum dapat 
+mengakses sistem PMB. Tanpa registrasi, pengguna tidak 
+dapat melanjutkan ke tahap pembelian formulir.  
+
+--- PAGE 101 ---
+101  
+3.5.8.9.2  PSPEC  Proses  1.2: Login  & Autentikasi  Role 
+Tabel 3.1 1. PSPEC Proses 1.2 – Login & Autentikasi Role  
+Nama 
+Proses  PSPEC Proses 1.2 – Login & Autentikasi Role  
+Deskripsi 
+Proses  Sistem melakukan verifikasi pengguna dan menentukan role 
+akses (calon mahasiswa baru, admin pusat, admin validasi, atau 
+pengawas ujian).  
+Data Input  Email/username dan password.  
+Data Output  Token autentikasi dan pengalihan (redirect) ke d ashboard sesuai 
+role pengguna.  
+Body / 
+Keterangan  Proses ini  penting karena sistem memiliki beberapa jenis role 
+dengan hak akses berbeda  
+3.5.8.9.3  PSPEC  Proses  1.3: Lupa  Password/Username  
+Tabel 3.1 2 PSPEC Proses 1.3 – Pemulihan Akun (Lupa Password)  
+Nama 
+Proses  PSPEC Proses 1.3 – Pemulihan Akun (Lupa Password)  
+Deskripsi 
+Proses  Sistem menyediakan mekanisme pemulihan akun bagi 
+pengguna yang lupa kredensial login.  
+Data Input  Email atau nomor pendaftaran.  
+Data Output  Link reset password atau informasi pemulihan akun.  
+Body / 
+Keterangan  Proses ini diperlukan untuk meningkatkan pengalaman 
+pengguna (user experience), terutama karena sistem PMB 
+memiliki banyak  calon mahasiswa baru yang mungkin lup a 
+password selama periode pendaftaran yang panjang.  
+3.5.8.9.4  PSPEC  Proses  2.1: Pemilihan  Gelombang  Pendaftaran  
+Tabel 3.1 3. PSPEC Proses 1.4 – Pemilihan Gelombang Pendaftaran  
+Nama Proses  PSPEC Proses 1.4 – Pemilihan Gelombang Pendaftaran  
+Deskripsi 
+Proses  Calon mahasiswa baru (camaba) memilih gelombang 
+pendaftaran yang ada dan masih aktif. Sistem akan 
+
+--- PAGE 102 ---
+102  
+menampilkan informasi gelombang  mana saja  yang dapat 
+dipilih beserta syarat dan ketentuannya.  
+Data Input  Pilihan gelombang pendaftaran.  
+Data Output  Konfirma si pemilihan gelombang dan akses ke tahap 
+selanjutnya.  
+Body / 
+Keterangan  Jika pemilihan berhasil, camaba akan diarahkan ke halaman 
+pembelian formulir. Jika gelombang sudah ditutup, sistem 
+akan menampilkan pesan bahwa pendaftaran telah ditutup.  
+ 
+3.5.8.9.5  PSPEC  Proses 2.1: Pilih  Jenis  Formulir  
+Tabel 3.1 4. PSPEC Proses 1.5 – Pemilihan Jenis Formulir Pendaftaran  
+Nama Proses  PSPEC Proses 1.5 – Pemilihan Jenis Formulir Pendaftaran  
+Deskripsi 
+Proses  Calon mahasiswa baru (CAMABA) memilih jenis formulir 
+pendaftaran yang tersedia (misalnya, kedokteran atau non -
+kedokteran) untuk melanjutkan proses pembelian formulir.  
+Data Input  Pilihan jenis formulir dari CAMABA.  
+Data Output  Jenis formulir yang dipilih.  
+Body / 
+Keterangan  Proses ini penting karena harga f ormulir dan alur pendaftaran 
+selanjutnya dapat berbeda berdasarkan jenis formulir yang 
+dipilih. Langkah ini menjadi dasar sebelum aktivasi Virtual 
+Account (VA) untuk pembayaran.  
+3.5.8.9.6  PSPEC Proses 2.2: Aktivasi & Hitung VA Berdasarkan Jenis 
+Formulir  
+Tabel 3.1 5. PSPEC Proses 1.6 – Aktivasi Pembayaran Formulir (BRIVA)  
+Nama Proses  PSPEC Proses 1.6 – Aktivasi Pembayaran Formulir 
+(BRIVA)  
+Deskripsi 
+Proses  Sistem menghitung biaya formulir berdasarkan jenis formulir 
+dan gelombang pendaftaran yang dipilih, lalu menghasilkan 
+Virtual Account (VA) BRIVA untuk pembayaran.  
+
+--- PAGE 103 ---
+103  
+Data Input  Jenis formulir dan gelombang pendaftaran.  
+Data Output  Nomor VA BRIVA dan jumlah pembayaran.  
+Body / 
+Keterangan  Sistem akan menghasilkan VA unik untuk setiap calon 
+mahasiswa baru (CAMABA) dan mengirimkan informasi 
+pembayaran. Status pembayaran diverifikasi melalui API 
+BRIVA. Jika sistem gagal merespons, tersedia opsi untuk 
+melakukan generate VA secara man ual. 
+ 
+3.5.8.9.7  PSPEC  Proses  2.3: Generate  VA Via API 
+Tabel 3.1 6. PSPEC Proses 1.7 – Integrasi API BRIVA (Pembuatan Virtual 
+Account)  
+Nama Proses  PSPEC Proses 1.7 – Integrasi API BRIVA (Pembuatan 
+Virtual Account)  
+Deskripsi 
+Proses  Sistem berinteraksi dengan API BRIVA untuk membuat Virtual 
+Account (VA) secara otomatis.  
+Data Input  Permintaan pembuatan VA dari sistem berdasarkan jenis 
+formulir.  
+Data Output  Data Virtual Account dari BRIVA (nomor VA dan nominal 
+pembayaran).  
+Body / 
+Keterangan  Proses ini merupakan in ti dari sistem pembayaran formulir 
+otomatis. Ketergantungan pada API BRIVA membuat proses ini 
+penting untuk memastikan transaksi dan verifikasi pembayaran 
+berlangsung efisien dan akurat.  
+ 
+  
+
+--- PAGE 104 ---
+104  
+3.5.8.9.8  PSPEC  Proses  2.4: Generate  VA Manual  oleh Admin  Validasi  
+Tabel 3.1 7. PSPEC Proses 1.8 – Pembuatan Virtual Account Manual oleh 
+Admin Validasi  
+Nama Proses  PSPEC Proses 1.8 – Pembuatan Virtual Account Manual 
+oleh Admin Validasi  
+Deskripsi 
+Proses  Admin Validasi dapat secara manual membuat Virtual Account 
+(VA) jika proses generate VA otomatis melalui API BRIVA 
+mengalami kegagalan atau sistem tidak merespons.  
+Data Input  Input biaya yang perlu dibayarkan dari Admin Validasi.  
+Data Output  Nomor Virtual Account yang digenerate secara manual.  
+Body / 
+Keterangan  Fitur ini berfungsi sebagai mekanisme cadangan untuk menjaga 
+kelancaran proses pembayaran ketika terjadi kendala teknis pada 
+integrasi API BRIVA. Dengan cara ini, calon mahasiswa tetap 
+dapat melanjutkan pembayaran tanpa hambatan.  
+3.5.8.9.9  PSPEC  Proses  2.5: Kirim  Info VA Melalui  Email  
+Tabel 3.1 8. PSPEC Proses 2.5 – Kirim Info VA Melalui Email  
+Nama Proses  PSPEC Proses 2.5 – Kirim Info VA Melalui Email  
+Deskripsi 
+Proses  Sistem mengirimkan email notifikasi berisi detail Virtual 
+Account (VA) dan panduan cara pembayaran kepada calon 
+mahasiswa baru (CAMABA).  
+Data Input  Informasi VA yang dihasilkan dari proses 2.2 (Generate VA 
+Otomatis) atau 2.4 (Generate VA Manual), dengan status VA 
+“Belum Lunas”.  
+Data Output  Email notifikasi berisi detail VA dan instruksi pembayaran 
+terkirim ke alamat email CAMABA.  
+Body / 
+Keterangan  Email ini berfungsi sebagai panduan pembayaran bagi 
+CAMABA dan memastikan mereka memiliki semua informasi 
+yang diperlukan untuk menyelesaikan pembayaran formulir.  
+3.5.8.9.10  PSPEC  Proses  2.6: Verifikasi  Pembayaran  VA 
+
+--- PAGE 105 ---
+105  
+Tabel 3. 19. PSPEC Proses 2.6 – Verifikasi Pembayaran Formulir (Callback 
+BRIVA)  
+Nama Proses  PSPEC Proses 2.6 – Verifikasi Pembayaran Formulir 
+(Callback BRIVA)  
+Deskripsi 
+Proses  Sistem melakukan verifikasi status pembayaran formulir melalui 
+integrasi API BRIVA secara otomatis.  
+Data Input  Pembayaran VA yang dilakukan oleh CAMABA melalui sistem 
+BRIVA.  
+Data Output  Pembaruan status VA menjadi “Lunas” pada Data Store Formulir 
+& VA.  
+Body / 
+Keterangan  Jika pembayaran b erhasil diverifikasi melalui callback API 
+BRIVA, sistem otomatis memperbarui status pembayaran 
+menjadi “Lunas” dan memberikan akses kepada CAMABA 
+untuk mengisi formulir pendaftaran. Jika verifikasi gagal atau 
+tidak diterima, sistem akan menampilkan notifik asi bahwa 
+pembayaran belum valid dan meminta CAMABA untuk 
+mengulang proses pembayaran.  
+3.5.8.9.11  PSPEC  Proses  3.1: Cek Status  Pembayaran  VA 
+Tabel 3.2 0. PSPEC Proses 3.1 – Cek Status Pembayaran VA  
+Nama 
+Proses  PSPEC Proses 3.1 – Cek Status Pembayaran VA  
+Deskripsi 
+Proses  Sistem memeriksa status pembayaran Virtual Account (VA) 
+CAMABA sebelum mengizinkan akses ke tahap pengisian 
+formulir pendaftaran.  
+Data Input  Data Formulir & VA (status pembayaran).  
+Data Output  Konfirmasi status “Lunas” atau “Belum Lunas” . 
+Body / 
+Keterangan  Proses ini memastikan bahwa hanya CAMABA yang telah 
+melunasi biaya formulir yang dapat melanjutkan ke tahap 
+pengisian data pendaftaran. Jika status VA masih “Belum Lunas”, 
+
+--- PAGE 106 ---
+106  
+sistem akan menampilkan notifikasi dan mengarahkan CAMABA 
+untuk  melakukan pembayaran terlebih dahulu.  
+3.5.8.9.12  PSPEC  Proses  3.2: Isi Formulir  & Upload  Berkas  
+Tabel 3.2 1. PSPEC Proses 3.2 – Isi Formulir & Upload Berkas  
+Nama 
+Proses  PSPEC Proses 3.2 – Isi Formulir & Upload Berkas  
+Deskripsi 
+Proses  CAMABA mengisi data pribadi dan mengunggah berkas yang 
+diperlukan sesuai dengan field formulir yang telah dikonfigurasi 
+oleh admin pusat.  
+Data Input  Data pribadi CAMABA dan berkas pendukung (misalnya, ijazah, 
+KTP).  
+Data Output  Konfirmasi pengisian formulir berhasil, data te rsimpan di Data 
+Formulir & Berkas.  
+Body / 
+Keterangan  Semua field wajib harus terisi sebelum formulir dapat disubmit. 
+Jika ada field yang kosong, sistem akan menampilkan peringatan 
+dan meminta CAMABA melengkapi data. Jika formulir 
+kedokteran, fakultas akan  otomatis terisi "Kedokteran".  
+3.5.8.9.13  PSPEC  Proses  3.3: Submit  Formulir  
+Tabel 3.2 2. PSPEC Proses 3.3 – Submit Formulir  
+Nama 
+Proses  PSPEC Proses 3.3 – Submit Formulir  
+Deskripsi 
+Proses  CAMABA mengirimkan formulir pendaftaran yang telah diisi.  
+Data Input  Data Formulir & Berkas yang telah diisi lengkap.  
+Data Output  Formulir diupdate.  
+Body / 
+Keterangan  Setelah formulir disubmit, data akan disimpan dan menjadi dasar 
+untuk pembuatan kartu ujian. Validasi akan dilakukan untuk 
+memastikan semua data sudah lengkap da n valid sebelum 
+penyimpanan akhir.  
+
+--- PAGE 107 ---
+107  
+3.5.8.9.14  PSPEC  Proses  3.4: Generate  Kartu  Ujian  
+Tabel 3.2 3. PSPEC Proses 3.4 – Generate Kartu Ujian  
+Nama Proses  PSPEC Proses 3.4 – Generate Kartu Ujian  
+Deskripsi 
+Proses  Sistem secara otomatis menggenerasi kartu ujian setelah 
+CAMABA berhasil mengisi dan menyimpan formulir 
+pendaftaran.  
+Data Input  Data CAMABA yang telah terverifikasi dari Data Formulir & 
+Berkas.  
+Data Output  Kartu ujian dalam format PDF dengan QR Code, tersimpan di 
+Kartu Ujian & Nomor Ujian.  
+Body / 
+Kete rangan  Kartu ujian berisi informasi CAMABA, jadwal ujian, dan QR 
+Code untuk absensi. Kartu dapat diunduh dan dicetak oleh 
+CAMABA.  
+3.5.8.9.15  PSPEC  Proses  4.1: Validasi  Nomor  Ujian  
+Tabel 3.2 4. PSPEC Proses 3.5 – Validasi Nomor Ujian  
+Nama 
+Proses  PSPEC Proses 3.5 – Validasi Nomor Ujian  
+Deskripsi 
+Proses  Sistem memvalidasi nomor ujian yang diinputkan oleh calon 
+mahasiswa baru (CAMABA) untuk memastikan nomor tersebut 
+terdaftar dan valid.  
+Data Input  Nomor Ujian dari CAMABA.  
+Data Output  Notifikasi "Ditemukan No Pendaftaran" jika nomor valid atau 
+"Tidak Ditemukan No Pendaftaran" jika tidak valid.  
+Body / 
+Keterangan  Proses ini krusial untuk memastikan bahwa hanya CAMABA 
+yang memiliki nomor ujian yang sah yang dapat melanjutkan ke 
+tahap ujian. Jika nomor ujian tidak  ditemukan, CAMABA akan 
+menerima pesan kesalahan dan tidak dapat melanjutkan.  
+3.5.8.9.16  PSPEC  Proses  4.2: Validasi  Tanggal  Ujian  
+
+--- PAGE 108 ---
+108  
+Tabel 3.2 5. PSPEC Proses 4.2 – Validasi Tanggal Ujian  
+Nama Proses  PSPEC Proses 4.2 – Validasi Tanggal Ujian  
+Deskripsi 
+Proses  Sistem memverifikasi apakah tanggal dan waktu ujian sudah 
+tepat atau belum sesuai dengan jadwal yang telah ditentukan.  
+Data Input  Waktu saat ini.  
+Data Output  Redirect ke Google Form jika waktu tepat, atau notifikasi "Ujian 
+Belum Dimulai" jika belum waktu nya. 
+Body / 
+Keterangan  Proses ini memastikan integritas jadwal ujian, sehingga 
+CAMABA hanya dapat mengakses ujian saat waktunya telah 
+tiba. Jika belum waktunya, akan ada notifikasi.  
+3.5.8.9.17  PSPEC Proses 4.3: Tampilkan Error "Tidak Ditemukan No 
+Pendaftaran"  
+Tabel 3.2 6. PSPEC Proses 4.3 – Notifikasi Nomor Ujian Tidak Ditemukan  
+Nama 
+Proses  PSPEC Proses 4.3 – Notifikasi Nomor Ujian Tidak 
+Ditemukan  
+Deskripsi 
+Proses  Sistem menampilkan pesan kesalahan kepada CAMABA apabila 
+nomor pendaftaran yang dimasukkan tidak d itemukan di dalam 
+sistem.  
+Data Input  Status "Jika Tidak Ada" dari proses 4.1 Validasi Nomor Ujian.  
+Data Output  Pesan error kepada CAMABA.  
+Body / 
+Keterangan  Proses ini memberikan umpan balik kepada pengguna bahwa 
+nomor ujian yang dimasukkan salah atau tidak terdaftar, 
+mencegah mereka melanjutkan ke ujian dengan informasi yang 
+tidak valid.  
+3.5.8.9.18  PSPEC  Proses  4.4: Redirect  ke Google  Form  
+Tabel 3.2 7. PSPEC Proses 4.4 – Akses Google Form Ujian  
+Nama 
+Proses  PSPEC Proses 4.4 – Akses Google Form Ujian  
+Deskripsi Sistem mengarahkan CAMABA ke Google Form yang berisi soal 
+
+--- PAGE 109 ---
+109  
+Proses  ujian. Nomor ujian CAMABA akan otomatis terisi (prefilled) di 
+Google Form.  
+Data Input  Status "Waktu Tepat" dari proses 4.2 Validasi Tanggal Ujian.  
+Data Output  Halaman Google Form Ujian dengan nomor ujian yang sudah 
+terisi otomatis.  
+Body / 
+Keterangan  Hal ini memudahkan CAMABA dalam mengikuti ujian karena 
+tidak perlu menginput ulang nomor ujian, serta menjamin 
+integritas data ujian dengan menghubungkan langsung ke nomor 
+ujian yang valid.  
+3.5.8.9.19  PSPEC  Proses  4.5: Tampilkan  Notifikasi  Ujian  Belum  Dimulai  
+Tabel 3.2 8. PSPEC Proses 4.5 – Tampilkan Notifikasi Ujian Belum Dimulai  
+Nama Proses  PSPEC Proses 4.5 – Tampilkan Notifikasi Ujian Belum 
+Dimulai  
+Deskripsi 
+Proses  Sistem menampilkan notifikasi kepada CAMABA bahwa ujian 
+belum dimulai jika mereka mencoba mengakses ujian di luar 
+jadwal yang ditentukan.  
+Data Input  Status "Belum Waktunya" dari proses 4.2 Validasi Tanggal 
+Ujian.  
+Data Output  Pesan notifikasi "Ujian Belum Dimulai".  
+Body / 
+Keterangan  Notifikasi ini memberikan informasi yang jelas kepada 
+CAMABA mengenai status ujian mereka dan kapan mereka bisa 
+mulai mengikuti ujian.  
+3.5.8.9.20  PSPEC  Proses  4.6: Ambil  Nilai  Ujian  dari GForm  
+Tabel 3. 29. PSPEC Proses 4.6 – Simpan Hasil Ujian  
+Nama Proses  PSPEC Proses 4.6 – Simpan Hasil Ujian  
+Deskripsi 
+Proses  Sistem mengambil nilai ujian dari Google Form dan 
+menyimpannya.  
+Data Input  Hasil Ujian dari Google Form.  
+Data Output  Nilai ujian tersimpan di sistem (Hasil Ujian).  
+
+--- PAGE 110 ---
+110  
+Body / 
+Keterangan  Proses ini mengintegrasikan hasil ujian dari platform eksternal 
+(Google Form) ke dalam sistem PMB, yang nantinya digunakan 
+untuk evaluasi kelulusan.  
+3.5.8.9.21  PSPEC  Proses  4.7: Evaluasi  Nilai  Ujian  
+Tabel 3.3 0. PSPEC Proses 4.7 – Evaluasi Nilai Ujian  
+Nama Proses  PSPEC Proses 4.7 – Evaluasi Nilai Ujian  
+Deskripsi 
+Proses  Sistem mengevaluasi nilai ujian CAMABA berdasarkan kriteria 
+kelulusan.  
+Data Input  Hasil Ujian.  
+Data Output  Status kelulusan (Lulus/Tidak Lulus).  
+Body / 
+Keterangan  Proses ini menentukan apakah CAMABA memenuhi syarat 
+untuk melanjutkan ke tahap daftar ulang atau tidak berdasarkan 
+nilai ujian yang diperoleh.  
+3.5.8.9.22  PSPEC  Proses  4.8: Generate  Bukti  Tidak  Lulus  
+Tabel 3.3 1. PSPEC Proses 4.8 – Generate Bukti Tidak Lulus  
+Nama Proses  PSPEC Proses 4.8 – Generate Bukti Tidak Lulus  
+Deskripsi 
+Proses  Sistem menghasilkan bukti atau halaman yang menyatakan 
+bahwa CAMABA tidak lulus ujian.  
+Data Input  Status "Tidak Lulus" dari proses 4.7 Evaluasi Nilai Ujian.  
+Data Output  Halaman yang menyatak an tidak lulus ujian.  
+Body / 
+Keterangan  Ini memberikan konfirmasi resmi kepada CAMABA yang 
+tidak lulus seleksi ujian.  
+3.5.8.9.23  PSPEC Proses 4.9: Generate Nomor Pendaftaran dan Password 
+Tanggal Lahir  
+Tabel 3.3 2 PSPEC Proses 4.9 – Generate Nomor Pendaftaran dan Password 
+Tanggal Lahir  
+Nama Proses  PSPEC Proses 4.9 – Generate Nomor Pendaftaran dan 
+Password Tanggal Lahir  
+Deskripsi Sistem menghasilkan nomor pendaftaran dan password awal 
+
+--- PAGE 111 ---
+111  
+Proses  berupa tanggal lahir untuk CAMABA yang dinyatakan lulus.  
+Data Input  Status "Lulus" dari proses 4.7 Evaluasi Nilai Ujian.  
+Data Output  Nomor pendaftaran dan password (tanggal lahir) yang disimpan 
+di Akun Pengguna.  
+Body / 
+Keterangan  Nomor pendaftaran ini penting untuk proses daftar ulang 
+selanjutnya, dan password awal memberikan akses pertama kali 
+kepada CAMABA untuk login ke halaman daftar ulang.  
+3.5.8.9.24  PSPEC Proses 4.10: Atur Jadwal Publikasi Kelulusan dan No 
+Pendaftaran  
+Tabel 3.3 3 PSPEC Proses 4.10 – Atur Jadwal Publikasi Kelulusan dan No 
+Pendaftaran  
+Nama Proses  PSPEC Proses 4.10 – Atur Jadwal Publikasi Kelulusan dan 
+No Pendaftaran  
+Deskripsi 
+Proses  Admin Validasi mengatur kapan hasil kelulusan dan nomor 
+pendaftaran dapat dipublikasikan dan diakses oleh CAMABA.  
+Data Input  Input dari Admin Validasi.  
+Data Output  Jadwal publikasi kelulusan.  
+Body / 
+Keterangan  Proses ini memberikan kontrol kepada Admin Validasi untuk 
+merilis hasil kelulusan sesuai jadwal yang telah ditetapkan.  
+3.5.8.9.25  PSPEC  Proses  4.11:  Kirim  Email  Hasil  & Status  Kelulusan  
+Tabe l 3.34 PSPEC Proses 4.11 – Kirim Email Hasil & Status Kelulusan  
+Nama Proses  PSPEC Proses 4.11 – Kirim Email Hasil & Status Kelulusan  
+Deskripsi 
+Proses  Sistem mengirimkan email kepada CAMABA yang lulus berisi 
+nomor pendaftaran, instruksi daftar ulang, dan status kelulusan 
+mereka.  
+Data Input  Nomor pendaftaran, password (tanggal lahir), dan status 
+kelulusan.  
+Data Output  Email notifikasi hasil ujian dan status kelulusan terkirim.  
+Body / Proses ini memastikan bahwa CAMABA menerima informasi 
+
+--- PAGE 112 ---
+112  
+Keterangan  penting mengenai hasil seleksi mereka secara langsung dan 
+instruksi untuk langkah selanjutnya.  
+3.5.8.9.26  PSPEC  Proses  5.1: Login  via Email  & PW (untuk  Bebas Testing)  
+Tabel 3.3 5 PSPEC Proses 5.1 – Login via Email & PW (untuk Bebas Testing)  
+Nama Proses  PSPEC Proses 5.1 – Login via Email & PW (untuk Bebas 
+Testing)  
+Deskripsi 
+Proses  CAMABA jalur bebas testing melakukan login menggunakan 
+email dan password untuk memulai proses daftar ulang.  
+Data Input  Email dan password.  
+Data Output  Akses ke halaman daftar ulan g. 
+Body / 
+Keterangan  Proses ini khusus untuk jalur bebas testing yang mungkin 
+memiliki alur login berbeda dari jalur testing.  
+3.5.8.9.27  PSPEC  Proses  5.2: Isi Formulir  Pendaftaran  Ulang  
+Tabel 3.3 6 PSPEC Proses 5.2 – : Isi Formulir Pendaftaran Ulang  
+Nama 
+Proses  PSPEC Proses 5.2 – Lengkapi & Koreksi Data Daftar Ulang  
+Deskripsi 
+Proses  CAMABA melengkapi dan melakukan koreksi data yang telah 
+diisi sebelumnya serta menambahkan data baru yang diperlukan 
+untuk daftar ulang.  
+Data Input  Data lama dan data baru un tuk daftar ulang.  
+Data Output  Konfirmasi finalisasi data daftar ulang, data disimpan di Data 
+Daftar Ulang.  
+Body / 
+Keterangan  Sistem menampilkan data lama untuk verifikasi dan 
+memungkinkan CAMABA melakukan koreksi. Setelah semua 
+data lengkap, CAMABA melak ukan submit final. Semua field 
+wajib harus terisi.  
+3.5.8.9.28  PSPEC Proses 5.3: Upload Berkas Ranking SMA dan Formulir 
+Pendaftaran  
+
+--- PAGE 113 ---
+113  
+Tabel 3.37 PSPEC Proses 5.3 – Upload Berkas Ranking SMA dan Formulir 
+Pendaftaran  
+Nama Proses  PSPEC Proses 5.3 – Upload Berkas Ranking SMA dan 
+Formulir Pendaftaran  
+Deskripsi 
+Proses  CAMABA jalur bebas testing bersyarat (ranking) mengunggah 
+bukti ranking SMA dan formulir pendaftaran yang diperlukan.  
+Data Input  Berkas ranking SMA dan formulir pendaftaran.  
+Data Output  Berkas terunggah untuk validasi.  
+Body / 
+Keterangan  Berkas -berkas ini akan divalidasi secara manual oleh Admin 
+Validasi.  
+3.5.8.9.29  PSPEC  Proses  5.4: Validasi  Berkas  Prestasi  oleh Admin  Validasi  
+Tabel 3.3 7 PSPEC Proses 5.4 – Validasi Berkas Prestasi oleh Admin Validasi  
+Nama 
+Proses  PSPEC Proses 5.4 – Validasi Berkas Prestasi oleh Admin 
+Validasi  
+Deskripsi 
+Proses  Admin Validasi melakukan verifikasi kelengkapan dan kebenaran 
+berkas yang diunggah oleh CAMABA, khususnya untuk jalur 
+prestasi/ranking.  
+Data Input  Data daftar ulang CAMABA dan berkas prestasi/ranking.  
+Data Output  Status validasi (diterima/ditolak/perlu perbaikan), Data Validasi 
+CAMABA.  
+Body / 
+Keterangan  Admin Validasi dapat melihat detail berkas, menginput keputusan 
+(terima/tolak), dan memberikan a lasan penolakan jika diperlukan. 
+Jika ditolak, notifikasi akan dikirim ke CAMABA.  
+3.5.8.9.30  PSPEC Proses 5.5: Kirim Notifikasi "Berkas Tidak Valid" ke 
+Camaba  
+Tabel 3.3 8 PSPEC Proses 5.5 – Kirim Notifikasi "Berkas Tidak Valid" ke 
+CAMABA  
+Nama Proses  PSPEC Proses 5.5 – Kirim Notifikasi "Berkas Tidak Valid" 
+ke CAMABA  
+
+--- PAGE 114 ---
+114  
+Deskripsi 
+Proses  Sistem mengirimkan notifikasi kepada CAMABA apabila berkas 
+yang diunggah dianggap tidak valid oleh Admin Validasi.  
+Data Input  Status "Tidak Valid" dari proses 5.4.  
+Data Output  Notifikasi terkirim ke CAMABA.  
+Body / 
+Keterangan  Notifikasi ini memberitahu CAMABA bahwa ada masalah 
+dengan berkas mereka dan mungkin memerlukan perbaikan atau 
+unggah ulang.  
+3.5.8.9.31  PSPEC  Proses  5.6: Aktivasi  VA Cicilan  Uang  Kuliah  
+Tabel 3. 39. PSPEC Proses 5.6 – Aktivasi VA Cicilan Uang Kuliah  
+Nama 
+Proses  PSPEC Proses 5.6 – Aktivasi VA Cicilan Uang Kuliah  
+Deskripsi 
+Proses  Sistem mengaktifkan Virtual Account (VA) untuk pembayaran 
+cicilan uang kuliah berdasarkan data program studi CAMABA.  
+Data Input  Data Validasi CAMABA (program studi).  
+Data Output  VA cicilan uang kuliah dan info VA disimpan di Formulir & VA.  
+Body / 
+Keterangan  Sistem mengambil data program studi, menghitung nominal 
+cicilan, dan mengirimkan permintaan aktivasi VA ke BRIVA. Jika 
+aktiva si berhasil, info VA disimpan. Jika gagal, akan dikirim ke 
+halaman Admin Validasi untuk validasi manual.  
+3.5.8.9.32  PSPEC  Proses  5.7: Kirim  Email  VA Info (Daftar  Ulang)  
+Tabel 3.4 0. PSPEC Proses 5.7 – Kirim Email VA Info (Daftar Ulang)  
+Nama Proses  PSPEC Proses 5.7 – Kirim Email VA Info (Daftar Ulang)  
+Deskripsi 
+Proses  Sistem mengirimkan email berisi informasi Virtual Account 
+(VA) pembayaran cicilan uang kuliah kepada CAMABA.  
+Data Input  Info VA dari proses 5.6.  
+Data Output  Email notifikasi terkirim.  
+Body / 
+Keterangan  Email ini memberikan detail VA dan panduan pembayaran 
+cicilan kepada CAMABA yang akan daftar ulang.  
+3.5.8.9.33  PSPEC  Proses  5.8: Login  via No Pendaftaran  & Tgl Lahir  
+
+--- PAGE 115 ---
+115  
+Tabel 3.4 1. PSPEC Proses 5.8 – Login via No Pendaftaran & Tgl Lahir  
+Nama Proses  PSPEC Proses 5.8 – Login via No Pendaftaran & Tgl Lahir  
+Deskripsi 
+Proses  CAMABA yang lulus melakukan login menggunakan nomor 
+pendaftaran dan tanggal lahir sebagai password awal untuk proses 
+daftar ulang.  
+Data Input  Nomor pendaftaran dan tanggal lahir.  
+Data Output  Akses ke halaman daftar ulang atau permintaan ganti password.  
+Body / 
+Keterangan  Sistem menyediakan dua opsi: login langsung atau ganti 
+password terlebih dahulu. Jika data tidak valid, akses akan 
+ditolak.  
+3.5.8.9.34  PSPEC  Proses  6.1: Validasi  Data  Camaba  (Daftar  Ulang)  
+Tabel 3.4 2. PSPEC Proses 6.1 – Validasi Data CAMABA (Daftar Ulang)  
+ 
+Nama 
+Proses  PSPEC Proses 6.1 – Validasi Data CAMABA (Daftar Ulang)  
+Deskripsi 
+Proses  Admin Validasi melakukan verifikasi kelengkapan dan kebenaran 
+data CAMABA yang telah menyelesaikan daftar ulang.  
+Data Input  Data daftar ulang CAMABA.  
+Data Output  Status validasi (diterima/ditolak/perlu perbaikan).  
+Body / 
+Keterangan  Admin Validasi dapat melihat data yang dikelompokkan per 
+fakultas dan pro gram studi, kemudian melakukan validasi manual 
+berdasarkan kelengkapan berkas yang disubmit.  
+3.5.8.9.35  PSPEC  Proses  6.2: Klasifikasi  & Rekap  Data  
+Tabel 3.4 3 PSPEC Proses 6.2 – Klasifikasi & Rekap Data  
+Nama Proses  PSPEC Proses 6.2 – Klasifikasi & Rekap Data  
+Deskripsi 
+Proses  Sistem secara otomatis mengklasifikasikan data CAMABA 
+berdasarkan fakultas dan program studi setelah divalidasi.  
+Data Input  Data Validasi CAMABA (status validasi).  
+Data Output  Data CAMABA yang sudah terklasifikasi dan siap direkap.  
+
+--- PAGE 116 ---
+116  
+Body / 
+Keterangan  Proses ini memudahkan Admin Validasi untuk mengelola dan 
+mengekspor data CAMABA yang telah tervalidasi dalam format 
+terstruktur.  
+3.5.8.9.36  PSPEC  Proses  6.3: Kirim  Pesan  / Notifikasi  (oleh  Admin  Validasi)  
+Tabel 3.4 4. PSPEC Proses 6.3 – Kirim Pesan / Notifikasi (oleh Admin 
+Validasi)  
+Nama Proses  PSPEC Proses 6.3 – Kirim Pesan / Notifikasi (oleh Admin 
+Validasi)  
+Deskripsi 
+Proses  Admin Validasi dapat mengirim pesan atau notifikasi langsung ke 
+email atau notifikasi di web CAMABA.  
+Data Input  Pesan/notifikasi dari Admin Validasi.  
+Data Output  Notifikasi & Email Log.  
+Body / 
+Keterangan  Fitur ini memungkinkan Admin Validasi untuk berkomunikasi 
+dengan CAMABA, misalnya untuk meminta perbaikan data yang 
+ditolak.  
+3.5.8.9.37  PSPEC  Proses  6.4: Kirim  Pertanyaan  (oleh  Camaba)  
+Tabel 3.4 5 PSPEC Proses 6.4 – Kirim Pertanyaan (oleh CAMABA)  
+Nama Proses  PSPEC Proses 6.4 – Kirim Pertanyaan (oleh CAMABA)  
+Deskripsi 
+Proses  CAMABA dapat mengajukan pertanyaan kepada Admin Validasi 
+melalui sistem.  
+Data Input  Pertanyaan dari CAMABA.  
+Data Output  Pertanyaan masuk ke sistem.  
+Body / 
+Keterangan  Proses ini memfasilitasi komunikasi dua arah antara CAMABA 
+dan admin untuk mendapatkan bantuan atau penjelasan terkait 
+PMB.  
+3.5.8.9.38  PSPEC  Proses  6.5: Jawab  Pertanyaan  (oleh  Admin  Validasi)  
+Tabel 3.4 6. PSPEC Proses 6.5 – Jawab Pertanyaan (oleh Admin Validasi)  
+Nama Proses  PSPEC Proses 6.5 – Jawab Pertanyaan (oleh Admin Validasi)  
+Deskripsi Admin Validasi dapat menjawab pertanyaan yang diajukan oleh 
+
+--- PAGE 117 ---
+117  
+Proses  CAMABA.  
+Data Input  Jawaban dari Admin Validasi.  
+Data Output  Jawaban terkirim ke CAMABA.  
+Body / 
+Keterangan  Adanya kotak masuk pesan dan tanda pesan yang belum terjawab 
+membantu admin dalam melac ak dan menanggapi pertanyaan 
+CAMABA secara efisien.  
+3.5.8.9.39  PSPEC  Proses  7.1: Kelola  Periode  Pendaftaran  
+Tabel 3.4 7. PSPEC Proses 7.1 – Kelola Periode Pendaftaran  
+Nama Proses  PSPEC Proses 7.1 – Kelola Periode Pendaftaran  
+Deskripsi 
+Proses  Admin Pusat menentukan dan mengatur jadwal gelombang 
+pendaftaran, batas waktu, dan syarat -syarat pendaftaran.  
+Data Input  Jadwal gelombang, syarat pendaftaran, batas waktu (tanggal 
+pendaftaran, tanggal ujian, tanggal pengumuman, waktu daftar 
+ulang).  
+Data Output  Konfi gurasi periode pendaftaran tersimpan di Konfigurasi 
+Sistem.  
+Body / 
+Keterangan  Admin Pusat dapat menambah, mengubah, atau menonaktifkan 
+gelombang pendaftaran. Perubahan akan langsung berlaku di 
+sistem.  
+3.5.8.9.40  PSPEC  Proses  7.2: Kelola  Jenis  Seleksi  
+Tabel 3.4 8 PSPEC Proses 7.2 – Kelola Jenis Seleksi  
+Nama Proses  PSPEC Proses 7.2 – Kelola Jenis Seleksi  
+Deskripsi 
+Proses  Admin Pusat dapat menentukan jenis -jenis seleksi yang tersedia 
+untuk setiap periode pendaftaran (misalnya, bebas testing, bebas 
+testing syarat ra nking, testing).  
+Data Input  Jenis seleksi dan cara penyeleksian.  
+Data Output  Konfigurasi jenis seleksi tersimpan di Konfigurasi Sistem.  
+Body / 
+Keterangan  Proses ini memungkinkan fleksibilitas dalam metode seleksi yang 
+ditawarkan oleh universitas.  
+
+--- PAGE 118 ---
+118  
+3.5.8.9.41  PSPEC  Proses  7.3: Kelola  Jenis  Formulir  & Biaya  
+Tabel 3. 49 PSPEC Proses 7.3 – Kelola Jenis Formulir & Biaya  
+Nama Proses  PSPEC Proses 7.3 – Kelola Jenis Formulir & Biaya  
+Deskripsi 
+Proses  Admin Pusat dapat menambah jenis formulir pendaftaran beserta 
+harganya, dibedakan antara kedokteran dan non -kedokteran.  
+Data Input  Jenis formulir dan harganya.  
+Data Output  Konfigurasi jenis formulir dan biaya tersimpan di Konfigurasi 
+Sistem.  
+Body / 
+Keterangan  Ini memungkinkan admin untuk mengel ola struktur biaya 
+pendaftaran secara dinamis.  
+3.5.8.9.42  PSPEC  Proses  7.4: Kelola  Cicilan  per Prodi  
+Tabel 3.5 0. PSPEC Proses 7.4 – Kelola Cicilan per Prodi  
+Nama Proses  PSPEC Proses 7.4 – Kelola Cicilan per Prodi  
+Deskripsi 
+Proses  Admin Pusat menetapkan nominal cicilan 1 -3 berdasarkan 
+program studi.  
+Data Input  Nominal cicilan dan program studi terkait.  
+Data Output  Konfigurasi cicilan per prodi tersimpan di Konfigurasi Sistem.  
+Body / 
+Keterangan  Proses ini mendukung fitur pembayaran cicilan yang disesuai kan 
+dengan program studi yang dipilih.  
+3.5.8.9.43  PSPEC  Proses  7.5: Kelola  Info Landing  Page  
+Tabel 3.5 1 PSPEC Proses 7.5 – Kelola Info Landing Page  
+Nama Proses  PSPEC Proses 7.5 – Kelola Info Landing Page  
+Deskripsi 
+Proses  Admin Pusat mengelola konten informasi umum yang 
+ditampilkan di halaman utama (landing page) sistem PMB, seperti 
+jadwal, pengumuman, dll.  
+Data Input  Konten informasi yang akan ditampilkan.  
+Data Output  Konfigurasi informasi landing page tersimpan di Konfigurasi 
+Sistem.  
+
+--- PAGE 119 ---
+119  
+Body / 
+Ketera ngan  Memungkinkan admin untuk selalu memperbarui informasi 
+penting bagi CAMABA dan pengunjung.  
+3.5.8.9.44  PSPEC  Proses  7.6: Pengumuman  & Notifikasi  (untuk  
+Camaba)  
+Tabel 3.5 2 PSPEC Proses 7.6 – Pengumuman & Notifikasi (untuk 
+CAMABA)  
+Nama Proses  PSPEC Proses 7.6 – Pengumuman & Notifikasi (untuk 
+CAMABA)  
+Deskripsi 
+Proses  Sistem menampilkan pengumuman penting dan notifikasi kepada 
+CAMABA, seperti hasil kelulusan atau informasi Virtual Account 
+yang aktif.  
+Data Input  Data pengumuman dan notifikasi dari Konfigurasi Sist em. 
+Data Output  Informasi dan notifikasi ditampilkan di halaman CAMABA.  
+Body / 
+Keterangan  Proses ini memastikan CAMABA mendapatkan informasi terkini 
+dan relevan secara real -time.  
+3.5.8.9.45  PSPEC  Proses  7.7: Pratinjau  Tampilan  UI 
+Tabel 3.5 3. PSPEC Proses 7.7 – Pratinjau Tampilan UI  
+Nama Proses  PSPEC Proses 7.7 – Pratinjau Tampilan UI  
+Deskripsi 
+Proses  Admin Pusat dapat melihat tampilan sistem dari perspektif Admin 
+Validasi atau CAMABA.  
+Data Input  Permintaan pratinjau dari Admin Pusat.  
+Data Output  Tampilan sistem sesuai perspektif yang dipilih.  
+Body / 
+Keterangan  Ini membantu Admin Pusat untuk memverifikasi bagaimana 
+informasi dan perubahan yang mereka buat akan terlihat oleh 
+pengguna lain sebelum dipublikasikan secara luas.  
+3.5.8.10  Data  Store  
+Tabel 3.5 4. Data Store  
+Nama Data Store  Isi/Penjelasan Singkat  
+
+--- PAGE 120 ---
+120  
+Nama Data Store  Isi/Penjelasan Singkat  
+ Akun Pengguna  Data  login  Camaba,  Admin  Pusat,  Admin  Validasi 
+(email, password, role, status aktif)  
+ Formulir & VA Data  formulir  yang  dibeli,  jenis  jalur,  status  VA, 
+nominal VA, status pembayaran  
+Data Formulir 
+Pendaftaran  Data  lengkap  camaba  untuk  seleksi  (data  diri, prodi, 
+asal sekolah, berkas)  
+Kartu  Ujian  & Nomor 
+Ujian  Nomor  ujian,  kartu  ujian  (nama,  jadwal,  lokasi/link, 
+kode QR)  
+Hasil Ujian  Nilai dari GForm, status kelulusan, nomor pendaftaran  
+ Data Daftar Ulang  Data  lanjutan  setelah  kelulusan:  cicilan,  alamat  orang 
+tua, bukti pembayaran ulang  
+ Notifikasi & Email Log Log pengiriman  email,  notifikasi,  pesan  ke camaba  
+(termasuk lupa password)  
+ Data  Validasi  Camaba  Data  hasil  validasi  admin  validasi:  status,  catatan, 
+alasan ditolak, klasifikasi  
+ Konfigurasi Sistem  Data setting periode, jenis jalur, harga formulir, kuota, 
+cicilan, pengumuman  
+  
+
+--- PAGE 121 ---
+121  
+3.5.9 ERD (Entity Relationship Diagram)  
+ 
+Gambar 40 Entity Relationship Diagram  
+ERD sistem penerimaan mahasiswa baru mencakup entitas User , Formulir , 
+Periode , ProgramStudi , Pembayaran , Ujian , DaftarUlang , dan Pesan , dengan 
+hubungan antara User  dan Formulir , Formulir  dengan Pembayaran , Ujian , serta 
+DaftarUlang , dan juga keterkaitan Periode  dan ProgramStudi  dengan Formulir . 
+ERD ini memberikan gambaran struktur database untuk operasi pendaftaran, 
+pengelolaan data calon mahasiswa baru, serta proses validasi dan pembayaran.  
+3.5.10  Ranca ngan Antarmuka Pengguna  
+Rancangan antarmuka pengguna atau Low-Fidelity Prototype  ini dibuat untuk 
+menggambarkan struktur, alur, dan interaksi utama dalam sistem informasi 
+Penerimaan Mahasiswa Baru (PMB) Universitas HKBP Nommensen. Rancangan 
+ini disusun ber dasarkan hasil analisis kebutuhan pengguna . 
+3.5.9.1   Halaman Dashboard  
+
+
+--- PAGE 122 ---
+122  
+ 
+Gambar 3. 41. Halaman Dashboard Calon Mahasiswa Baru  
+Pada g ambar 3. 40 terdapat  menunjukkan tampilan dashboard camaba , yang 
+menjadi beranda utama setelah pengguna masuk ke sistem. Halaman ini 
+menampilkan ringkasan status pendaftaran, menu navigasi utama, serta informasi 
+umum terkait jadwal dan pengumuman penting.  
+3.5.9.2  Halaman Pilih Gelombang Pendaftaran  
+
+
+--- PAGE 123 ---
+123  
+ 
+Gambar 3. 42. Halaman Pilih Gelombang Pendaftaran  
+Pada g ambar 3. 41 terdapat  rancangan halaman pemilihan gelombang 
+pendaftaran , tempat camaba memilih gelombang aktif beserta rincian biaya, 
+jadwal, dan batas waktu pendaftaran. Halaman ini membantu pengguna 
+menentukan periode yang sesuai sebelum melakukan pembelian formulir.  
+3.5.9.3  Halaman  Pembelian Formulir Pendaftaran  
+
+
+--- PAGE 124 ---
+124  
+ 
+Gambar 3. 43. Halaman Pembelian Formulir Pendaftaran  
+Pada g ambar 3. 42 menampilkan form pembelian formulir pendaftaran, di mana 
+camaba mengisi data dasar seperti nama dan email, lalu sistem akan menghasilkan 
+kode pembayaran BRIVA secara otomatis. Desain dibuat sederhana untuk 
+memudahkan pengisian.  
+ 
+ 
+
+
+--- PAGE 125 ---
+125  
+3.5.9.4   Halaman Pop Out Rincian Pembayaran  
+ 
+Gambar 3.4 4. Halaman Pop Out Rincian Pembayaran  
+Gambar 3.4 3 menunjukkan pop -up rincian pembayaran, yang berfungsi 
+menampilkan detail transaksi seperti kode BRIVA, nominal pembayaran, dan 
+batas waktu pelunasan. Tampilan ini muncul otomatis setelah camaba 
+menyelesaikan form pembelian.  
+ 
+3.5.9.5   Halaman Status Pembayaran : D iproses  
+
+
+--- PAGE 126 ---
+126  
+ 
+Gambar 3. 45. Halaman Status Pembayaran Diproses  
+Gambar 3. 44 memperlihatkan status pembayaran diproses, di mana sistem 
+sedang menunggu konfirmasi dari server BRIVA. Halaman ini memberikan 
+kejelasan kepada camaba agar tidak melakukan pembayaran ganda.  
+ 
+3.5.9.6  Halaman Status Pembayaran : Berhasi l 
+
+
+--- PAGE 127 ---
+127  
+ 
+Gambar 3. 46. Halaman Status Pembayaran Berhasil  
+Pada g ambar 3. 45 terdapat  tampilan status pembayaran berhasil, yang 
+menandakan bahwa pembayaran formulir telah diverifikasi. Setelah status ini 
+muncul, pengguna dapat langsung melanjutkan ke tahap pengisian data diri.  
+3.5.9.7  Halaman Pengisian Data Pribadi Formulir  
+
+
+--- PAGE 128 ---
+128  
+ 
+Gambar 3. 47. Halaman Pengisian Data Pribadi Formulir  
+Gambar 3. 46 menampilkan form pengisian data pribadi, berisi kolom seperti 
+nama lengkap, NIK, tempat/tanggal lahir, dan jenis kelamin. Halaman ini menjadi 
+tahap awal dalam proses pendaftaran camaba.  
+ 
+3.5.9.8  Halaman Pengisian Data Diri Pendidikan  
+
+
+--- PAGE 129 ---
+129  
+ 
+Gambar 3. 48. Halaman Pengisian Data Diri Pendidikan  
+Gambar 3. 47 menunjukkan formulir data pendidikan, tempat camaba mengisi 
+informasi asal sekolah, jurusan, dan nilai rata -rata. Desain dibuat agar pengguna 
+dapat meninjau kembali datanya sebelum dikirim.  
+ 
+3.5.9.9  Halaman Pengisian Data  Wali dan Upload Dokumen  
+
+
+--- PAGE 130 ---
+130  
+ 
+Gambar 3. 49. Halaman Pengisian Data Wali dan Upload Dokumen  
+Gambar 3. 48 merupakan tampilan form data wali dan unggah dokumen, seperti 
+KTP, ijazah, atau pas foto. Halaman ini dilengkapi validasi agar pengguna tidak 
+melewati tahap penting dalam pengisian data.  
+ 
+
+
+--- PAGE 131 ---
+131  
+3.5.9.10  Halaman Kartu Ujian  
+ 
+Gambar 3. 50. Halaman Kartu Ujian  
+Gambar 3. 49 menampilkan kartu ujian otomatis, yang berisi nomor peserta, 
+jadwal, lokasi, serta QR code validasi. Kartu ini dapat diunduh setelah 
+pembayaran diverifikasi oleh sistem.  
+ 
+3.5.9.11  Halaman Login Daftar Ulang PMB  
+
+
+--- PAGE 132 ---
+132  
+ 
+Gambar 3. 51. Halaman Login Daftar Ulang PMB  
+Gambar 3.11 merupakan rancangan halaman login daftar ulang, tempat camaba 
+yang telah lulus masuk menggunakan akun masing -masing. Halaman ini juga 
+menyediakan opsi “Lupa Password”.   
+3.5.9.12  Halaman Pengisian Data Diri untuk Daftar Ulan g 
+
+
+--- PAGE 133 ---
+133  
+ 
+Gambar 3. 52. Halaman Pengisian Data Diri untuk Daftar Ulang  
+Gambar 3.12 menampilkan formulir daftar ulang, yang menampilkan data lama 
+camaba sekaligus kolom untuk melengkapi informasi tambahan seperti alamat 
+terbaru dan nomor rekening pembayaran daftar ulang.  
+
+
+--- PAGE 134 ---
+134  
+3.5.9.13  Halaman Status Daftar Ulang  
+ 
+Gambar 3. 53. Halaman Status Daftar Ulang  
+Gambar 3.13 memperlihatkan halaman status daftar ulang, di mana camaba 
+dapat memantau proses validasi oleh admin, mulai dari “Menunggu”, “Diterima”, 
+hingga “Ditolak”.  
+3.5.9.14  Halaman Validasi Data Daftar Ulang  
+
+
+--- PAGE 135 ---
+135  
+ 
+Gambar 3. 54. Halaman Validasi Data Daftar Ulang  
+Gambar 3.14 merupakan rancangan halaman validasi data daftar ulang yang 
+digunakan oleh admin validasi untuk memeriksa data camaba. Halaman ini 
+dilengkapi dengan tombol “Setujui” dan “Tolak” serta kolom keterangan.  
+ 
+3.5.9.15  Halaman Kelola Akun User  
+
+
+--- PAGE 136 ---
+136  
+ 
+Gambar 3. 55. Halaman Kelola Akun User  
+Gambar 3.15 menampilkan halaman kelola akun user, yang digunakan oleh 
+admin pusat untuk menambah, menghapus, atau memperbarui akun admin 
+validasi. Tampilan dirancang agar sederhana dan mudah dipahami.  
+ 
+ 
+
+
+--- PAGE 137 ---
+137  
+3.6 Pengujian Sistem  
+3.6.1 Tujuan  Pengujian  
+Tahap dari pengujian ini adalah untuk memastikan bahwa sistem Penerimaan 
+Mahasiswa Baru (PMB) yang dibangun menggunakan Spring Boot berjalan sesuai 
+dengan fungsionalitas yang telah  dirancang.  Pengujian  dilakukan  untuk  
+mengetahui apakah fitur -fitur utama, terutama bagian admin (CMS -like) dan user, 
+berfungsi dengan benar.  
+3.6.2 Jenis Pengujian  
+Pengujian sistem  dilakukan  menggunakan  pendekatan  Black  Box Testing , 
+yaitu dengan memfokuskan pada masukan dan keluaran tanpa memperhatikan 
+struktur kode di dalam sistem.  
+Jenis pengujian yang digunakan:  
+- Black Box Testing  
+- Uji Fungsional  
+- Uji Validasi  Input  
+- Uji Integrasi Modul  
+3.6.3 Skema Pengujian Sistem  
+3.6.3.1   Pengujian Fungsional  
+3.6.3.1.1  Blackbox Testing  
+Pengujian blackbox  testing  dilakukan  untuk  menguji  kebutuhan  
+fungsional sistem guna memastikan bahwa sistem dapat berjalan dengan 
+semestinya seperti tujuan awal.  Pengujian ini memerlukan input  untuk 
+menghasilkan output  dilakukan  pada  setiap  modul  utama . Berikut 
+merupakan parameter untuk mencapai keberhasilan pada fungsional  
+Tabel 3.5 5. Blackbox Testing  
+ID Skenario 
+Pengujian  Deskripsi Pengujian  Hasil yang 
+Diharapkan  
+
+--- PAGE 138 ---
+138  
+ID Skenario 
+Pengujian  Deskripsi Pengujian  Hasil yang 
+Diharapkan  
+TC001  Login 
+Camaba  Pengguna (Camaba) 
+mengisi form login 
+dengan email dan 
+password valid  Pengguna berhasil 
+masuk ke dashboard 
+Camaba  
+  
+Pengguna mengisi form 
+login dengan email dan 
+password salah  Sistem menampilkan 
+pesan “Email atau 
+Password salah”  
+TC002  Login Gagal  Pengguna mencoba 
+login dengan email 
+benar namun password 
+salah  Sistem menolak login 
+dan menampilkan 
+pesan error  
+  
+Pengguna mencoba 
+login dengan email 
+salah namun password 
+benar  Sistem menolak login 
+dan menampilkan 
+pesan error  
+  
+Pengguna menco ba 
+login dengan email dan 
+password salah  Sistem menolak login 
+dan menampilkan 
+pesan error  
+TC003  Pembelian 
+Formulir  Camaba memilih jalur 
+pendaftaran dan 
+menekan tombol “Beli”  Sistem menampilkan 
+Virtual Account (VA) 
+dan detail pembayaran  
+TC004  Formulir 
+Aktif Setelah 
+Bayar  Camaba mencoba login 
+sebelum melakukan 
+pembayaran  Formulir tidak dapat 
+dibuka dan muncul 
+pesan “Silakan 
+lakukan pembayaran 
+terlebih dahulu”  
+  
+Camaba login setelah Formulir pendaftaran 
+
+--- PAGE 139 ---
+139  
+ID Skenario 
+Pengujian  Deskripsi Pengujian  Hasil yang 
+Diharapkan  
+pembayaran berhasil  dapat diakses  
+TC005  Pengisian 
+Data Diri  Camaba mengisi semua 
+data pribadi dengan 
+lengkap lalu menekan 
+tombol Simpan  Data tersimpan dan 
+status berubah 
+menjadi Terkunci  
+  
+Camaba mencoba 
+menyimpan data yang 
+belum lengkap  Sistem menampilkan 
+pesan “Lengkapi 
+seluruh data terlebih 
+dahulu”  
+TC006  Upload 
+Dokumen  Camaba mengunggah 
+file PDF berukuran < 
+2MB  Dokumen tersimpan 
+dan pratinjau 
+dokumen muncul  
+  
+Camaba mengunggah 
+file di atas 2MB atau 
+bukan PDF  Sistem menolak 
+upload dan 
+menampilkan pesan 
+error  
+TC007  Validasi 
+Admin 
+Menolak 
+Data  Admin menekan 
+tombol “Tolak” dan 
+memberikan catatan 
+revisi  Camaba menerima 
+notifikasi penolakan 
+dan bisa mengedit 
+ulang datanya  
+TC008  Mengikuti 
+Ujian Online  Camaba menekan 
+tombol “Ikuti Ujian” di 
+dashboard  Sistem mengarahkan 
+ke Google Form ujian 
+dengan data otomatis 
+terisi (Prefilled)  
+TC009  Lihat 
+Pengumuman 
+Hasil Ujian  Camaba login setelah 
+ujian selesai  Halaman 
+pengumuman 
+menampilkan status 
+
+--- PAGE 140 ---
+140  
+ID Skenario 
+Pengujian  Deskripsi Pengujian  Hasil yang 
+Diharapkan  
+kelulusan sesuai hasil 
+ujian  
+TC010  Download 
+SKL & Form 
+Daftar Ulang  Camaba menekan 
+tombol “Unduh” pa da 
+halaman hasil ujian  File PDF SKL dan 
+Formulir Daftar Ulang 
+berhasil diunduh  
+3.6.3.1.2  Integration Testing  
+Pengujian integrasi dilakukan untuk memastikan setiap modul dalam sistem 
+Penerimaan Mahasiswa Baru (PMB) dapat saling berinteraksi dan bekerja secara 
+menyel uruh sesuai rancangan yang telah dibuat sebelumnya. Tujuan utama 
+pengujian ini adalah memastikan aliran data antar modul berjalan dengan benar 
+serta tidak terjadi kesalahan komunikasi ketika seluruh komponen sistem 
+digabungkan.  
+Pada tahap ini, metode yang digunakan adalah Black Box Testing , di mana 
+fokus pengujian bukan pada kode program, melainkan pada hasil keluaran yang 
+dihasilkan dari setiap proses. Pengujian dilakukan dengan mengikuti skenario 
+yang menggambarkan alur penggunaan sebenarnya, mulai dari p roses pendaftaran 
+akun, pengisian data pribadi, verifikasi oleh admin, hingga login dan pengelolaan 
+data pendaftar.  
+Tahapan pengujian integrasi meliputi:  
+1. Menggabungkan modul -modul utama yang sebelumnya telah lolos pengujian 
+unit, seperti modul pendaftaran, login, dan dashboard admin.  
+2. Menjalankan skenario uji berdasarkan urutan proses kerja sistem PMB agar 
+sesuai dengan alur pengguna sebenarnya.  
+3. Memastikan data yang dikirim dari satu modul dapat diterima dan diproses 
+dengan benar oleh modul lain.  
+4. Mencatat hasil setiap pengujian, termasuk keberhasilan, kesalahan validasi, 
+maupun kemungkinan anomali pada sistem.  
+
+--- PAGE 141 ---
+141  
+Dari hasil pengujian ini diharapkan seluruh modul pada sistem PMB dapat 
+terhubung dan berfungsi dengan baik tanpa menimbulkan kesalahan log ika atau 
+gangguan dalam alur proses.  
+3.6.3.2  PengujianNon -Fungsional  
+Pengujian non -fungsional dilakukan untuk memastikan bahwa sistem 
+Penerimaan Mahasiswa Baru (PMB) tidak hanya berfungsi dengan baik, tetapi 
+juga memiliki performa, keamanan, dan kemudahan penggun aan yang sesuai 
+dengan harapan pengguna. Pengujian ini dilakukan berdasarkan skenario yang 
+dijabarkan pada Tabel 3. 58 berikut.  
+Tabel 3. 56 Skenario Uji Kebutuhan Non -Fungsional Sistem PMB  
+Kebutuhan  Penjelasan  Skenario Uji  
+Portability  Sistem PMB dapat 
+berjalan di berbagai 
+perangkat seperti 
+laptop maupun PC 
+tanpa kendala 
+kompatibilitas.  Pengujian dilakukan dengan mengakses 
+sistem melalui beberapa perangkat 
+dengan sistem operasi berbeda untuk 
+memastikan seluruh fitur berfungsi 
+secara konsisten.  
+Adaptabil ity Sistem dapat diakses 
+melalui berbagai 
+peramban ( web 
+browser ) selama 
+perangkat terhubung 
+ke internet.  Sistem diuji dengan membuka laman 
+PMB melalui Google Chrome, Mozilla 
+Firefox, dan Microsoft Edge pada 
+alamat: https:// domainPMB.u hn/. 
+
+--- PAGE 142 ---
+142  
+Reliability  Sistem diharapkan 
+dapat beroperasi 
+secara stabil tanpa 
+mengalami crash  
+atau ganggu San 
+server.  Pengujian dilakukan dengan mengakses 
+fitur pendaftaran dan login secara 
+berulang pada waktu berbeda untuk 
+memastikan kestabilan  sistem selama 
+digunakan.  
+Security  Akses sistem hanya 
+diperbolehkan bagi 
+pengguna dengan 
+akun resmi seperti 
+calon mahasiswa dan 
+admin PMB.  Pengujian dilakukan dengan mencoba 
+proses login menggunakan kombinasi 
+username  dan password  yang valid dan 
+tidak val id guna memastikan keamanan 
+autentikasi.  
+Usability  Antarmuka 
+dirancang agar 
+mudah dipahami dan 
+digunakan oleh calon 
+mahasiswa maupun 
+admin.  Pengujian dilakukan menggunakan 
+metode System Usability Scale (SUS)  
+untuk menilai tingkat kemudahan, 
+kejelasan, dan kenyamanan pengguna 
+dalam proses pendaftaran. Penjelasan 
+lebih lanjut dijabarkan pada Subbab 
+3.6.3.  
+Performance  Sistem mampu 
+memberikan respons 
+yang cepat terhadap 
+setiap tindakan 
+pengguna, seperti 
+login, pengisian 
+formulir, dan 
+navigasi halaman.  Pengujian dilakukan dengan mengamati 
+waktu respons sistem secara langsung 
+pada berbagai halaman utama. Sistem 
+dinyatakan baik apabila setiap aksi 
+pengguna memberikan respons dalam 
+waktu kurang dari 5 –10 deti k. 
+ 
+3.6.3.2.1  Pengujian Usability (System Usability Scale – SUS)  
+
+--- PAGE 143 ---
+143  
+Pengujian usability menggunakan metode System Usability Scale (SUS)  
+bertujuan untuk mengukur sejauh mana sistem PMB mudah digunakan dan 
+memuaskan dari sudut pandang pengguna. Melalui pengujian ini, di peroleh 
+gambaran tentang efektivitas, efisiensi, serta kenyamanan pengguna dalam 
+berinteraksi dengan antarmuka sistem.  
+Metode SUS terdiri dari 10 pernyataan yang dinilai menggunakan skala Likert 1 –
+5, dengan keterangan sebagai berikut:  
+Tabel 3.5 7 Penilaian Menggunakan Sskala Likert  
+Skor  Keterangan  
+1 Sangat Tidak Setuju  
+2 Tidak Setuju  
+3 Netral  
+4 Setuju  
+5 Sangat Setuju  
+Adapun daftar pernyataan yang digunakan dalam pengujian usability  ini 
+disajikan pada Tabel 3. 58. 
+Tabel 3.  58  Daftar Pernyataan System Usability Scale (SUS)  
+No Pernyataan  
+1 Saya merasa akan sering menggunakan sistem ini.  
+2 Saya merasa sistem ini rumit untuk digunakan.  
+3 Saya merasa sistem ini mudah digunakan.  
+4 Saya memerlukan bantuan dari orang lain atau teknisi untuk dapat 
+menggunakan sistem ini.  
+5 Saya merasa fitur -fitur dalam sistem ini terintegrasi dengan baik.  
+6 Saya merasa terdapat inkonsistensi dalam sistem ini.  
+7 Saya merasa sebagian besar orang akan mudah mempelajari cara 
+menggunakan sistem ini  dengan cepat.  
+
+--- PAGE 144 ---
+144  
+8 Saya merasa sistem ini sulit untuk digunakan.  
+9 Saya merasa percaya diri dalam menggunakan sistem ini.  
+10 Saya perlu mempelajari banyak hal terlebih dahulu sebelum dapat 
+menggunakan sistem ini.  
+Dalam proses pengujian, setiap responden memberikan skor berdasarkan 
+pengalaman mereka menggunakan sistem PMB.  
+  
+
+--- PAGE 145 ---
+145  
+DAFTAR  PUSTAKA  
+ 
+[1]  S. D. R. H. Lubis, "Pendidikan sebagai Upaya Peningkatan Kualitas Sumber Daya 
+Manusia di Era Digital," Jurnal Pendidikan dan Kebudayaan, Vols. vol. 9, no. 2, p. 
+85–94, 2021.  
+[2]  N. M. F. d. R. R. W. R. M. Ilham, "Sistem Informasi Penerimaan Mahasiswa Baru 
+Berbasis Web di SMK 1 Perintis Depok Menggunakan CodeIgniter 4," Journal 
+Web Information Systems (JWIS), vol. 1, no. 1, pp. 1 -7, 2024.  
+[3]  A. Hidayat, "Pengembangan Sistem Inf ormasi Penerimaan Mahasiswa Baru 
+Berbasis Web “SIPSB”," Media Elektrik: Jurnal Teknologi & Sistem Informasi, 
+vol. 15, no. 1, pp. 45 -55, 2024.  
+[4]  M. M. d. A. Akbar, "Sistem Informasi Penerimaan Peserta Didik Baru Berbasis 
+Web pada SDIT Adzkia," SEIKO: J urnal Manajemen dan Bisnis, vol. 6, no. 2, p. 
+294–300, 2023.  
+[5]  F. Aldi, "Sistem Informasi Penerimaan Mahasiswa Baru Berbasis Web 
+Menggunakan Metode Waterfall," Sinkron: Jurnal dan Penelitian Teknik 
+Informatika, vol. 7, no. 1, pp. 111 -119, 2021.  
+[6]  L. S. R. A. S. d. H. M. M. Nugraha, "Rancang Bangun Sistem Informasi 
+Penerimaan Mahasiswa Baru Berbasis Web dengan Menggunakan Framework 
+Laravel," Jurnal Informatika dan Teknik Elektro Terapan (JITET), vol. 12, no. 2, p. 
+1162 –1169, 2024.  
+[7]  M. A. N. d . S. Munir, "Analisis dan Implementasi RESTful API guna 
+Pengembangan Sistem Informasi Akademik pada Perguruan Tinggi," Jurnal 
+Informatika Terpadu (JIT), vol. 8, no. 1, p. 47 –61, 2023 –2024.  
+[8]  L. S. A. d. E. Mailoa, "Pembuatan REST API Manajemen Data Karyawan Berbasis 
+Website Menggunakan Spring Boot," Jurnal Indonesia: Manajemen Informatika 
+dan Komunikasi, vol. 5, no. 2, p. 1543 –1552, 2024.  
+[9]  M. M. R. A. P. d. G. F. N. R. Yulianto, "Perform ance Comparison Analysis of 
+
+--- PAGE 146 ---
+146  
+SpringBoot and Laravel Frameworks Using API Web Service," Jurnal Informatika 
+dan Teknik Elektro Terapan (JITET), vol. 12, no. 2, p. 1145 –1153, 2024.  
+[10]  P. P. A. S. A. S. d. S. D. I. T. W. Rohman, "Rancang Bangun Sistem Pend aftaran 
+Siswa Baru SMK Citra Negara Depok Menggunakan Metode Waterfall," Jurnal 
+Riset Teknik Komputer (JURTIKOM), vol. 2, no. 1, p. 31 –39, 2025.  
+[11]  A. D. N. d. E. e. a. A. Witania, "Analisis Perbandingan Metode Manajemen Proyek 
+TI yang Paling Sering D igunakan di Indonesia dan Luar Negeri," Jurnal Teknologi 
+Informasi dan Ilmu Komputer (JTIIK), vol. 723 –730, no. 6, p. 4, 2016.  
+[12]  D. Pradana, "Tantangan Implementasi Manajemen Proyek Teknologi Informasi 
+dalam Masa Pandemi Covid -19," Bangkit Indonesia,  vol. 9, no. 2, 2020.  
+[13]  A. N. d. W. W. A. T. Widiyatmoko, "Development of Web -Based Student 
+Registration Information System with Rapid Application Development Approach," 
+Journal of Computer Networks, Architecture and High Performance Computing, 
+vol. 6, no. 1, p. 484 –491, 2024.  
+[14]  M. O. Tumbade, "Implementation of the Waterfall Method in Mobile Web -Based 
+Outpatient Registration Application," Teknosi: Jurnal Teknologi Informasi dan 
+Komputer, vol. 10, pp. 1 -7, 2024.  
+[15]  S. A. Putri, "Penerapan V -Model pada Pengembangan Sistem Pembelajaran 
+Berbasis Web," Jurnal Informatika (JINAV), vol. 4 , no. 1, pp. 1 -14, 2023.  
+[16]  S. Dalis, "Model Rapid Application Development (RAD) Untuk Pengembangan 
+Aplikasi Cepat," Jurnal ImTechn o / JUTITI, vol. 5, pp. 1 -7, 2024.  
+[17]  A. Rachman, "Implementasi Model Incremental Pada Pengembangan Aplikasi," 
+Integer: Jurnal Informatika, vol. VIII, no. 1, pp. 34 -42, 2023.  
+[18]  R. Sari, "The Systematic Literature Review of the Spiral Development  Model: 
+Topics, Trends and Application Areas," Injuratech Journal, vol. II, no. 2, pp. 154 -
+171, 2022.  
+[19]  S. A. Fadillah, "Implementasi Agile Scrum pada Pembuatan Website: Studi Kasus 
+dan Praktik," Decode: Jurnal Informatika Universitas Muhammadiyah Ke ndari, 
+
+--- PAGE 147 ---
+147  
+vol. IV, no. 1, pp. 301 -305, 2024.  
+[20]  E. Dahlan, "Implementasi Aplikasi E -Office di Badan Pendapatan Daerah Provinsi 
+Sulawesi Utara," CSRID Journal, vol. XV, no. 2, pp. 124 -143, 2023.  
+[21]  P. Kustanto, "Penerapan Metode Prototype dalam Peran cangan Sistem Informasi," 
+JSRCS: Jurnal Sistem dan Riset Computer Science, vol. V, no. 1, pp. 83 -94, 2024.  
+[22]  W. N. a. H. Nurfauziah, "Perbandingan Model Waterfall dan Metode Prototype 
+untuk Pengembangan Aplikasi pada Sistem Informasi," Jurnal Ilmiah Sistem 
+Informasi, vol. V, no. 2, pp. 45 -53, 2023.  
+[23]  J. L. a. M. M. M. Bjarnason, "An Empirically Based Model of Software 
+Prototyping: A Mapping Study and a Multi -Case Study," Empirical Software 
+Engineering, vol. 28, no. 3, p. 1 –35, 2023.  
+[24]  M. D. P. a. S. Parmar, "Survey on Concept of Object -Oriented Programming," 
+International Journal of Scientific Research in Computer Science, Engineering and 
+Information Technology (IJSRCSEIT), vol. X, no. 2, pp. 427 -431, 2024.  
+[25]  R. B. Nagineni, "A Re search on Object -Oriented Programming and Its Concepts," 
+International Journal of Advanced Trends in Computer Science and Engineering 
+(IJATCSE), vol. x, no. 2, p. 746 –749, 2021.  
+[26]  S. A. Fadillah, "FEATURES OF JAVA," International Journal of Scientifi c 
+Development and Research (IJSDR), vol. VIII, no. 4, 2023.  
+[27]  P. A. Ismail, "Development of Web Application Using Model View Controller 
+(MVC) Architecture," International Journal of Progressive Research in 
+Engineering and Management Science (IJPREMS) , vol. 3, no. 1, p. 156 –161, 2023.  
+[28]  S.-C. Necula, "Exploring the Model -View -Controller (MVC) Architecture: A 
+Broad Analysis of Market and Technological Applications," Preprints, 2024.  
+[29]  A. Sargunakumar, "Spring Framework in Enterprise Java Development: Trends and 
+Innovations," nternati onal Journal of Innovative Research and Creative 
+Technology (IJIRCT), vol. X, no. 3, 2024.  
+
+--- PAGE 148 ---
+148  
+[30]  V. S. A. P. &. A. S. R. Jain, "Modern Web Development using CSS & HTML," 
+International Journal of Emerging Science and Engineering (IJESE), vol. 12, no. 6, 
+2024.  
+[31]  S. S. &. S. Esakkirajan, "Fundamentals of Relational Database Management 
+Systems," Procedia Computer Science, vol. 78, pp. 244 -253, 2016.  
+[32]  M. E. &. E. K. P. I. -Y. Song, "A Comparative Analysis of Entity -Relationship 
+Diagrams," Journal o f Computer and Software Engineering, vol. 3, no. 4, p. 427 –
+459, 1995.  
+[33]  D. W. S. A. Z. &. R. S. F. K. G. A. M. Buana, "Pengujian Black -Box dan Analisa 
+Kualitas ISO 25010 pada Aplikasi HESTI," CESS (Journal of Computer 
+Engineering, System and Science) , vol. 9, no. 2, 2022.  
+[34]  R. A. M. A. A. S. E. A. &. A. Z. M. P. A. D. A. Santi, "Black Box Testing with 
+Equivalence Partitioning and Boundary Value Analysis Methods (Study Case: 
+Academic Information System of Mataram University)," in Proceedings of t he 
+First Mandalika International Multi -Conference on Science and Engineering 
+(MIMSE 2022) , Atlantis Press, 2022, p. 207 –219. 
+[35]  P. Weichbroth, "Usability Testing of Mobile Applications: A Systematic Literature 
+Review," Applied Sciences, vol. 14, no. 5, p. 1792 –1805, 2024.  
+[36]  S. P. K. &. L. H. A. Istika Maulia, "System Usability Scale dalam Evaluasi 
+Pengembangan Aplikasi Prospe ct menggunakan Metode Activity Oriented 
+Design," INFOMATEK: Jurnal Informatika, Manajemen dan Teknologi, vol. 26, 
+no. 1, 2024.  
+[37]  F. J. A. B. &. A. P. M. Jaffar -ur Rehman, "Testing Software Components for 
+Integration: A Survey of Issues and Techniques ," Software Testing, Verification 
+and Reliability, vol. 17, no. 2, p. 95 –133, 2007.  
+[38]  A. M. E. Y. B. &. S. P. Hatice Koç, "UML Diagrams in Software Engineering 
+Research: A Systematic Literature Review," Proceedings, vol. 74, p. 13, 2021.  
+[40]  S. A l-Fedaghi, "Validation: Conceptual versus Activity Diagram Approaches," 
+
+--- PAGE 149 ---
+149  
+Proceedings of Modeling Conference, 2021.  
+[41]  Y. M. G. C. a. T. E. C. J. Fernando Tavares, "Classification of UML Diagrams to 
+Support Software Engineering Education," Proceedings o f SEKE (Software 
+Engineering and Knowledge Engineering), 2021.  
+[42]  H. B. M. L. a. M. H. G. Bergström, "Evaluating the Layout Quality of UML Class 
+Diagrams Using Machine Learning," Journal of Systems & Software, vol. 192, 
+2022.  
+[43]  N. S. &. R. Arifin, "Implementasi Figma dalam Perancangan Antarmuka Aplikasi 
+Mobile Berbasis UX Design," Jurnal Teknologi dan Sistem Informasi, vol. 10, no. 
+2, p. 115 –123, 2022.  
+[44]  M. A. &. S. Munir, "Analisis dan Implementasi Restful API guna Pengemb angan 
+Sistem Informasi Akademik pada Perguruan Tinggi," Jurnal Informatika Terpadu, 
+vol. 8, no. 1, 2023.  
+[45]  D. A. P. &. Y. F. Harun Mukhtar, "Analisa Dan Implementasi Security Mail 
+Server," Jurnal Fasilkom - Teknologi Informasi dan Ilmu Komputer Unive rsitas 
+Muhammadiyah Riau, vol. 10, no. 1, 2020.  
+[46]  M. A. W. &. N. Aini, "Design of a Student Payment System Based on Virtual 
+Account (Case Study at SMK NU Al -Hidayah Ngimbang)," NEWTON: Networking 
+and Information Technology, vol. 1, no. 1, pp. 35 -40, 2021.  
+[47]  G. S. &. P. Kaur, "Evaluating the Effectiveness of Bootstrap Framework in 
+Responsive Web Development," International Journal of Web Engineering and 
+Technology, vol. 20, no. 3, pp. 241 -252, 2023.  
+[48]  J. L. a. M. M. M. Bjarnason, "An Empirically Based Model of Software 
+Prototyping: A Mapping Study and a Multi -Case Study," Empirical Software 
+Engineering, vol. 28, no. 3, p. 1 –35, 2023.  
+[49]  Y. A. Singgalen, "Perkembangan riset desain sistem informasi menggunakan 
+pendekatan terstruktur: Systematic literature review,," Journal of Information 
+Systems and Informatics, vol. 3, no. 4, pp. 673 -686, 2021.  
+
+--- PAGE 150 ---
+150  
+ 
+DAFTAR  LAMPIRAN  
+Lampiran  1 bukti jawaban responden (Mahasiswa UHN) terhadap form  
+ 
+ 
+Gambar D.1 Pembuatan Manual LMS  
+ 
+Berikut Link Full Hasil Kuisioner : Untitled form (Responses) - Google Sheets  
+Bukti hasil jawaban pertanyaan responden form  dari 18 mahasiswa  baru di 
+universitas HKBP nomensen. Dari Responses banyak yang merasa tidak ada 
+kendala dalam melaksanakan PMB , namun ada juga yang mengalami 
+
+
+--- PAGE 151 ---
+151  
+keterlambatan dan harus menghubungi admin untuk meminta bantuan  
+ 
+ 
+Lampiran  2 Bukti Wawancara  dengan pihak PSI UHN  
+ 
+ 
+Gambar D. 2 Bukti Wawancara dengan pihak PSI UHN  
+ 
+Berikut Link Full Hasil Wawancara : Wawancara Singkat untuk Mengidentifikasi 
+Urgensi Sistem PMB Terintegrasi di Universitas HKBP Nommensen - Google 
+Dokumen  
+Bukti hasil wawancara dengan network administration  pusat sistem informasi , 
+pengelola server Universitas HKBP Nommensen Parulian Sirait , ST.  Beliau 
+Merupakan penerima masukan dari keluhan PMB fakultas dan juga terlibat 
+langsung dalam menghubungi camaba untuk proses daftar ulang dan verifikasi 
+data.  
+ 
+Lampiran  3 website PMB UHN  
+ 
+
+
+--- PAGE 152 ---
+152  
+ 
+Gambar D. 3 Tampilan PMB UHN  
+Berikut Link Website PMB Terdahulu: PMB UHN  
+Tampilan halaman pendaftaran mahasiswa baru website PMB Universitas HKBP 
+Nommensen . 
+Lampiran  4 Halaman Pendaftaran Ulang PMB  
+ 
+
+
+--- PAGE 153 ---
+153  
+Gambar D. 4 Tampilan Pendaftaran Ulang  UHN  
+Berikut Link Website Daftar Ulang : Pendaftaran Ulang CMB 2025  
+Tampilan halaman ketentuan website PMB Universitas HKBP Nommensen  yang 
+digunakan untuk mendaftar ulangkan para pendaftar.  
+ 
+Lampiran  5 Bukti surat Balasan Permohonan Izin Penelitian Tugas Akhir  
+ 
+Gambar D. 5 Bukti Surat Balasan Permohonan Izin Penelitian  
+Bukti surat Balasan Permohonan  Izin Penelitian Tugas Akhir yang sudah disetujui 
+
+
+--- PAGE 154 ---
+154  
+dan ditandatangani oleh pihak instansi Universitas HKBP Nommensen . 
+ 
+Lampiran  6  bukti surat Permohonan Izin Penelitian Tugas Akhir  
+ 
+Gambar D. 6 Tampilan Permohonan Izin Penelitan  
+Bukti surat Permohonan Izin Penelitian Tugas Akhir yang sudah disetujui dan 
+
+
+--- PAGE 155 ---
+155  
+ditandatangani oleh pihak Dekan Fakultas Teknologi Industri . 
+Lampiran  7 Surat Ketentuan Penerimaan Mahasiswa Baru  
+ 
+Gambar D. 7 Ketentuan PMB terbaru  
+Berikut Link Full Surant Ketentuan PMB : pengumuman -gel-4-2025.pdf - Google Drive  
+Surat Ketentuan Penerimaan Mahasiswa Baru T.A. 2025/2026, yang berisikan ketentuan 
+dan langkah -langkah calon mahasiswa baru untuk daftar menjadi mahasiswa Universitas 
+HKBP Nommensen . 
+
+
+--- PAGE 156 ---
+156  
+Lampiran 8 Data Pendaftar Ulang calon mahasiswa baru UHN  
+ 
+Gambar D.8 Data Pendaftar Ulang  
+Bukti daftar Data Pendaftar Ulang calon mahasiswa baru UHN,  untuk Admin 
+melihat jika camaba sudah membayar tagihan pendaftar secara manual.  
+  
+
+
+--- PAGE 157 ---
+157  
+ 
+Lampiran  9 SKPL PMB UHN  
+ 
+ 
+Gambar D.9 Lampiran SKPL  
+Bukti Lampiran Perancangan SKPL yang dibuat saat sedang melaksanakan PKL  
+Berikut Link Full Surant Ketentuan PMB  : Dokumen dari 12214010_Mychael Daniel 
+N.pdf - Google Drive  
+ 
+
+

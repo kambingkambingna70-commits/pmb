@@ -1,0 +1,6 @@
+{
+  "builder": "dockerfile",
+  "dockerfile": "./tugasakhir/Dockerfile",
+  "port": 8080,
+  "startCommand": "java -jar app.jar"
+}

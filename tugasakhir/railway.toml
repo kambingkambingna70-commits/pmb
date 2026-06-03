@@ -1,7 +1,0 @@
-[build]
-builder = "dockerfile"
-dockerfile = "./Dockerfile"
-
-[deploy]
-port = 8080
-startCommand = "java -Dfile.encoding=UTF-8 -jar app.jar"

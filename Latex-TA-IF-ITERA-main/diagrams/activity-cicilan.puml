@@ -1,0 +1,73 @@
+@startuml
+skinparam backgroundColor white
+skinparam swimlaneBackgroundColor white
+skinparam swimlaneTitleBackgroundColor white
+skinparam activityBackgroundColor white
+skinparam activityBorderColor #666666
+skinparam arrowColor #444444
+skinparam fontName "Times New Roman"
+
+|Camaba|
+start
+:Login dengan
+Email dan Password;
+
+|Sistem|
+:Verifikasi Login;
+:Menampilkan Dashboard;
+
+|Camaba|
+:Pilih Menu Pembayaran Cicilan;
+:Pilih Program Studi
+dan Jumlah Cicilan (1-6);
+:Submit Permintaan Cicilan;
+
+|Sistem|
+:Simpan CicilanRequest
+(status PENDING);
+:Kirim Notifikasi
+ke Admin Pusat;
+
+|Admin Pusat|
+:Tinjau Permintaan Cicilan;
+
+if (Disetujui?) then (Tidak)
+  |Sistem|
+  :Update Status REJECTED;
+  :Kirim Notifikasi Penolakan
+  ke Camaba;
+  stop
+else (Ya)
+  |Admin Pusat|
+  :Input Nomor BRIVA
+  untuk Cicilan;
+
+  |Sistem|
+  :Update Status APPROVED;
+  :Simpan Nomor BRIVA;
+  :Kirim Email Notifikasi
+  BRIVA ke Camaba;
+endif
+
+|Camaba|
+:Terima Nomor BRIVA
+via Email;
+:Bayar Cicilan via BRIVA;
+
+|Sistem|
+:Verifikasi Pembayaran;
+
+if (Pembayaran Valid?) then (Tidak)
+  :Notifikasi Pembayaran
+  Gagal ke Camaba;
+  stop
+else (Ya)
+  :Update Status Cicilan
+  Menjadi Lunas;
+  :Buka Akses Daftar Ulang;
+  :Kirim Notifikasi
+  ke Camaba;
+  stop
+endif
+
+@enduml

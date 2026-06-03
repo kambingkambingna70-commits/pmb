@@ -1,0 +1,649 @@
+% ===== ADDITIONAL PSPEC TABLES =====
+
+
+\paragraph{PSPEC Proses 1.4: Pemilihan Gelombang Pendaftaran}~\\
+\begin{longtable}{|p{0.2\textwidth}|p{0.7\textwidth}|}
+	\caption{PSPEC Proses 1.4 -- Pemilihan Gelombang Pendaftaran}
+	\label{table:3.pspec14}\\
+	\hline
+	\textbf{Nama Proses} & Pemilihan Gelombang Pendaftaran \\
+	\hline
+	\textbf{Deskripsi Proses} & Calon mahasiswa baru (camaba) memilih gelombang pendaftaran yang ada dan masih aktif. Sistem akan menampilkan informasi gelombang mana saja yang dapat dipilih beserta syarat dan ketentuannya. \\
+	\hline
+	\textbf{Data Input} & Pilihan gelombang pendaftaran. \\
+	\hline
+	\textbf{Data Output} & Konfirma si pemilihan gelombang dan akses ke tahap selanjutnya. \\
+	\hline
+	\textbf{Body / Keterangan} & Jika pemilihan berhasil, camaba akan diarahkan ke halaman pembelian formulir. Jika gelombang sudah ditutup, sistem akan menampilkan pesan bahwa pendaftaran telah ditutup. \\
+	\hline
+\end{longtable}
+
+
+\paragraph{PSPEC Proses 1.5: Pemilihan Jenis Formulir Pendaftaran}~\\
+\begin{longtable}{|p{0.2\textwidth}|p{0.7\textwidth}|}
+	\caption{PSPEC Proses 1.5 -- Pemilihan Jenis Formulir Pendaftaran}
+	\label{table:3.pspec15}\\
+	\hline
+	\textbf{Nama Proses} & Pemilihan Jenis Formulir Pendaftaran \\
+	\hline
+	\textbf{Deskripsi Proses} & Calon mahasiswa baru (CAMABA) memilih jenis formulir pendaftaran yang tersedia (misalnya, kedokteran atau non - kedokteran) untuk melanjutkan proses pembelian formulir. \\
+	\hline
+	\textbf{Data Input} & Pilihan jenis formulir dari CAMABA. \\
+	\hline
+	\textbf{Data Output} & Jenis formulir yang dipilih. \\
+	\hline
+	\textbf{Body / Keterangan} & Proses ini penting karena harga f ormulir dan alur pendaftaran selanjutnya dapat berbeda berdasarkan jenis formulir yang dipilih. Langkah ini menjadi dasar sebelum aktivasi Virtual Account (VA) untuk pembayaran. \\
+	\hline
+\end{longtable}
+
+
+\paragraph{PSPEC Proses 1.6: Aktivasi Pembayaran Formulir (BRIVA)}~\\
+\begin{longtable}{|p{0.2\textwidth}|p{0.7\textwidth}|}
+	\caption{PSPEC Proses 1.6 -- Aktivasi Pembayaran Formulir (BRIVA)}
+	\label{table:3.pspec16}\\
+	\hline
+	\textbf{Nama Proses} & Aktivasi Pembayaran Formulir (BRIVA) \\
+	\hline
+	\textbf{Deskripsi Proses} & Sistem menghitung biaya formulir berdasarkan jenis formulir dan gelombang pendaftaran yang dipilih, lalu menghasilkan Virtual Account (VA) BRIVA untuk pembayaran. \\
+	\hline
+	\textbf{Data Input} & Jenis formulir dan gelombang pendaftaran. \\
+	\hline
+	\textbf{Data Output} & Nomor VA BRIVA dan jumlah pembayaran. \\
+	\hline
+	\textbf{Body / Keterangan} & Sistem akan menghasilkan VA unik untuk setiap calon mahasiswa baru (CAMABA) dan mengirimkan informasi pembayaran. Status pembayaran diverifikasi melalui API BRIVA. Jika sistem gagal merespons, tersedia opsi untuk melakukan generate VA secara man ual. \\
+	\hline
+\end{longtable}
+
+
+\paragraph{PSPEC Proses : Integrasi API BRIVA (Pembuatan Virtual Account)}~\\
+\begin{longtable}{|p{0.2\textwidth}|p{0.7\textwidth}|}
+	\caption{PSPEC Proses  -- Integrasi API BRIVA (Pembuatan Virtual Account)}
+	\label{table:3.pspec}\\
+	\hline
+	\textbf{Nama Proses} & Integrasi API BRIVA (Pembuatan Virtual Account) \\
+	\hline
+	\textbf{Deskripsi Proses} & Sistem berinteraksi dengan API BRIVA untuk membuat Virtual Account (VA) secara otomatis. \\
+	\hline
+	\textbf{Data Input} & Permintaan pembuatan VA dari sistem berdasarkan jenis formulir. \\
+	\hline
+	\textbf{Data Output} & Data Virtual Account dari BRIVA (nomor VA dan nominal pembayaran). \\
+	\hline
+	\textbf{Body / Keterangan} & Proses ini merupakan in ti dari sistem pembayaran formulir otomatis. Ketergantungan pada API BRIVA membuat proses ini penting untuk memastikan transaksi dan verifikasi pembayaran berlangsung efisien dan akurat. \\
+	\hline
+\end{longtable}
+
+
+\paragraph{PSPEC Proses : Pembuatan Virtual Account Manual oleh Admin Validasi}~\\
+\begin{longtable}{|p{0.2\textwidth}|p{0.7\textwidth}|}
+	\caption{PSPEC Proses  -- Pembuatan Virtual Account Manual oleh Admin Validasi}
+	\label{table:3.pspec}\\
+	\hline
+	\textbf{Nama Proses} & Pembuatan Virtual Account Manual oleh Admin Validasi \\
+	\hline
+	\textbf{Deskripsi Proses} & Admin Validasi dapat secara manual membuat Virtual Account (VA) jika proses generate VA otomatis melalui API BRIVA mengalami kegagalan atau sistem tidak merespons. \\
+	\hline
+	\textbf{Data Input} & Input biaya yang perlu dibayarkan dari Admin Validasi. \\
+	\hline
+	\textbf{Data Output} & Nomor Virtual Account yang digenerate secara manual. \\
+	\hline
+	\textbf{Body / Keterangan} & Fitur ini berfungsi sebagai mekanisme cadangan untuk menjaga kelancaran proses pembayaran ketika terjadi kendala teknis pada integrasi API BRIVA. Dengan cara ini, calon mahasiswa tetap dapat melanjutkan pembayaran tanpa hambatan. \\
+	\hline
+\end{longtable}
+
+
+\paragraph{PSPEC Proses 2.5: Kirim Info VA Melalui Email}~\\
+\begin{longtable}{|p{0.2\textwidth}|p{0.7\textwidth}|}
+	\caption{PSPEC Proses 2.5 -- Kirim Info VA Melalui Email}
+	\label{table:3.pspec25}\\
+	\hline
+	\textbf{Nama Proses} & Kirim Info VA Melalui Email \\
+	\hline
+	\textbf{Deskripsi Proses} & Sistem mengirimkan email notifikasi berisi detail Virtual Account (VA) dan panduan cara pembayaran kepada calon mahasiswa baru (CAMABA). \\
+	\hline
+	\textbf{Data Input} & Informasi VA yang dihasilkan dari proses 2.2 (Generate VA Otomatis) atau 2.4 (Generate VA Manual), dengan status VA “Belum Lunas”. \\
+	\hline
+	\textbf{Data Output} & Email notifikasi berisi detail VA dan instruksi pembayaran terkirim ke alamat email CAMABA. \\
+	\hline
+	\textbf{Body / Keterangan} & Email ini berfungsi sebagai panduan pembayaran bagi CAMABA dan memastikan mereka memiliki semua informasi yang diperlukan untuk menyelesaikan pembayaran formulir. \\
+	\hline
+\end{longtable}
+
+
+\paragraph{PSPEC Proses : Verifikasi Pembayaran Formulir (Callback BRIVA)}~\\
+\begin{longtable}{|p{0.2\textwidth}|p{0.7\textwidth}|}
+	\caption{PSPEC Proses  -- Verifikasi Pembayaran Formulir (Callback BRIVA)}
+	\label{table:3.pspec}\\
+	\hline
+	\textbf{Nama Proses} & Verifikasi Pembayaran Formulir (Callback BRIVA) \\
+	\hline
+	\textbf{Deskripsi Proses} & Sistem melakukan verifikasi status pembayaran formulir melalui integrasi API BRIVA secara otomatis. \\
+	\hline
+	\textbf{Data Input} & Pembayaran VA yang dilakukan oleh CAMABA melalui sistem BRIVA. \\
+	\hline
+	\textbf{Data Output} & Pembaruan status VA menjadi “Lunas” pada Data Store Formulir \& VA. \\
+	\hline
+	\textbf{Body / Keterangan} & Jika pembayaran b erhasil diverifikasi melalui callback API BRIVA, sistem otomatis memperbarui status pembayaran menjadi “Lunas” dan memberikan akses kepada CAMABA untuk mengisi formulir pendaftaran. Jika verifikasi gagal atau tidak diterima, sistem akan menampilkan notifik asi bahwa pembayaran belum valid dan meminta CAMABA untuk mengulang proses pembayaran. \\
+	\hline
+\end{longtable}
+
+
+\paragraph{PSPEC Proses 3.1: Cek Status Pembayaran VA}~\\
+\begin{longtable}{|p{0.2\textwidth}|p{0.7\textwidth}|}
+	\caption{PSPEC Proses 3.1 -- Cek Status Pembayaran VA}
+	\label{table:3.pspec31}\\
+	\hline
+	\textbf{Nama Proses} & Cek Status Pembayaran VA \\
+	\hline
+	\textbf{Deskripsi Proses} & Sistem memeriksa status pembayaran Virtual Account (VA) CAMABA sebelum mengizinkan akses ke tahap pengisian formulir pendaftaran. \\
+	\hline
+	\textbf{Data Input} & Data Formulir \& VA (status pembayaran). \\
+	\hline
+	\textbf{Data Output} & Konfirmasi status “Lunas” atau “Belum Lunas” . \\
+	\hline
+	\textbf{Body / Keterangan} & Proses ini memastikan bahwa hanya CAMABA yang telah melunasi biaya formulir yang dapat melanjutkan ke tahap pengisian data pendaftaran. Jika status VA masih “Belum Lunas”, \\
+	\hline
+\end{longtable}
+
+
+\paragraph{PSPEC Proses 3.2: Isi Formulir \& Upload Berkas}~\\
+\begin{longtable}{|p{0.2\textwidth}|p{0.7\textwidth}|}
+	\caption{PSPEC Proses 3.2 -- Isi Formulir \& Upload Berkas}
+	\label{table:3.pspec32}\\
+	\hline
+	\textbf{Nama Proses} & Isi Formulir \& Upload Berkas \\
+	\hline
+	\textbf{Deskripsi Proses} & CAMABA mengisi data pribadi dan mengunggah berkas yang diperlukan sesuai dengan field formulir yang telah dikonfigurasi oleh admin pusat. \\
+	\hline
+	\textbf{Data Input} & Data pribadi CAMABA dan berkas pendukung (misalnya, ijazah, KTP). \\
+	\hline
+	\textbf{Data Output} & Konfirmasi pengisian formulir berhasil, data te rsimpan di Data Formulir \& Berkas. \\
+	\hline
+	\textbf{Body / Keterangan} & Semua field wajib harus terisi sebelum formulir dapat disubmit. Jika ada field yang kosong, sistem akan menampilkan peringatan dan meminta CAMABA melengkapi data. Jika formulir kedokteran, fakultas akan otomatis terisi "Kedokteran". \\
+	\hline
+\end{longtable}
+
+
+\paragraph{PSPEC Proses 3.3: Submit Formulir}~\\
+\begin{longtable}{|p{0.2\textwidth}|p{0.7\textwidth}|}
+	\caption{PSPEC Proses 3.3 -- Submit Formulir}
+	\label{table:3.pspec33}\\
+	\hline
+	\textbf{Nama Proses} & Submit Formulir \\
+	\hline
+	\textbf{Deskripsi Proses} & CAMABA mengirimkan formulir pendaftaran yang telah diisi. \\
+	\hline
+	\textbf{Data Input} & Data Formulir \& Berkas yang telah diisi lengkap. \\
+	\hline
+	\textbf{Data Output} & Formulir diupdate. \\
+	\hline
+	\textbf{Body / Keterangan} & Setelah formulir disubmit, data akan disimpan dan menjadi dasar untuk pembuatan kartu ujian. Validasi akan dilakukan untuk memastikan semua data sudah lengkap da n valid sebelum penyimpanan akhir. \\
+	\hline
+\end{longtable}
+
+
+\paragraph{PSPEC Proses 3.4: Generate Kartu Ujian}~\\
+\begin{longtable}{|p{0.2\textwidth}|p{0.7\textwidth}|}
+	\caption{PSPEC Proses 3.4 -- Generate Kartu Ujian}
+	\label{table:3.pspec34}\\
+	\hline
+	\textbf{Nama Proses} & Generate Kartu Ujian \\
+	\hline
+	\textbf{Deskripsi Proses} & Sistem secara otomatis menggenerasi kartu ujian setelah CAMABA berhasil mengisi dan menyimpan formulir pendaftaran. \\
+	\hline
+	\textbf{Data Input} & Data CAMABA yang telah terverifikasi dari Data Formulir \& Berkas. \\
+	\hline
+	\textbf{Data Output} & Kartu ujian dalam format PDF dengan QR Code, tersimpan di Kartu Ujian \& Nomor Ujian. Body / Kete rangan Kartu ujian berisi informasi CAMABA, jadwal ujian, dan QR Code untuk absensi. Kartu dapat diunduh dan dicetak oleh CAMABA. 3.5.8.9.15 PSPEC Proses 4.1: Validasi Nomor Ujian Tabel 3.2 4. PSPEC Proses 3.5 – Validasi Nomor Ujian Nama Proses PSPEC Proses 3.5 – Validasi Nomor Ujian Deskripsi Proses Sistem memvalidasi nomor ujian yang diinputkan oleh calon mahasiswa baru (CAMABA) untuk memastikan nomor tersebut terdaftar dan valid. Data Input Nomor Ujian dari CAMABA. Data Output Notifikasi "Ditemukan No Pendaftaran" jika nomor valid atau "Tidak Ditemukan No Pendaftaran" jika tidak valid. \\
+	\hline
+	\textbf{Body / Keterangan} & Proses ini krusial untuk memastikan bahwa hanya CAMABA yang memiliki nomor ujian yang sah yang dapat melanjutkan ke tahap ujian. Jika nomor ujian tidak ditemukan, CAMABA akan menerima pesan kesalahan dan tidak dapat melanjutkan. \\
+	\hline
+\end{longtable}
+
+
+\paragraph{PSPEC Proses 4.2: Validasi Tanggal Ujian}~\\
+\begin{longtable}{|p{0.2\textwidth}|p{0.7\textwidth}|}
+	\caption{PSPEC Proses 4.2 -- Validasi Tanggal Ujian}
+	\label{table:3.pspec42}\\
+	\hline
+	\textbf{Nama Proses} & Validasi Tanggal Ujian \\
+	\hline
+	\textbf{Deskripsi Proses} & Sistem memverifikasi apakah tanggal dan waktu ujian sudah tepat atau belum sesuai dengan jadwal yang telah ditentukan. \\
+	\hline
+	\textbf{Data Input} & Waktu saat ini. \\
+	\hline
+	\textbf{Data Output} & Redirect ke Google Form jika waktu tepat, atau notifikasi "Ujian Belum Dimulai" jika belum waktu nya. \\
+	\hline
+	\textbf{Body / Keterangan} & Proses ini memastikan integritas jadwal ujian, sehingga CAMABA hanya dapat mengakses ujian saat waktunya telah tiba. Jika belum waktunya, akan ada notifikasi. \\
+	\hline
+\end{longtable}
+
+
+\paragraph{PSPEC Proses 4.3: Notifikasi Nomor Ujian Tidak Ditemukan}~\\
+\begin{longtable}{|p{0.2\textwidth}|p{0.7\textwidth}|}
+	\caption{PSPEC Proses 4.3 -- Notifikasi Nomor Ujian Tidak Ditemukan}
+	\label{table:3.pspec43}\\
+	\hline
+	\textbf{Nama Proses} & Notifikasi Nomor Ujian Tidak Ditemukan \\
+	\hline
+	\textbf{Deskripsi Proses} & Sistem menampilkan pesan kesalahan kepada CAMABA apabila nomor pendaftaran yang dimasukkan tidak d itemukan di dalam sistem. \\
+	\hline
+	\textbf{Data Input} & Status "Jika Tidak Ada" dari proses 4.1 Validasi Nomor Ujian. \\
+	\hline
+	\textbf{Data Output} & Pesan error kepada CAMABA. \\
+	\hline
+	\textbf{Body / Keterangan} & Proses ini memberikan umpan balik kepada pengguna bahwa nomor ujian yang dimasukkan salah atau tidak terdaftar, mencegah mereka melanjutkan ke ujian dengan informasi yang tidak valid. \\
+	\hline
+\end{longtable}
+
+
+\paragraph{PSPEC Proses 4.4: Akses Google Form Ujian Deskripsi Sistem mengarahkan CAMABA ke Google Form yang berisi soal Proses ujian. Nomor ujian CAMABA akan otomatis terisi (prefilled) di Google Form. Data Input Status "Waktu Tepat" dari proses 4.2 Validasi Tanggal Ujian. Data Output Halaman Google Form Ujian dengan nomor ujian yang sudah terisi otomatis. Body / Keterangan Hal ini memudahkan CAMABA dalam mengikuti ujian karena tidak perlu menginput ulang nomor ujian, serta menjamin integritas data ujian dengan menghubungkan langsung ke nomor ujian yang valid. 3.5.8.9.19 PSPEC Proses 4.5: Tampilkan Notifikasi Ujian Belum Dimulai Tabel 3.2 8. PSPEC Proses 4.5 – Tampilkan Notifikasi Ujian Belum Dimulai Nama Proses PSPEC Proses 4.5 – Tampilkan Notifikasi Ujian Belum Dimulai}~\\
+\begin{longtable}{|p{0.2\textwidth}|p{0.7\textwidth}|}
+	\caption{PSPEC Proses 4.4 -- Akses Google Form Ujian Deskripsi Sistem mengarahkan CAMABA ke Google Form yang berisi soal Proses ujian. Nomor ujian CAMABA akan otomatis terisi (prefilled) di Google Form. Data Input Status "Waktu Tepat" dari proses 4.2 Validasi Tanggal Ujian. Data Output Halaman Google Form Ujian dengan nomor ujian yang sudah terisi otomatis. Body / Keterangan Hal ini memudahkan CAMABA dalam mengikuti ujian karena tidak perlu menginput ulang nomor ujian, serta menjamin integritas data ujian dengan menghubungkan langsung ke nomor ujian yang valid. 3.5.8.9.19 PSPEC Proses 4.5: Tampilkan Notifikasi Ujian Belum Dimulai Tabel 3.2 8. PSPEC Proses 4.5 – Tampilkan Notifikasi Ujian Belum Dimulai Nama Proses PSPEC Proses 4.5 – Tampilkan Notifikasi Ujian Belum Dimulai}
+	\label{table:3.pspec44}\\
+	\hline
+	\textbf{Nama Proses} & Akses Google Form Ujian Deskripsi Sistem mengarahkan CAMABA ke Google Form yang berisi soal Proses ujian. Nomor ujian CAMABA akan otomatis terisi (prefilled) di Google Form. Data Input Status "Waktu Tepat" dari proses 4.2 Validasi Tanggal Ujian. Data Output Halaman Google Form Ujian dengan nomor ujian yang sudah terisi otomatis. Body / Keterangan Hal ini memudahkan CAMABA dalam mengikuti ujian karena tidak perlu menginput ulang nomor ujian, serta menjamin integritas data ujian dengan menghubungkan langsung ke nomor ujian yang valid. 3.5.8.9.19 PSPEC Proses 4.5: Tampilkan Notifikasi Ujian Belum Dimulai Tabel 3.2 8. PSPEC Proses 4.5 – Tampilkan Notifikasi Ujian Belum Dimulai Nama Proses PSPEC Proses 4.5 – Tampilkan Notifikasi Ujian Belum Dimulai \\
+	\hline
+	\textbf{Deskripsi Proses} & Sistem menampilkan notifikasi kepada CAMABA bahwa ujian belum dimulai jika mereka mencoba mengakses ujian di luar jadwal yang ditentukan. \\
+	\hline
+	\textbf{Data Input} & Status "Belum Waktunya" dari proses 4.2 Validasi Tanggal Ujian. \\
+	\hline
+	\textbf{Data Output} & Pesan notifikasi "Ujian Belum Dimulai". \\
+	\hline
+	\textbf{Body / Keterangan} & Notifikasi ini memberikan informasi yang jelas kepada CAMABA mengenai status ujian mereka dan kapan mereka bisa mulai mengikuti ujian. \\
+	\hline
+\end{longtable}
+
+
+\paragraph{PSPEC Proses 4.6: Simpan Hasil Ujian}~\\
+\begin{longtable}{|p{0.2\textwidth}|p{0.7\textwidth}|}
+	\caption{PSPEC Proses 4.6 -- Simpan Hasil Ujian}
+	\label{table:3.pspec46}\\
+	\hline
+	\textbf{Nama Proses} & Simpan Hasil Ujian \\
+	\hline
+	\textbf{Deskripsi Proses} & Sistem mengambil nilai ujian dari Google Form dan menyimpannya. \\
+	\hline
+	\textbf{Data Input} & Hasil Ujian dari Google Form. \\
+	\hline
+	\textbf{Data Output} & Nilai ujian tersimpan di sistem (Hasil Ujian). \\
+	\hline
+	\textbf{Body / Keterangan} & Proses ini mengintegrasikan hasil ujian dari platform eksternal (Google Form) ke dalam sistem PMB, yang nantinya digunakan untuk evaluasi kelulusan. \\
+	\hline
+\end{longtable}
+
+
+\paragraph{PSPEC Proses 4.7: Evaluasi Nilai Ujian}~\\
+\begin{longtable}{|p{0.2\textwidth}|p{0.7\textwidth}|}
+	\caption{PSPEC Proses 4.7 -- Evaluasi Nilai Ujian}
+	\label{table:3.pspec47}\\
+	\hline
+	\textbf{Nama Proses} & Evaluasi Nilai Ujian \\
+	\hline
+	\textbf{Deskripsi Proses} & Sistem mengevaluasi nilai ujian CAMABA berdasarkan kriteria kelulusan. \\
+	\hline
+	\textbf{Data Input} & Hasil Ujian. \\
+	\hline
+	\textbf{Data Output} & Status kelulusan (Lulus/Tidak Lulus). \\
+	\hline
+	\textbf{Body / Keterangan} & Proses ini menentukan apakah CAMABA memenuhi syarat untuk melanjutkan ke tahap daftar ulang atau tidak berdasarkan nilai ujian yang diperoleh. \\
+	\hline
+\end{longtable}
+
+
+\paragraph{PSPEC Proses 4.8: Generate Bukti Tidak Lulus}~\\
+\begin{longtable}{|p{0.2\textwidth}|p{0.7\textwidth}|}
+	\caption{PSPEC Proses 4.8 -- Generate Bukti Tidak Lulus}
+	\label{table:3.pspec48}\\
+	\hline
+	\textbf{Nama Proses} & Generate Bukti Tidak Lulus \\
+	\hline
+	\textbf{Deskripsi Proses} & Sistem menghasilkan bukti atau halaman yang menyatakan bahwa CAMABA tidak lulus ujian. \\
+	\hline
+	\textbf{Data Input} & Status "Tidak Lulus" dari proses 4.7 Evaluasi Nilai Ujian. \\
+	\hline
+	\textbf{Data Output} & Halaman yang menyatak an tidak lulus ujian. \\
+	\hline
+	\textbf{Body / Keterangan} & Ini memberikan konfirmasi resmi kepada CAMABA yang tidak lulus seleksi ujian. \\
+	\hline
+\end{longtable}
+
+
+\paragraph{PSPEC Proses : Generate Nomor Pendaftaran dan Password Tanggal Lahir Deskripsi Sistem menghasilkan nomor pendaftaran dan password awal Proses berupa tanggal lahir untuk CAMABA yang dinyatakan lulus. Data Input Status "Lulus" dari proses 4.7 Evaluasi Nilai Ujian. Data Output Nomor pendaftaran dan password (tanggal lahir) yang disimpan di Akun Pengguna. Body / Keterangan Nomor pendaftaran ini penting untuk proses daftar ulang selanjutnya, dan password awal memberikan akses pertama kali kepada CAMABA untuk login ke halaman daftar ulang. 3.5.8.9.24 PSPEC Proses 4.10: Atur Jadwal Publikasi Kelulusan dan No Pendaftaran Tabel 3.3 3 PSPEC Proses 4.10 – Atur Jadwal Publikasi Kelulusan dan No Pendaftaran Nama Proses PSPEC Proses 4.10 – Atur Jadwal Publikasi Kelulusan dan No Pendaftaran}~\\
+\begin{longtable}{|p{0.2\textwidth}|p{0.7\textwidth}|}
+	\caption{PSPEC Proses  -- Generate Nomor Pendaftaran dan Password Tanggal Lahir Deskripsi Sistem menghasilkan nomor pendaftaran dan password awal Proses berupa tanggal lahir untuk CAMABA yang dinyatakan lulus. Data Input Status "Lulus" dari proses 4.7 Evaluasi Nilai Ujian. Data Output Nomor pendaftaran dan password (tanggal lahir) yang disimpan di Akun Pengguna. Body / Keterangan Nomor pendaftaran ini penting untuk proses daftar ulang selanjutnya, dan password awal memberikan akses pertama kali kepada CAMABA untuk login ke halaman daftar ulang. 3.5.8.9.24 PSPEC Proses 4.10: Atur Jadwal Publikasi Kelulusan dan No Pendaftaran Tabel 3.3 3 PSPEC Proses 4.10 – Atur Jadwal Publikasi Kelulusan dan No Pendaftaran Nama Proses PSPEC Proses 4.10 – Atur Jadwal Publikasi Kelulusan dan No Pendaftaran}
+	\label{table:3.pspec}\\
+	\hline
+	\textbf{Nama Proses} & Generate Nomor Pendaftaran dan Password Tanggal Lahir Deskripsi Sistem menghasilkan nomor pendaftaran dan password awal Proses berupa tanggal lahir untuk CAMABA yang dinyatakan lulus. Data Input Status "Lulus" dari proses 4.7 Evaluasi Nilai Ujian. Data Output Nomor pendaftaran dan password (tanggal lahir) yang disimpan di Akun Pengguna. Body / Keterangan Nomor pendaftaran ini penting untuk proses daftar ulang selanjutnya, dan password awal memberikan akses pertama kali kepada CAMABA untuk login ke halaman daftar ulang. 3.5.8.9.24 PSPEC Proses 4.10: Atur Jadwal Publikasi Kelulusan dan No Pendaftaran Tabel 3.3 3 PSPEC Proses 4.10 – Atur Jadwal Publikasi Kelulusan dan No Pendaftaran Nama Proses PSPEC Proses 4.10 – Atur Jadwal Publikasi Kelulusan dan No Pendaftaran \\
+	\hline
+	\textbf{Deskripsi Proses} & Admin Validasi mengatur kapan hasil kelulusan dan nomor pendaftaran dapat dipublikasikan dan diakses oleh CAMABA. \\
+	\hline
+	\textbf{Data Input} & Input dari Admin Validasi. \\
+	\hline
+	\textbf{Data Output} & Jadwal publikasi kelulusan. \\
+	\hline
+	\textbf{Body / Keterangan} & Proses ini memberikan kontrol kepada Admin Validasi untuk merilis hasil kelulusan sesuai jadwal yang telah ditetapkan. \\
+	\hline
+\end{longtable}
+
+
+\paragraph{PSPEC Proses : Kirim Email Hasil \& Status Kelulusan}~\\
+\begin{longtable}{|p{0.2\textwidth}|p{0.7\textwidth}|}
+	\caption{PSPEC Proses  -- Kirim Email Hasil \& Status Kelulusan}
+	\label{table:3.pspec}\\
+	\hline
+	\textbf{Nama Proses} & Kirim Email Hasil \& Status Kelulusan \\
+	\hline
+	\textbf{Deskripsi Proses} & Sistem mengirimkan email kepada CAMABA yang lulus berisi nomor pendaftaran, instruksi daftar ulang, dan status kelulusan mereka. \\
+	\hline
+	\textbf{Data Input} & Nomor pendaftaran, password (tanggal lahir), dan status kelulusan. \\
+	\hline
+	\textbf{Data Output} & Email notifikasi hasil ujian dan status kelulusan terkirim. Body / Proses ini memastikan bahwa CAMABA menerima informasi Keterangan penting mengenai hasil seleksi mereka secara langsung dan instruksi untuk langkah selanjutnya. 3.5.8.9.26 PSPEC Proses 5.1: Login via Email \& PW (untuk Bebas Testing) Tabel 3.3 5 PSPEC Proses 5.1 – Login via Email \& PW (untuk Bebas Testing) Nama Proses PSPEC Proses 5.1 – Login via Email \& PW (untuk Bebas Testing) Deskripsi Proses CAMABA jalur bebas testing melakukan login menggunakan email dan password untuk memulai proses daftar ulang. Data Input Email dan password. Data Output Akses ke halaman daftar ulan g. \\
+	\hline
+	\textbf{Body / Keterangan} & Proses ini khusus untuk jalur bebas testing yang mungkin memiliki alur login berbeda dari jalur testing. \\
+	\hline
+\end{longtable}
+
+
+\paragraph{PSPEC Proses 5.2: Lengkapi \& Koreksi Data Daftar Ulang}~\\
+\begin{longtable}{|p{0.2\textwidth}|p{0.7\textwidth}|}
+	\caption{PSPEC Proses 5.2 -- Lengkapi \& Koreksi Data Daftar Ulang}
+	\label{table:3.pspec52}\\
+	\hline
+	\textbf{Nama Proses} & Lengkapi \& Koreksi Data Daftar Ulang \\
+	\hline
+	\textbf{Deskripsi Proses} & CAMABA melengkapi dan melakukan koreksi data yang telah diisi sebelumnya serta menambahkan data baru yang diperlukan untuk daftar ulang. \\
+	\hline
+	\textbf{Data Input} & Data lama dan data baru un tuk daftar ulang. \\
+	\hline
+	\textbf{Data Output} & Konfirmasi finalisasi data daftar ulang, data disimpan di Data Daftar Ulang. \\
+	\hline
+	\textbf{Body / Keterangan} & Sistem menampilkan data lama untuk verifikasi dan memungkinkan CAMABA melakukan koreksi. Setelah semua data lengkap, CAMABA melak ukan submit final. Semua field wajib harus terisi. \\
+	\hline
+\end{longtable}
+
+
+\paragraph{PSPEC Proses : Upload Berkas Ranking SMA dan Formulir Pendaftaran}~\\
+\begin{longtable}{|p{0.2\textwidth}|p{0.7\textwidth}|}
+	\caption{PSPEC Proses  -- Upload Berkas Ranking SMA dan Formulir Pendaftaran}
+	\label{table:3.pspec}\\
+	\hline
+	\textbf{Nama Proses} & Upload Berkas Ranking SMA dan Formulir Pendaftaran \\
+	\hline
+	\textbf{Deskripsi Proses} & CAMABA jalur bebas testing bersyarat (ranking) mengunggah bukti ranking SMA dan formulir pendaftaran yang diperlukan. \\
+	\hline
+	\textbf{Data Input} & Berkas ranking SMA dan formulir pendaftaran. \\
+	\hline
+	\textbf{Data Output} & Berkas terunggah untuk validasi. \\
+	\hline
+	\textbf{Body / Keterangan} & Berkas -berkas ini akan divalidasi secara manual oleh Admin Validasi. \\
+	\hline
+\end{longtable}
+
+
+\paragraph{PSPEC Proses 5.4: Validasi Berkas Prestasi oleh Admin Validasi}~\\
+\begin{longtable}{|p{0.2\textwidth}|p{0.7\textwidth}|}
+	\caption{PSPEC Proses 5.4 -- Validasi Berkas Prestasi oleh Admin Validasi}
+	\label{table:3.pspec54}\\
+	\hline
+	\textbf{Nama Proses} & Validasi Berkas Prestasi oleh Admin Validasi \\
+	\hline
+	\textbf{Deskripsi Proses} & Admin Validasi melakukan verifikasi kelengkapan dan kebenaran berkas yang diunggah oleh CAMABA, khususnya untuk jalur prestasi/ranking. \\
+	\hline
+	\textbf{Data Input} & Data daftar ulang CAMABA dan berkas prestasi/ranking. \\
+	\hline
+	\textbf{Data Output} & Status validasi (diterima/ditolak/perlu perbaikan), Data Validasi CAMABA. \\
+	\hline
+	\textbf{Body / Keterangan} & Admin Validasi dapat melihat detail berkas, menginput keputusan (terima/tolak), dan memberikan a lasan penolakan jika diperlukan. Jika ditolak, notifikasi akan dikirim ke CAMABA. \\
+	\hline
+\end{longtable}
+
+
+\paragraph{PSPEC Proses : Kirim Notifikasi "Berkas Tidak Valid" ke CAMABA}~\\
+\begin{longtable}{|p{0.2\textwidth}|p{0.7\textwidth}|}
+	\caption{PSPEC Proses  -- Kirim Notifikasi "Berkas Tidak Valid" ke CAMABA}
+	\label{table:3.pspec}\\
+	\hline
+	\textbf{Nama Proses} & Kirim Notifikasi "Berkas Tidak Valid" ke CAMABA \\
+	\hline
+	\textbf{Deskripsi Proses} & Sistem mengirimkan notifikasi kepada CAMABA apabila berkas yang diunggah dianggap tidak valid oleh Admin Validasi. \\
+	\hline
+	\textbf{Data Input} & Status "Tidak Valid" dari proses 5.4. \\
+	\hline
+	\textbf{Data Output} & Notifikasi terkirim ke CAMABA. \\
+	\hline
+	\textbf{Body / Keterangan} & Notifikasi ini memberitahu CAMABA bahwa ada masalah dengan berkas mereka dan mungkin memerlukan perbaikan atau unggah ulang. \\
+	\hline
+\end{longtable}
+
+
+\paragraph{PSPEC Proses 5.6: Aktivasi VA Cicilan Uang Kuliah}~\\
+\begin{longtable}{|p{0.2\textwidth}|p{0.7\textwidth}|}
+	\caption{PSPEC Proses 5.6 -- Aktivasi VA Cicilan Uang Kuliah}
+	\label{table:3.pspec56}\\
+	\hline
+	\textbf{Nama Proses} & Aktivasi VA Cicilan Uang Kuliah \\
+	\hline
+	\textbf{Deskripsi Proses} & Sistem mengaktifkan Virtual Account (VA) untuk pembayaran cicilan uang kuliah berdasarkan data program studi CAMABA. \\
+	\hline
+	\textbf{Data Input} & Data Validasi CAMABA (program studi). \\
+	\hline
+	\textbf{Data Output} & VA cicilan uang kuliah dan info VA disimpan di Formulir \& VA. \\
+	\hline
+	\textbf{Body / Keterangan} & Sistem mengambil data program studi, menghitung nominal cicilan, dan mengirimkan permintaan aktivasi VA ke BRIVA. Jika aktiva si berhasil, info VA disimpan. Jika gagal, akan dikirim ke halaman Admin Validasi untuk validasi manual. \\
+	\hline
+\end{longtable}
+
+
+\paragraph{PSPEC Proses 5.7: Kirim Email VA Info (Daftar Ulang)}~\\
+\begin{longtable}{|p{0.2\textwidth}|p{0.7\textwidth}|}
+	\caption{PSPEC Proses 5.7 -- Kirim Email VA Info (Daftar Ulang)}
+	\label{table:3.pspec57}\\
+	\hline
+	\textbf{Nama Proses} & Kirim Email VA Info (Daftar Ulang) \\
+	\hline
+	\textbf{Deskripsi Proses} & Sistem mengirimkan email berisi informasi Virtual Account (VA) pembayaran cicilan uang kuliah kepada CAMABA. \\
+	\hline
+	\textbf{Data Input} & Info VA dari proses 5.6. \\
+	\hline
+	\textbf{Data Output} & Email notifikasi terkirim. \\
+	\hline
+	\textbf{Body / Keterangan} & Email ini memberikan detail VA dan panduan pembayaran cicilan kepada CAMABA yang akan daftar ulang. \\
+	\hline
+\end{longtable}
+
+
+\paragraph{PSPEC Proses 5.8: Login via No Pendaftaran \& Tgl Lahir}~\\
+\begin{longtable}{|p{0.2\textwidth}|p{0.7\textwidth}|}
+	\caption{PSPEC Proses 5.8 -- Login via No Pendaftaran \& Tgl Lahir}
+	\label{table:3.pspec58}\\
+	\hline
+	\textbf{Nama Proses} & Login via No Pendaftaran \& Tgl Lahir \\
+	\hline
+	\textbf{Deskripsi Proses} & CAMABA yang lulus melakukan login menggunakan nomor pendaftaran dan tanggal lahir sebagai password awal untuk proses daftar ulang. \\
+	\hline
+	\textbf{Data Input} & Nomor pendaftaran dan tanggal lahir. \\
+	\hline
+	\textbf{Data Output} & Akses ke halaman daftar ulang atau permintaan ganti password. \\
+	\hline
+	\textbf{Body / Keterangan} & Sistem menyediakan dua opsi: login langsung atau ganti password terlebih dahulu. Jika data tidak valid, akses akan ditolak. \\
+	\hline
+\end{longtable}
+
+
+\paragraph{PSPEC Proses : Validasi Data CAMABA (Daftar Ulang)}~\\
+\begin{longtable}{|p{0.2\textwidth}|p{0.7\textwidth}|}
+	\caption{PSPEC Proses  -- Validasi Data CAMABA (Daftar Ulang)}
+	\label{table:3.pspec}\\
+	\hline
+	\textbf{Nama Proses} & Validasi Data CAMABA (Daftar Ulang) \\
+	\hline
+	\textbf{Deskripsi Proses} & Admin Validasi melakukan verifikasi kelengkapan dan kebenaran data CAMABA yang telah menyelesaikan daftar ulang. \\
+	\hline
+	\textbf{Data Input} & Data daftar ulang CAMABA. \\
+	\hline
+	\textbf{Data Output} & Status validasi (diterima/ditolak/perlu perbaikan). \\
+	\hline
+	\textbf{Body / Keterangan} & Admin Validasi dapat melihat data yang dikelompokkan per fakultas dan pro gram studi, kemudian melakukan validasi manual berdasarkan kelengkapan berkas yang disubmit. \\
+	\hline
+\end{longtable}
+
+
+\paragraph{PSPEC Proses 6.2: Klasifikasi \& Rekap Data}~\\
+\begin{longtable}{|p{0.2\textwidth}|p{0.7\textwidth}|}
+	\caption{PSPEC Proses 6.2 -- Klasifikasi \& Rekap Data}
+	\label{table:3.pspec62}\\
+	\hline
+	\textbf{Nama Proses} & Klasifikasi \& Rekap Data \\
+	\hline
+	\textbf{Deskripsi Proses} & Sistem secara otomatis mengklasifikasikan data CAMABA berdasarkan fakultas dan program studi setelah divalidasi. \\
+	\hline
+	\textbf{Data Input} & Data Validasi CAMABA (status validasi). \\
+	\hline
+	\textbf{Data Output} & Data CAMABA yang sudah terklasifikasi dan siap direkap. \\
+	\hline
+	\textbf{Body / Keterangan} & Proses ini memudahkan Admin Validasi untuk mengelola dan mengekspor data CAMABA yang telah tervalidasi dalam format terstruktur. \\
+	\hline
+\end{longtable}
+
+
+\paragraph{PSPEC Proses : Kirim Pesan / Notifikasi (oleh Admin Validasi)}~\\
+\begin{longtable}{|p{0.2\textwidth}|p{0.7\textwidth}|}
+	\caption{PSPEC Proses  -- Kirim Pesan / Notifikasi (oleh Admin Validasi)}
+	\label{table:3.pspec}\\
+	\hline
+	\textbf{Nama Proses} & Kirim Pesan / Notifikasi (oleh Admin Validasi) \\
+	\hline
+	\textbf{Deskripsi Proses} & Admin Validasi dapat mengirim pesan atau notifikasi langsung ke email atau notifikasi di web CAMABA. \\
+	\hline
+	\textbf{Data Input} & Pesan/notifikasi dari Admin Validasi. \\
+	\hline
+	\textbf{Data Output} & Notifikasi \& Email Log. \\
+	\hline
+	\textbf{Body / Keterangan} & Fitur ini memungkinkan Admin Validasi untuk berkomunikasi dengan CAMABA, misalnya untuk meminta perbaikan data yang ditolak. \\
+	\hline
+\end{longtable}
+
+
+\paragraph{PSPEC Proses 6.4: Kirim Pertanyaan (oleh CAMABA)}~\\
+\begin{longtable}{|p{0.2\textwidth}|p{0.7\textwidth}|}
+	\caption{PSPEC Proses 6.4 -- Kirim Pertanyaan (oleh CAMABA)}
+	\label{table:3.pspec64}\\
+	\hline
+	\textbf{Nama Proses} & Kirim Pertanyaan (oleh CAMABA) \\
+	\hline
+	\textbf{Deskripsi Proses} & CAMABA dapat mengajukan pertanyaan kepada Admin Validasi melalui sistem. \\
+	\hline
+	\textbf{Data Input} & Pertanyaan dari CAMABA. \\
+	\hline
+	\textbf{Data Output} & Pertanyaan masuk ke sistem. \\
+	\hline
+	\textbf{Body / Keterangan} & Proses ini memfasilitasi komunikasi dua arah antara CAMABA dan admin untuk mendapatkan bantuan atau penjelasan terkait PMB. \\
+	\hline
+\end{longtable}
+
+
+\paragraph{PSPEC Proses 6.5: Jawab Pertanyaan (oleh Admin Validasi) Deskripsi Admin Validasi dapat menjawab pertanyaan yang diajukan oleh Proses CAMABA. Data Input Jawaban dari Admin Validasi. Data Output Jawaban terkirim ke CAMABA. Body / Keterangan Adanya kotak masuk pesan dan tanda pesan yang belum terjawab membantu admin dalam melac ak dan menanggapi pertanyaan CAMABA secara efisien. 3.5.8.9.39 PSPEC Proses 7.1: Kelola Periode Pendaftaran Tabel 3.4 7. PSPEC Proses 7.1 – Kelola Periode Pendaftaran Nama Proses PSPEC Proses 7.1 – Kelola Periode Pendaftaran}~\\
+\begin{longtable}{|p{0.2\textwidth}|p{0.7\textwidth}|}
+	\caption{PSPEC Proses 6.5 -- Jawab Pertanyaan (oleh Admin Validasi) Deskripsi Admin Validasi dapat menjawab pertanyaan yang diajukan oleh Proses CAMABA. Data Input Jawaban dari Admin Validasi. Data Output Jawaban terkirim ke CAMABA. Body / Keterangan Adanya kotak masuk pesan dan tanda pesan yang belum terjawab membantu admin dalam melac ak dan menanggapi pertanyaan CAMABA secara efisien. 3.5.8.9.39 PSPEC Proses 7.1: Kelola Periode Pendaftaran Tabel 3.4 7. PSPEC Proses 7.1 – Kelola Periode Pendaftaran Nama Proses PSPEC Proses 7.1 – Kelola Periode Pendaftaran}
+	\label{table:3.pspec65}\\
+	\hline
+	\textbf{Nama Proses} & Jawab Pertanyaan (oleh Admin Validasi) Deskripsi Admin Validasi dapat menjawab pertanyaan yang diajukan oleh Proses CAMABA. Data Input Jawaban dari Admin Validasi. Data Output Jawaban terkirim ke CAMABA. Body / Keterangan Adanya kotak masuk pesan dan tanda pesan yang belum terjawab membantu admin dalam melac ak dan menanggapi pertanyaan CAMABA secara efisien. 3.5.8.9.39 PSPEC Proses 7.1: Kelola Periode Pendaftaran Tabel 3.4 7. PSPEC Proses 7.1 – Kelola Periode Pendaftaran Nama Proses PSPEC Proses 7.1 – Kelola Periode Pendaftaran \\
+	\hline
+	\textbf{Deskripsi Proses} & Admin Pusat menentukan dan mengatur jadwal gelombang pendaftaran, batas waktu, dan syarat -syarat pendaftaran. \\
+	\hline
+	\textbf{Data Input} & Jadwal gelombang, syarat pendaftaran, batas waktu (tanggal pendaftaran, tanggal ujian, tanggal pengumuman, waktu daftar ulang). \\
+	\hline
+	\textbf{Data Output} & Konfi gurasi periode pendaftaran tersimpan di Konfigurasi Sistem. \\
+	\hline
+	\textbf{Body / Keterangan} & Admin Pusat dapat menambah, mengubah, atau menonaktifkan gelombang pendaftaran. Perubahan akan langsung berlaku di sistem. \\
+	\hline
+\end{longtable}
+
+
+\paragraph{PSPEC Proses 7.2: Kelola Jenis Seleksi}~\\
+\begin{longtable}{|p{0.2\textwidth}|p{0.7\textwidth}|}
+	\caption{PSPEC Proses 7.2 -- Kelola Jenis Seleksi}
+	\label{table:3.pspec72}\\
+	\hline
+	\textbf{Nama Proses} & Kelola Jenis Seleksi \\
+	\hline
+	\textbf{Deskripsi Proses} & Admin Pusat dapat menentukan jenis -jenis seleksi yang tersedia untuk setiap periode pendaftaran (misalnya, bebas testing, bebas testing syarat ra nking, testing). \\
+	\hline
+	\textbf{Data Input} & Jenis seleksi dan cara penyeleksian. \\
+	\hline
+	\textbf{Data Output} & Konfigurasi jenis seleksi tersimpan di Konfigurasi Sistem. \\
+	\hline
+	\textbf{Body / Keterangan} & Proses ini memungkinkan fleksibilitas dalam metode seleksi yang ditawarkan oleh universitas. \\
+	\hline
+\end{longtable}
+
+
+\paragraph{PSPEC Proses 7.3: Kelola Jenis Formulir \& Biaya}~\\
+\begin{longtable}{|p{0.2\textwidth}|p{0.7\textwidth}|}
+	\caption{PSPEC Proses 7.3 -- Kelola Jenis Formulir \& Biaya}
+	\label{table:3.pspec73}\\
+	\hline
+	\textbf{Nama Proses} & Kelola Jenis Formulir \& Biaya \\
+	\hline
+	\textbf{Deskripsi Proses} & Admin Pusat dapat menambah jenis formulir pendaftaran beserta harganya, dibedakan antara kedokteran dan non -kedokteran. \\
+	\hline
+	\textbf{Data Input} & Jenis formulir dan harganya. \\
+	\hline
+	\textbf{Data Output} & Konfigurasi jenis formulir dan biaya tersimpan di Konfigurasi Sistem. \\
+	\hline
+	\textbf{Body / Keterangan} & Ini memungkinkan admin untuk mengel ola struktur biaya pendaftaran secara dinamis. \\
+	\hline
+\end{longtable}
+
+
+\paragraph{PSPEC Proses 7.4: Kelola Cicilan per Prodi}~\\
+\begin{longtable}{|p{0.2\textwidth}|p{0.7\textwidth}|}
+	\caption{PSPEC Proses 7.4 -- Kelola Cicilan per Prodi}
+	\label{table:3.pspec74}\\
+	\hline
+	\textbf{Nama Proses} & Kelola Cicilan per Prodi \\
+	\hline
+	\textbf{Deskripsi Proses} & Admin Pusat menetapkan nominal cicilan 1 -3 berdasarkan program studi. \\
+	\hline
+	\textbf{Data Input} & Nominal cicilan dan program studi terkait. \\
+	\hline
+	\textbf{Data Output} & Konfigurasi cicilan per prodi tersimpan di Konfigurasi Sistem. \\
+	\hline
+	\textbf{Body / Keterangan} & Proses ini mendukung fitur pembayaran cicilan yang disesuai kan dengan program studi yang dipilih. \\
+	\hline
+\end{longtable}
+
+
+\paragraph{PSPEC Proses 7.5: Kelola Info Landing Page}~\\
+\begin{longtable}{|p{0.2\textwidth}|p{0.7\textwidth}|}
+	\caption{PSPEC Proses 7.5 -- Kelola Info Landing Page}
+	\label{table:3.pspec75}\\
+	\hline
+	\textbf{Nama Proses} & Kelola Info Landing Page \\
+	\hline
+	\textbf{Deskripsi Proses} & Admin Pusat mengelola konten informasi umum yang ditampilkan di halaman utama (landing page) sistem PMB, seperti jadwal, pengumuman, dll. \\
+	\hline
+	\textbf{Data Input} & Konten informasi yang akan ditampilkan. \\
+	\hline
+	\textbf{Data Output} & Konfigurasi informasi landing page tersimpan di Konfigurasi Sistem. Body / Ketera ngan Memungkinkan admin untuk selalu memperbarui informasi penting bagi CAMABA dan pengunjung. 3.5.8.9.44 PSPEC Proses 7.6: Pengumuman \& Notifikasi (untuk Camaba) Tabel 3.5 2 PSPEC Proses 7.6 – Pengumuman \& Notifikasi (untuk CAMABA) Nama Proses PSPEC Proses 7.6 – Pengumuman \& Notifikasi (untuk CAMABA) Deskripsi Proses Sistem menampilkan pengumuman penting dan notifikasi kepada CAMABA, seperti hasil kelulusan atau informasi Virtual Account yang aktif. Data Input Data pengumuman dan notifikasi dari Konfigurasi Sist em. Data Output Informasi dan notifikasi ditampilkan di halaman CAMABA. \\
+	\hline
+	\textbf{Body / Keterangan} & Proses ini memastikan CAMABA mendapatkan informasi terkini dan relevan secara real -time. \\
+	\hline
+\end{longtable}
+
+
+\paragraph{PSPEC Proses 7.7: Pratinjau Tampilan UI}~\\
+\begin{longtable}{|p{0.2\textwidth}|p{0.7\textwidth}|}
+	\caption{PSPEC Proses 7.7 -- Pratinjau Tampilan UI}
+	\label{table:3.pspec77}\\
+	\hline
+	\textbf{Nama Proses} & Pratinjau Tampilan UI \\
+	\hline
+	\textbf{Deskripsi Proses} & Admin Pusat dapat melihat tampilan sistem dari perspektif Admin Validasi atau CAMABA. \\
+	\hline
+	\textbf{Data Input} & Permintaan pratinjau dari Admin Pusat. \\
+	\hline
+	\textbf{Data Output} & Tampilan sistem sesuai perspektif yang dipilih. \\
+	\hline
+	\textbf{Body / Keterangan} & Ini membantu Admin Pusat untuk memverifikasi bagaimana informasi dan perubahan yang mereka buat akan terlihat oleh pengguna lain sebelum dipublikasikan secara luas. 3.5.8.10 Data Store \\
+	\hline
+\end{longtable}

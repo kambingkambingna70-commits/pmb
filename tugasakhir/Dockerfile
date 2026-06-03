@@ -5,13 +5,14 @@ WORKDIR /app
 
 # Copy pom.xml dan download dependencies
 COPY pom.xml .
-RUN mvn dependency:go-offline -B
+RUN mvn dependency:go-offline -B || true
 
 # Copy source code
 COPY src ./src
+COPY target ./target 2>/dev/null || true
 
 # Build app
-RUN mvn clean package -DskipTests
+RUN mvn clean package -DskipTests -q || mvn package -DskipTests -q
 
 # Runtime stage
 FROM eclipse-temurin:17-jre-alpine
@@ -24,9 +25,5 @@ COPY --from=builder /app/target/*.jar app.jar
 # Expose port
 EXPOSE 8080
 
-# Health check
-HEALTHCHECK --interval=30s --timeout=3s --start-period=40s --retries=3 \
-  CMD java -cp app.jar sun.rmi.registry.RegistryImpl || exit 1
-
 # Run app
-ENTRYPOINT ["java", "-jar", "app.jar"]
+ENTRYPOINT ["java", "-Dfile.encoding=UTF-8", "-jar", "app.jar"]

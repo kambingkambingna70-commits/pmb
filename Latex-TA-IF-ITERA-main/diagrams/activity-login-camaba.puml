@@ -1,0 +1,71 @@
+@startuml
+skinparam backgroundColor white
+skinparam swimlaneBackgroundColor white
+skinparam swimlaneTitleBackgroundColor white
+skinparam activityBackgroundColor white
+skinparam activityBorderColor #666666
+skinparam arrowColor #444444
+skinparam fontName "Times New Roman"
+
+|Camaba|
+start
+:Akses Halaman Registrasi / Login;
+
+if (Pilih Aksi?) then (Registrasi)
+  :Mengisi Email, Password,
+  dan Data Diri;
+
+  |Sistem|
+  :Memvalidasi Data;
+
+  if (Email sudah terdaftar?) then (Ya)
+    :Menampilkan Peringatan
+    Akun Sudah Terdaftar;
+    stop
+  else (Tidak)
+    :Menyimpan Akun;
+    :Mengirim Email
+    Verifikasi ke Camaba;
+    stop
+  endif
+
+else if (Pilih Aksi?) then (Lupa Password)
+  :Masukkan Email;
+
+  |Sistem|
+  :Memeriksa Email di Database;
+
+  if (Email terdaftar?) then (Tidak)
+    :Peringatan Kesalahan Email;
+    stop
+  else (Ya)
+    :Mengirim Link Pemulihan
+    Password ke Email;
+    stop
+  endif
+
+else (Login)
+  :Masukkan Email dan Password;
+
+  |Sistem|
+  :Memeriksa Email dan Password;
+
+  if (Data valid?) then (Tidak)
+    :Peringatan Kesalahan Data Login;
+    stop
+  else (Ya)
+    if (Email terverifikasi?) then (Tidak)
+      :Peringatan Email
+      Belum Diverifikasi;
+      stop
+    else (Ya)
+      :Menentukan Role;
+      :Login Berhasil;
+      :Menampilkan Halaman Dashboard;
+      stop
+    endif
+  endif
+
+endif
+
+@enduml

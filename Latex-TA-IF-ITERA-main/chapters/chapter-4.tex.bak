@@ -1,0 +1,974 @@
+﻿\newpage
+\chapter{HASIL DAN PEMBAHASAN} \label{Bab IV}
+
+Bab ini memaparkan hasil pengembangan sistem PMB Universitas HKBP Nommensen menggunakan pendekatan \textit{Evolutionary Prototyping}. Sesuai metode ini, sistem tidak dibangun sekaligus, melainkan melalui siklus berulang: \textbf{perancangan desain} $\rightarrow$ \textbf{pembuatan kode} $\rightarrow$ \textbf{pembuatan basis data} $\rightarrow$ \textbf{pembuatan modul dan tampilan} $\rightarrow$ \textbf{evaluasi dan perbaikan}. Setiap prototipe yang dihasilkan bersifat fungsional penuh dan menjadi fondasi bagi iterasi berikutnya, bukan dibuang \cite{crinnion1991evolutionary}.\par
+
+% ============================================================
+\section{Iterasi 1 --- Pembangunan Fondasi Sistem PMB} \label{IV.Iterasi1}
+% ============================================================
+
+Iterasi pertama bertujuan membangun seluruh fondasi sistem: arsitektur \textit{back-end}, skema basis data, serta semua modul fungsional inti. Prototipe yang dihasilkan pada iterasi ini mencakup alur lengkap dari registrasi camaba hingga penerbitan dokumen hasil akhir, sehingga dapat langsung dievaluasi oleh pihak klien.\par
+
+% ============================================================
+\subsection{Perancangan Desain Iterasi 1} \label{IV.I1.Desain}
+% ============================================================
+
+Tahap perancangan desain pada iterasi ini berfokus pada dua hal: pertama, penetapan arsitektur sistem secara keseluruhan; dan kedua, penyusunan rancangan antarmuka (\textit{wireframe}) untuk setiap halaman utama. Perancangan sistem menggunakan arsitektur \textit{Model--View--Controller} (MVC) yang diimplementasikan melalui Spring Boot di sisi \textit{back-end} dan HTML/Bootstrap di sisi \textit{front-end}. Diagram use case, activity diagram, dan rancangan antarmuka awal telah disusun pada Bab \ref{Bab III} sebagai dasar implementasi pada iterasi ini, sehingga subbab ini hanya merangkum keputusan desain kritis yang memengaruhi seluruh proses pembangunan.\par
+
+Keputusan desain utama yang ditetapkan adalah penggunaan pola autentikasi \textit{stateless} berbasis JWT (\textit{JSON Web Token}), di mana server tidak menyimpan sesi pengguna (\textit{session}). Setiap \textit{request} API yang memerlukan otentikasi harus menyertakan token JWT di \textit{header} \texttt{Authorization: Bearer \{token\}}. Pilihan ini memungkinkan \textit{front-end} berupa berkas HTML statis yang tidak memerlukan \textit{server-side rendering}, sehingga menyederhanakan \textit{deployment} dan mengurangi beban server.\par
+
+% ============================================================
+\subsection{Pembuatan Kode --- Arsitektur dan Keamanan \textit{Back-end}} \label{IV.I1.Kode}
+% ============================================================
+
+\subsubsection{Struktur Paket dan Tanggung Jawab Setiap Lapisan}
+
+Kode \textit{back-end} diorganisasikan ke dalam beberapa paket utama di bawah \texttt{com.uhn.pmb}, masing-masing dengan tanggung jawab yang jelas sesuai pola MVC. Tabel \ref{table:4.struktur_paket} menjelaskan fungsi setiap paket tersebut.\par
+
+\begin{longtable}{|p{0.28\textwidth}|p{0.62\textwidth}|}
+	\caption{Struktur Paket \textit{Back-end} dan Tanggung Jawabnya}
+	\label{table:4.struktur_paket}\\
+	\hline
+	\textbf{Paket} & \textbf{Tanggung Jawab} \\
+	\hline
+	\endfirsthead
+	\hline
+	\textbf{Paket} & \textbf{Tanggung Jawab} \\
+	\hline
+	\endhead
+	\texttt{controller/} & Menerima \textit{request} HTTP, memetakan ke \textit{endpoint} REST, mengembalikan respons JSON. Tidak berisi logika bisnis. \\
+	\hline
+	\texttt{service/} & Berisi logika bisnis utama: validasi data, orkestrasi proses, pemanggilan repository, pengiriman email. \\
+	\hline
+	\texttt{entity/} & Kelas Java yang dipetakan ke tabel basis data menggunakan anotasi JPA/Hibernate. Setiap kelas = satu tabel. \\
+	\hline
+	\texttt{repository/} & Antarmuka yang mewarisi \texttt{JpaRepository} untuk operasi CRUD dan kueri kustom ke basis data. \\
+	\hline
+	\texttt{security/} & Komponen keamanan: filter JWT, penyedia token, dan \textit{entry point} untuk menangani autentikasi gagal. \\
+	\hline
+	\texttt{config/} & Konfigurasi Spring: aturan keamanan (\texttt{SecurityConfig}), CORS, dan \textit{resource handler} statis (\texttt{WebConfig}). \\
+	\hline
+	\texttt{dto/} & Objek transfer data (\textit{Data Transfer Object}) yang mendefinisikan struktur \textit{request} dan \textit{response} API. \\
+	\hline
+	\texttt{task/} & Tugas terjadwal (\textit{scheduled tasks}) yang berjalan otomatis di latar belakang, misalnya pengecekan pembayaran. \\
+	\hline
+	\texttt{component/} & Komponen yang berjalan saat aplikasi diinisialisasi, seperti \textit{seeder} data master awal. \\
+	\hline
+\end{longtable}
+
+\subsubsection{Mekanisme Keamanan --- \textit{SecurityConfig} dan Filter JWT}
+
+Keamanan sistem dikendalikan sepenuhnya oleh kelas \texttt{SecurityConfig} (paket \texttt{config/}). Kelas ini dianotasi \texttt{@EnableWebSecurity} dan \texttt{@EnableMethodSecurity}, yang mengaktifkan kontrol akses berbasis peran hingga tingkat \textit{method}. Arsitektur keamanan sistem menggunakan \textit{session stateless}: setiap \textit{request} divalidasi secara mandiri tanpa bergantung pada sesi server, sebagaimana ditunjukkan pada potongan kode berikut.\par
+
+\begin{lstlisting}[language=Java, caption={Konfigurasi manajemen sesi stateless dan rantai filter keamanan}, label={kode:4.securityconfig}]
+@Bean
+public SecurityFilterChain securityFilterChain(HttpSecurity http) 
+        throws Exception {
+    http
+        // Nonaktifkan CSRF karena API stateless (token JWT menggantikan peran CSRF)
+        .csrf(csrf -> csrf.disable())
+        // Paksa setiap request diproses tanpa sesi server
+        .sessionManagement(session -> session
+            .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+        .authorizeHttpRequests(authorize -> authorize
+            // Endpoint publik: tidak perlu token
+            .requestMatchers("/api/auth/**").permitAll()
+            .requestMatchers("/api/public/**").permitAll()
+            // Endpoint admin: harus ter-autentikasi
+            .requestMatchers("/admin/api/**").authenticated()
+            // Semua request lain juga harus ter-autentikasi
+            .anyRequest().authenticated()
+        );
+    // Sisipkan JwtAuthenticationFilter SEBELUM filter login standar Spring
+    http.addFilterBefore(jwtAuthenticationFilter(), 
+        UsernamePasswordAuthenticationFilter.class);
+    return http.build();
+}
+\end{lstlisting}
+
+Filter JWT (\texttt{JwtAuthenticationFilter} di paket \texttt{security/}) berjalan pada setiap \textit{request} HTTP yang masuk. Filter ini ditempatkan di paket \texttt{security/} karena merupakan komponen infrastruktur lintas-modul yang tidak terkait dengan bisnis tertentu. Alur kerja filter tersebut adalah: (1) membaca header \texttt{Authorization}, (2) mengekstrak dan memvalidasi token JWT, (3) memuat data pengguna dari basis data, lalu (4) menyimpan objek autentikasi ke \texttt{SecurityContext} agar Spring Security mengenali pengguna yang sedang aktif. Potongan kode inti filter ini ditunjukkan pada Kode \ref{kode:4.jwtfilter}.\par
+
+\begin{lstlisting}[language=Java, caption={Inti logika JwtAuthenticationFilter yang memvalidasi token JWT setiap request}, label={kode:4.jwtfilter}]
+@Override
+protected void doFilterInternal(HttpServletRequest request,
+        HttpServletResponse response, FilterChain filterChain)
+        throws ServletException, IOException {
+
+    String jwt = getJwtFromRequest(request); // Ambil token dari header
+
+    if (StringUtils.hasText(jwt) && jwtTokenProvider.validateToken(jwt)) {
+        String email = jwtTokenProvider.getEmailFromToken(jwt);
+        String authorities = jwtTokenProvider.getAuthoritiesFromToken(jwt);
+
+        // Bangun objek autentikasi dengan role dari dalam token JWT
+        UsernamePasswordAuthenticationToken auth =
+            new UsernamePasswordAuthenticationToken(
+                email, null, parseAuthorities(authorities));
+        auth.setDetails(new WebAuthenticationDetailsSource()
+            .buildDetails(request));
+
+        // Simpan ke SecurityContext agar endpoint dapat mengenal user
+        SecurityContextHolder.getContext().setAuthentication(auth);
+    }
+    filterChain.doFilter(request, response); // Lanjutkan ke handler berikutnya
+}
+\end{lstlisting}
+
+% ============================================================
+\subsection{Pembuatan Basis Data} \label{IV.I1.Database}
+% ============================================================
+
+Basis data sistem PMB menggunakan H2 \textit{in-memory} untuk lingkungan pengembangan dengan konfigurasi \texttt{jdbc:h2:mem:pmb\_uhn}. Skema basis data dibuat secara otomatis oleh Hibernate berdasarkan anotasi JPA pada kelas-kelas entitas di paket \texttt{entity/}. Tabel \ref{table:4.entitas_utama} merangkum entitas-entitas utama beserta relasinya.\par
+
+\begin{longtable}{|p{0.22\textwidth}|p{0.22\textwidth}|p{0.45\textwidth}|}
+	\caption{Entitas Utama Basis Data Sistem PMB}
+	\label{table:4.entitas_utama}\\
+	\hline
+	\textbf{Tabel (Entitas)} & \textbf{Relasi Kunci} & \textbf{Fungsi} \\
+	\hline
+	\endfirsthead
+	\hline
+	\textbf{Tabel (Entitas)} & \textbf{Relasi Kunci} & \textbf{Fungsi} \\
+	\hline
+	\endhead
+	\texttt{users} & -- & Akun autentikasi (email, password hash, role, status verifikasi email) \\
+	\hline
+	\texttt{students} & \texttt{user\_id} (1:1) & Data profil camaba yang diperluas dari akun pengguna \\
+	\hline
+	\texttt{registration\_periods} & -- & Gelombang pendaftaran (Gelombang 1, 2, 3) beserta tipe dan jadwalnya \\
+	\hline
+	\texttt{program\_studi} & -- & Data program studi, harga, dan konfigurasi harga cicilan per tahap \\
+	\hline
+	\texttt{admission\_forms} & \texttt{student\_id}, \texttt{period\_id} & Formulir pendaftaran camaba per gelombang \\
+	\hline
+	\texttt{form\_validations} & \texttt{form\_id} & Status validasi formulir oleh admin (dokumen, kelengkapan) \\
+	\hline
+	\texttt{exams} / \texttt{exam\_results} & \texttt{student\_id} & Data ujian dan hasil seleksi camaba \\
+	\hline
+	\texttt{cicilan\_request} & \texttt{student\_id} & Pengajuan cicilan dan skema pembayaran yang dipilih \\
+	\hline
+	\texttt{re\_enrollments} & \texttt{student\_id} & Data proses daftar ulang camaba yang dinyatakan lulus \\
+	\hline
+	\texttt{hasil\_akhir} & \texttt{student\_id} (1:1) & Rekaman final: BRIVA, nomor registrasi, dokumen NPM/KTM sementara \\
+	\hline
+	\texttt{system\_links} & -- & Tautan eksternal yang dikelola admin (YouTube, Google Drive, dll.) \\
+	\hline
+	\texttt{contact\_info} & -- & Informasi kontak institusi untuk tampilan publik \\
+	\hline
+	\texttt{admin\_messages} & \texttt{sender\_id}, \texttt{receiver\_id} & Pesan antar camaba dan admin melalui fitur \textit{chat} \\
+	\hline
+\end{longtable}
+
+Contoh definisi entitas \texttt{HasilAkhir} yang memiliki \textit{constraint} unik pada beberapa kolom kritis ditunjukkan pada Kode \ref{kode:4.entitas_hasilakhir}. Anotasi \texttt{@Table} dengan parameter \texttt{uniqueConstraints} memastikan integritas data pada level basis data---bukan hanya validasi aplikasi---sehingga satu mahasiswa hanya dapat memiliki satu rekaman hasil akhir dengan BRIVA dan nomor registrasi yang unik.\par
+
+\begin{lstlisting}[language=Java, caption={Definisi entitas HasilAkhir dengan unique constraint pada kolom kritis}, label={kode:4.entitas_hasilakhir}]
+@Entity
+@Table(name = "hasil_akhir", uniqueConstraints = {
+    @UniqueConstraint(columnNames = "briva_number"),
+    @UniqueConstraint(columnNames = "nomor_registrasi"),
+    @UniqueConstraint(columnNames = "student_id")
+})
+public class HasilAkhir {
+
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "student_id", nullable = false)
+    private Student student;
+
+    @Column(name = "briva_number", nullable = false, unique = true)
+    private String brivaNumber;
+
+    @Column(name = "nomor_registrasi", nullable = false, unique = true)
+    private String nomorRegistrasi;
+
+    // Path file di server: uploads/hasil-akhir/{studentId}/npm_sementara.pdf
+    @Column(name = "npm_sementara_file")
+    private String npmSementaraFile;
+
+    @Column(name = "ktm_sementara_file")
+    private String ktmSementaraFile;
+}
+\end{lstlisting}
+
+% ============================================================
+\subsection{Pembuatan Modul dan Tampilan} \label{IV.I1.Modul}
+% ============================================================
+
+Subbab ini memaparkan seluruh modul fungsional yang dibangun pada Iterasi 1, disertai penjelasan tampilan antarmuka dan kode \textit{back-end} inti. Setiap modul sesuai dengan satu kebutuhan fungsional yang diidentifikasi pada Bab \ref{Bab III}.\par
+
+% ------------------------------------------------
+\subsubsection{Modul 1 --- Halaman Registrasi dan Verifikasi Email} \label{IV.M1}
+% ------------------------------------------------
+
+Modul ini menangani pendaftaran akun baru oleh camaba. Selain mengisi email dan kata sandi, camaba kini diwajibkan mengisi nama lengkap (\textit{field} \texttt{fullName}) sejak tahap registrasi. Setelah formulir dikirim, sistem membuat akun dengan status \texttt{emailVerified = false} dan mengirimkan email berisi tautan verifikasi unik. Camaba baru dapat masuk ke sistem setelah mengklik tautan tersebut, sehingga menjamin keabsahan alamat email yang didaftarkan. Tampilan halaman registrasi ditunjukkan pada Gambar \ref{fig:4.m1.register}.\par
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\textwidth]{figure/bab4/m1-register.png}
+	\caption{Halaman Registrasi dengan \textit{Field} Nama Lengkap dan Alur Verifikasi Email}
+	\label{fig:4.m1.register}
+\end{figure}
+
+\textit{Endpoint} \texttt{POST /api/auth/register} di \texttt{AuthController} menerima data registrasi dan mendelegasikan ke \texttt{AuthService}. Endpoint ini ditempatkan di bawah \texttt{/api/auth/**} yang dikonfigurasi sebagai \texttt{permitAll()} di \texttt{SecurityConfig} karena tidak memerlukan autentikasi---justru diakses sebelum pengguna memiliki akun. Kode inti proses registrasi ditunjukkan pada Kode \ref{kode:4.m1.register}.\par
+
+\begin{lstlisting}[language=Java, caption={Endpoint registrasi di AuthController---public, tidak perlu JWT}, label={kode:4.m1.register}]
+// AuthController.java
+@PostMapping("/register") // -> POST /api/auth/register
+public ResponseEntity<?> register(@Valid @RequestBody RegisterRequest req) {
+    // Validasi password match di controller sebelum masuk service
+    if (!req.getPassword().equals(req.getConfirmPassword())) {
+        return ResponseEntity.badRequest()
+            .body(new ApiResponse(false, "Password tidak cocok"));
+    }
+    // Delegasikan logika bisnis ke AuthService:
+    // 1. Cek duplikat email
+    // 2. Hash password dengan BCrypt
+    // 3. Buat record Student untuk data profil camaba
+    // 4. Generate token verifikasi email
+    // 5. Kirim email HTML berisi link verifikasi via EmailService
+    AuthResponse response = authService.register(req);
+    return ResponseEntity.status(HttpStatus.CREATED).body(response);
+}
+
+// Endpoint verifikasi email---juga public, dibuka dari link di email
+@GetMapping("/verify-email") // -> GET /api/auth/verify-email?token=xxx
+public ResponseEntity<?> verifyEmail(@RequestParam String token) {
+    // AuthService mencari token, cek kedaluwarsa, set emailVerified=true
+    AuthResponse response = authService.verifyEmail(token);
+    return ResponseEntity.ok(response);
+}
+\end{lstlisting}
+
+% ------------------------------------------------
+\subsubsection{Modul 2 --- Halaman Login} \label{IV.M2}
+% ------------------------------------------------
+
+Halaman login memungkinkan camaba dan admin mengakses sistem dengan kredensial masing-masing. Sistem mendukung tiga peran: \texttt{CAMABA}, \texttt{ADMIN\_PUSAT}, dan \texttt{ADMIN\_VALIDASI}. Setelah autentikasi berhasil, server mengembalikan token JWT yang menyematkan informasi peran pengguna; token ini disimpan di \texttt{sessionStorage} browser dan dikirim di setiap \textit{request} berikutnya. Tampilan halaman login ditunjukkan pada Gambar \ref{fig:4.m2.login}.\par
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\textwidth]{figure/bab4/m2-login.png}
+	\caption{Halaman Login Sistem PMB}
+	\label{fig:4.m2.login}
+\end{figure}
+
+\begin{lstlisting}[language=Java, caption={Endpoint login yang menghasilkan token JWT berisi role pengguna}, label={kode:4.m2.login}]
+// AuthController.java
+@PostMapping("/login") // -> POST /api/auth/login
+public ResponseEntity<?> login(@Valid @RequestBody LoginRequest req) {
+    AuthResponse response = authService.login(req);
+    // AuthService melakukan:
+    // 1. Cek email & password via AuthenticationManager
+    // 2. Pastikan emailVerified=true (tolak jika belum verifikasi)
+    // 3. Generate JWT yang menyematkan email + role
+    // 4. Kembalikan token + data user untuk disimpan di browser
+    return ResponseEntity.ok(response);
+}
+\end{lstlisting}
+
+% ------------------------------------------------
+\subsubsection{Modul 3 --- Pemilihan Gelombang dan Jenis Seleksi} \label{IV.M3}
+% ------------------------------------------------
+
+Setelah login, langkah pertama camaba adalah memilih gelombang pendaftaran yang sedang aktif dan jenis seleksi yang sesuai (misalnya: Reguler, Kedokteran). Data gelombang diambil dari tabel \texttt{registration\_periods} yang dikelola admin. Tampilan halaman pemilihan gelombang ditunjukkan pada Gambar \ref{fig:4.m3.gelombang}.\par
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.85\textwidth]{figure/bab4/m3-gelombang.png}
+	\caption{Halaman Pemilihan Gelombang dan Jenis Seleksi}
+	\label{fig:4.m3.gelombang}
+\end{figure}
+
+\begin{lstlisting}[language=Java, caption={Endpoint publik untuk mengambil daftar gelombang aktif}, label={kode:4.m3.gelombang}]
+// CamabaController.java - path prefix: /api/camaba/
+// Ditempatkan di bawah /api/camaba/** yang bersifat permitAll
+// karena data gelombang perlu ditampilkan bahkan sebelum login
+@GetMapping("/gelombang")
+public ResponseEntity<?> getActiveGelombang() {
+    // Ambil semua RegistrationPeriod dengan status ACTIVE
+    List<RegistrationPeriod> activeWaves = 
+        periodRepository.findByIsActiveTrue();
+    return ResponseEntity.ok(activeWaves);
+}
+
+@PostMapping("/pilih-gelombang")
+public ResponseEntity<?> pilihGelombang(
+        @RequestBody PilihGelombangRequest req,
+        @RequestHeader("Authorization") String token) {
+    // Simpan pilihan gelombang dan jenis seleksi camaba
+    // Ambil student dari token JWT, update ke form aktif camaba
+    return ResponseEntity.ok(camabaService.pilihGelombang(req, token));
+}
+\end{lstlisting}
+
+% ------------------------------------------------
+\subsubsection{Modul 4 --- Pemilihan Metode Pembayaran} \label{IV.M4}
+% ------------------------------------------------
+
+Setelah memilih gelombang, camaba memilih metode pembayaran: (1) Virtual Account BRIVA yang dibayar melalui bank BRI, atau (2) transfer manual yang memerlukan unggah bukti pembayaran. Pilihan ini menentukan alur pembayaran selanjutnya yang akan dialami camaba. Tampilan halaman pemilihan metode pembayaran ditunjukkan pada Gambar \ref{fig:4.m4.payment}.\par
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.85\textwidth]{figure/bab4/m4-payment-method.png}
+	\caption{Halaman Pemilihan Metode Pembayaran}
+	\label{fig:4.m4.payment}
+\end{figure}
+
+\begin{lstlisting}[language=Java, caption={Endpoint pemilihan metode pembayaran di CamabaController}, label={kode:4.m4.payment}]
+// CamabaController.java
+@PostMapping("/pilih-metode-pembayaran")
+public ResponseEntity<?> pilihMetodePembayaran(
+        @RequestBody MetodePembayaranRequest req) {
+    // req.metode = "BRIVA" atau "MANUAL"
+    // Sistem menyimpan pilihan dan mengembalikan instruksi selanjutnya:
+    // - BRIVA: nomor VA BRIVA untuk ditransfer
+    // - MANUAL: form upload bukti pembayaran
+    return ResponseEntity.ok(
+        paymentService.prosesPilihMetode(req));
+}
+\end{lstlisting}
+
+% ------------------------------------------------
+\subsubsection{Modul 5 --- Pembayaran BRIVA dan Upload Bukti Manual} \label{IV.M5}
+% ------------------------------------------------
+
+Modul ini menangani dua jalur pembayaran uang pendaftaran. Untuk BRIVA, sistem menampilkan nomor Virtual Account yang harus ditransfer; pembayaran dikonfirmasi secara otomatis melalui \textit{callback} dari API BRI. Untuk pembayaran manual, camaba mengunggah foto/PDF bukti transfer yang kemudian diverifikasi oleh admin. Tampilan halaman pembayaran ditunjukkan pada Gambar \ref{fig:4.m5.briva}.\par
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.85\textwidth]{figure/bab4/m5-briva.png}
+	\caption{Halaman Pembayaran BRIVA dan Unggah Bukti Manual}
+	\label{fig:4.m5.briva}
+\end{figure}
+
+\begin{lstlisting}[language=Java, caption={Endpoint verifikasi pembayaran manual oleh admin di AdminController}, label={kode:4.m5.payment}]
+// AdminController.java - path prefix: /admin/api/
+// Endpoint ini di bawah /admin/api/** yang memerlukan autentikasi (authenticated)
+// dan dikontrol dengan @PreAuthorize di level method
+@PutMapping("/pembayaran/verifikasi/{paymentId}")
+@PreAuthorize("hasAnyRole('ADMIN_PUSAT', 'ADMIN_VALIDASI')")
+public ResponseEntity<?> verifikasiPembayaranManual(
+        @PathVariable Long paymentId,
+        @RequestBody VerifikasiPembayaranRequest req) {
+    // 1. Update status payment menjadi VERIFIED/REJECTED
+    // 2. Jika VERIFIED, buka akses ke halaman formulir pendaftaran
+    // 3. Kirim email notifikasi ke camaba
+    return ResponseEntity.ok(
+        paymentService.verifikasiManual(paymentId, req));
+}
+\end{lstlisting}
+
+% ------------------------------------------------
+\subsubsection{Modul 6 --- Pengisian Formulir Pendaftaran} \label{IV.M6}
+% ------------------------------------------------
+
+Setelah pembayaran dikonfirmasi, camaba mengisi formulir pendaftaran yang mencakup data pribadi, informasi orang tua, asal sekolah dengan fitur \textit{autocomplete}, serta pilihan program studi hingga tiga pilihan. Formulir ini dipecah menjadi beberapa langkah (\textit{multi-step form}) untuk kemudahan pengisian. Data asal sekolah menggunakan \textit{autocomplete dropdown} yang mencari ke basis data sekolah, sehingga nama sekolah terstandarisasi. Tampilan formulir pendaftaran ditunjukkan pada Gambar \ref{fig:4.m6.form}.\par
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\textwidth]{figure/bab4/m6-form-pendaftaran.png}
+	\caption{Halaman Pengisian Formulir Pendaftaran}
+	\label{fig:4.m6.form}
+\end{figure}
+
+\begin{lstlisting}[language=Java, caption={Endpoint pengiriman formulir pendaftaran dan autocomplete asal sekolah}, label={kode:4.m6.form}]
+// StudentController.java
+@PostMapping("/api/students/formulir")
+public ResponseEntity<?> submitFormulir(
+        @RequestBody AdmissionFormRequest req,
+        @RequestHeader("Authorization") String token) {
+    // Validasi: pastikan pembayaran sudah diverifikasi
+    // Simpan data ke tabel admission_forms
+    // Status awal: SUBMITTED (menunggu review admin)
+    return ResponseEntity.ok(studentService.submitFormulir(req, token));
+}
+
+// PublicApiController.java - autocomplete sekolah, bersifat publik
+@GetMapping("/api/public/sekolah/search")
+public ResponseEntity<?> cariSekolah(@RequestParam String q) {
+    // Cari LIKE '%q%' pada nama sekolah, batas 10 hasil
+    // Mengembalikan: nama, jenis (SMA/SMK/MA), kota
+    return ResponseEntity.ok(sekolahRepository
+        .findByNamaContainingIgnoreCase(q, PageRequest.of(0, 10)));
+}
+\end{lstlisting}
+
+% ------------------------------------------------
+\subsubsection{Modul 7 --- Mode Ujian \textit{Online} dan \textit{Offline}} \label{IV.M7}
+% ------------------------------------------------
+
+Setelah formulir divalidasi, camaba mengikuti ujian seleksi. Sistem mendukung dua mode: ujian \textit{online} melalui tautan Google Form yang dikonfigurasi admin, dan ujian \textit{offline} di mana camaba mengunggah bukti kehadiran atau hasil ujian. Admin mengonfigurasi tautan ujian per gelombang melalui modul \texttt{GelombangLinkUjian}. Tampilan halaman ujian ditunjukkan pada Gambar \ref{fig:4.m7.ujian}.\par
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.85\textwidth]{figure/bab4/m7-ujian.png}
+	\caption{Halaman Ujian Seleksi Mode Online dan Offline}
+	\label{fig:4.m7.ujian}
+\end{figure}
+
+\begin{lstlisting}[language=Java, caption={Endpoint konfigurasi link ujian oleh admin dan pengambilan link ujian aktif}, label={kode:4.m7.ujian}]
+// AdminUjianLinkController.java
+@PostMapping("/admin/api/ujian-link")
+@PreAuthorize("hasRole('ADMIN_PUSAT')")
+public ResponseEntity<?> setUjianLink(
+        @RequestBody UjianLinkRequest req) {
+    // Simpan URL Google Form/link ujian offline per gelombang
+    // Field: periodId, linkOnline, linkOffline, isActive
+    return ResponseEntity.ok(ujianLinkService.save(req));
+}
+
+// CamabaController.java - camaba mengambil link ujian aktif
+@GetMapping("/api/camaba/ujian/link-aktif")
+public ResponseEntity<?> getLinkUjianAktif(
+        @RequestHeader("Authorization") String token) {
+    // Ambil link ujian sesuai gelombang aktif camaba
+    // Kembalikan: mode (ONLINE/OFFLINE), URL, instruksi
+    return ResponseEntity.ok(ujianService.getLinkAktif(token));
+}
+\end{lstlisting}
+
+% ------------------------------------------------
+\subsubsection{Modul 8 --- Validasi Kelulusan Ujian oleh Admin} \label{IV.M8}
+% ------------------------------------------------
+
+Setelah camaba menyelesaikan ujian, admin validasi memeriksa hasil dan menetapkan status: \texttt{LULUS} atau \texttt{TIDAK\_LULUS}. Penetapan ini memicu notifikasi email otomatis kepada camaba. Camaba dengan status \texttt{TIDAK\_LULUS} tidak dapat melanjutkan ke tahap daftar ulang. Tampilan panel validasi ujian di dasbor admin ditunjukkan pada Gambar \ref{fig:4.m8.validasiujian}.\par
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\textwidth]{figure/bab4/m8-validasi-ujian.png}
+	\caption{Panel Validasi Kelulusan Ujian di Dasbor Admin Validasi}
+	\label{fig:4.m8.validasiujian}
+\end{figure}
+
+\begin{lstlisting}[language=Java, caption={Endpoint penetapan hasil ujian seleksi oleh admin validasi}, label={kode:4.m8.ujian}]
+// AdminController.java
+@PutMapping("/admin/api/validasi/ujian-result/{formId}")
+@PreAuthorize("hasAnyRole('ADMIN_VALIDASI', 'ADMIN_PUSAT')")
+public ResponseEntity<?> setHasilUjian(
+        @PathVariable Long formId,
+        @RequestBody HasilUjianRequest req) {
+    // req.result = LULUS | TIDAK_LULUS
+    // req.catatan = catatan opsional untuk dikirim ke camaba
+
+    // 1. Update kolom exam_result + exam_validated_by + exam_validated_at
+    // 2. Jika LULUS: buka akses tahap daftar ulang
+    // 3. Kirim email notifikasi hasil ke camaba via EmailService
+    return ResponseEntity.ok(
+        validasiService.setHasilUjian(formId, req));
+}
+\end{lstlisting}
+
+% ------------------------------------------------
+\subsubsection{Modul 9 --- Pembayaran Cicilan} \label{IV.M9}
+% ------------------------------------------------
+
+Camaba yang tidak mampu membayar lunas dapat mengajukan skema cicilan. Sistem mendukung variasi cicilan dari 1Ã— hingga 6Ã—. Saat pengajuan cicilan disetujui admin, sistem secara otomatis menghasilkan jadwal cicilan berdasarkan harga per tahap yang telah dikonfigurasi untuk program studi bersangkutan (lihat Modul 15). Admin dapat memperbarui status pembayaran setiap tahap secara individual. Tampilan halaman cicilan ditunjukkan pada Gambar \ref{fig:4.m9.cicilan}.\par
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.85\textwidth]{figure/bab4/m9-cicilan.png}
+	\caption{Halaman Pengajuan dan Status Cicilan Camaba}
+	\label{fig:4.m9.cicilan}
+\end{figure}
+
+\begin{lstlisting}[language=Java, caption={Endpoint persetujuan cicilan yang memicu pembuatan jadwal cicilan otomatis}, label={kode:4.m9.cicilan}]
+// AdminCicilanController.java
+@PutMapping("/{id}/approve")
+@PreAuthorize("hasAnyRole('ADMIN_PUSAT', 'ADMIN_VALIDASI')")
+public ResponseEntity<?> approveCicilan(@PathVariable Long id) {
+    CicilanRequest cicilan = cicilanRepo.findById(id).orElseThrow();
+    cicilan.setStatus(CicilanRequestStatus.APPROVED);
+    cicilan.setApprovedAt(LocalDateTime.now());
+
+    // Generate jadwal cicilan otomatis dari harga per-cicilan program studi
+    // Selisih pembulatan diserap oleh cicilan terakhir
+    cicilanInstallmentService.generateJadwal(cicilan);
+
+    cicilanRepo.save(cicilan);
+    // Kirim email notifikasi berisi BRIVA, total harga, jumlah cicilan
+    emailService.sendCicilanApproved(cicilan);
+    return ResponseEntity.ok("Cicilan disetujui");
+}
+\end{lstlisting}
+
+% ------------------------------------------------
+\subsubsection{Modul 10 --- Revisi Formulir Setelah Penolakan} \label{IV.M10}
+% ------------------------------------------------
+
+Apabila admin menolak formulir karena dokumen tidak lengkap atau data tidak valid, camaba menerima notifikasi email berisi alasan penolakan dan dapat mengakses halaman revisi formulir untuk melakukan perbaikan dan mengirim ulang. Tampilan halaman revisi formulir ditunjukkan pada Gambar \ref{fig:4.m10.revisi}.\par
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.85\textwidth]{figure/bab4/m10-revisi-form.png}
+	\caption{Halaman Revisi Formulir Setelah Penolakan Admin}
+	\label{fig:4.m10.revisi}
+\end{figure}
+
+\begin{lstlisting}[language=Java, caption={Endpoint penolakan formulir dengan alasan dan endpoint pengiriman ulang revisi}, label={kode:4.m10.revisi}]
+// AdminController.java
+@PutMapping("/admin/api/validasi/formulir/{formId}/tolak")
+@PreAuthorize("hasAnyRole('ADMIN_VALIDASI', 'ADMIN_PUSAT')")
+public ResponseEntity<?> tolakFormulir(
+        @PathVariable Long formId,
+        @RequestBody TolakFormRequest req) {
+    // req.alasan = alasan penolakan yang akan dikirim via email
+    // 1. Set status formulir = REJECTED
+    // 2. Simpan alasan penolakan ke kolom rejection_reason
+    // 3. Kirim email ke camaba berisi alasan + link revisi
+    return ResponseEntity.ok(validasiService.tolakForm(formId, req));
+}
+
+// StudentController.java - camaba kirim ulang formulir yang sudah direvisi
+@PutMapping("/api/students/formulir/{formId}/revisi")
+public ResponseEntity<?> revisiFormulir(
+        @PathVariable Long formId,
+        @RequestBody AdmissionFormRequest req) {
+    // Validasi: status harus REJECTED sebelum bisa direvisi
+    // Update data, reset status ke SUBMITTED
+    return ResponseEntity.ok(studentService.revisiFormulir(formId, req));
+}
+\end{lstlisting}
+
+% ------------------------------------------------
+\subsubsection{Modul 11 --- Profil Mahasiswa dan Ubah Kata Sandi} \label{IV.M11}
+% ------------------------------------------------
+
+Modul profil memungkinkan camaba melihat dan memperbarui data diri serta mengubah kata sandi. Halaman ini juga menampilkan ringkasan status pendaftaran camaba secara sekilas. Tampilan halaman profil ditunjukkan pada Gambar \ref{fig:4.m11.profil}.\par
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.85\textwidth]{figure/bab4/m11-profil.png}
+	\caption{Halaman Profil Mahasiswa dan Ubah Kata Sandi}
+	\label{fig:4.m11.profil}
+\end{figure}
+
+\begin{lstlisting}[language=Java, caption={Endpoint profil camaba dan ubah password yang dilindungi JWT}, label={kode:4.m11.profil}]
+// StudentController.java
+// /api/students/** jatuh ke .anyRequest().authenticated()
+// sehingga otomatis memerlukan JWT yang valid
+@GetMapping("/api/students/profile")
+public ResponseEntity<?> getProfile(Principal principal) {
+    // Principal diisi otomatis oleh Spring Security dari SecurityContext
+    // yang telah di-set oleh JwtAuthenticationFilter
+    Student student = studentRepo.findByUserEmail(principal.getName());
+    return ResponseEntity.ok(studentMapper.toDTO(student));
+}
+
+@PutMapping("/api/students/change-password")
+public ResponseEntity<?> changePassword(
+        Principal principal,
+        @RequestBody ChangePasswordRequest req) {
+    // Verifikasi password lama, hash password baru dengan BCrypt
+    return ResponseEntity.ok(
+        authService.changePassword(principal.getName(), req));
+}
+\end{lstlisting}
+
+% ------------------------------------------------
+\subsubsection{Modul 12 --- Pelacak Status Pendaftaran} \label{IV.M12}
+% ------------------------------------------------
+
+Modul ini menyediakan tampilan \textit{tracker} multi-tahap yang memungkinkan camaba melihat posisi mereka dalam alur pendaftaran secara visual. Setiap tahap (Pembayaran, Formulir, Ujian, Daftar Ulang) ditampilkan dengan indikator status yang jelas: selesai, sedang berlangsung, atau belum dimulai. Tampilan \textit{tracker} status ditunjukkan pada Gambar \ref{fig:4.m12.tracker}.\par
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.85\textwidth]{figure/bab4/m12-tracker.png}
+	\caption{Pelacak Status Pendaftaran Multi-Tahap di Dasbor Camaba}
+	\label{fig:4.m12.tracker}
+\end{figure}
+
+\begin{lstlisting}[language=Java, caption={Endpoint pelacak status pendaftaran yang mengagregasi status dari berbagai tabel}, label={kode:4.m12.tracker}]
+// RegistrationStatusController.java
+@GetMapping("/api/registration-status/my-status")
+public ResponseEntity<?> getMyStatus(Principal principal) {
+    // Mengagregasi status dari beberapa tabel:
+    // - payments: apakah pembayaran sudah terverifikasi?
+    // - admission_forms: apakah formulir sudah disetujui?
+    // - exam_results: apakah ujian sudah dinilai?
+    // - re_enrollments: apakah sudah daftar ulang?
+    // Mengembalikan status setiap tahap dalam satu response
+    return ResponseEntity.ok(
+        statusService.getStatusLengkap(principal.getName()));
+}
+\end{lstlisting}
+
+% ------------------------------------------------
+\subsubsection{Modul 13 --- Daftar Ulang Mahasiswa} \label{IV.M13}
+% ------------------------------------------------
+
+Camaba yang dinyatakan lulus ujian seleksi wajib melakukan daftar ulang dengan mengunggah dokumen-dokumen yang dipersyaratkan (foto, KTP, ijazah, dan lain-lain). Admin validasi kemudian memverifikasi kelengkapan dokumen tersebut. Tampilan halaman daftar ulang ditunjukkan pada Gambar \ref{fig:4.m13.daftarulang}.\par
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\textwidth]{figure/bab4/m13-daftar-ulang.png}
+	\caption{Halaman Daftar Ulang dan Unggah Dokumen Persyaratan}
+	\label{fig:4.m13.daftarulang}
+\end{figure}
+
+\begin{lstlisting}[language=Java, caption={Endpoint upload dokumen daftar ulang di StudentController}, label={kode:4.m13.daftarulang}]
+// StudentController.java
+@PostMapping("/api/students/daftar-ulang/upload")
+public ResponseEntity<?> uploadDokumenDaftarUlang(
+        @RequestParam("file") MultipartFile file,
+        @RequestParam("tipeDoc") String tipeDoc,
+        Principal principal) {
+    // Validasi tipe file: hanya PDF, JPG, PNG (max 5MB)
+    // Simpan ke direktori: uploads/daftar-ulang/{studentId}/{tipeDoc}/
+    // Simpan path ke tabel re_enrollment_documents
+    String savedPath = fileStorageService.saveFile(
+        file, "daftar-ulang/" + principal.getName());
+    return ResponseEntity.ok(
+        reEnrollmentService.saveDocument(tipeDoc, savedPath, principal));
+}
+\end{lstlisting}
+
+% ------------------------------------------------
+\subsubsection{Modul 14 --- Hasil Akhir dan Cetak Dokumen Sementara} \label{IV.M14}
+% ------------------------------------------------
+
+Setelah daftar ulang diverifikasi, admin validasi mengunggah dua dokumen resmi: NPM Sementara dan KTM Sementara. Dokumen ini kemudian dapat dilihat dan diunduh oleh mahasiswa dari dasbor Hasil Akhir. Endpoint penayangan berkas disediakan oleh \texttt{FileServingController} yang mendukung mode tampil (\textit{inline}) dan mode unduh (\texttt{?download=true}). Tampilan modal Hasil Akhir di dasbor camaba ditunjukkan pada Gambar \ref{fig:4.m14.hasilakhir}.\par
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.85\textwidth]{figure/bab4/m14-hasil-akhir.png}
+	\caption{Modal Hasil Akhir dengan Tombol Lihat dan Unduh Dokumen Sementara}
+	\label{fig:4.m14.hasilakhir}
+\end{figure}
+
+\begin{lstlisting}[language=Java, caption={Endpoint upload dokumen sementara oleh admin dan penyajian file via FileServingController}, label={kode:4.m14.hasilakhir}]
+// AdminController.java - upload NPM/KTM Sementara
+@PostMapping("/admin/api/hasil-akhir/{id}/upload-dokumen")
+@PreAuthorize("hasAnyRole('ADMIN_VALIDASI', 'ADMIN_PUSAT')")
+public ResponseEntity<?> uploadDokumenSementara(
+        @PathVariable Long id,
+        @RequestParam(required = false) MultipartFile npmFile,
+        @RequestParam(required = false) MultipartFile ktmFile) {
+    HasilAkhir ha = hasilAkhirRepo.findById(id).orElseThrow();
+    // Simpan ke: uploads/hasil-akhir/{studentId}/npm_sementara_TIMESTAMP.pdf
+    if (npmFile != null) {
+        String path = fileStorage.save(npmFile, "hasil-akhir/"
+            + ha.getStudent().getId());
+        ha.setNpmSementaraFile(path);
+    }
+    hasilAkhirRepo.save(ha);
+    return ResponseEntity.ok("Dokumen berhasil diunggah");
+}
+
+// FileServingController.java - melayani file ke browser
+@GetMapping("/api/files/view/**")
+public ResponseEntity<Resource> viewFile(
+        HttpServletRequest request,
+        @RequestParam(value = "download", required = false) 
+        boolean download) {
+    String filePath = extractPathFromRequest(request);
+    Resource resource = fileStorage.loadAsResource(filePath);
+    // Mode download: Content-Disposition: attachment
+    // Mode view: Content-Disposition: inline (tampil di browser)
+    String disposition = download ? "attachment" : "inline";
+    return ResponseEntity.ok()
+        .header(HttpHeaders.CONTENT_DISPOSITION,
+            disposition + "; filename=\"" + resource.getFilename() + "\"")
+        .body(resource);
+}
+\end{lstlisting}
+
+% ------------------------------------------------
+\subsubsection{Modul 15 --- Manajemen Program Studi dan Harga Cicilan} \label{IV.M15}
+% ------------------------------------------------
+
+Admin Pusat dapat mengelola seluruh data program studi, termasuk mengonfigurasi harga per tahap cicilan (Cicilan 1 hingga Cicilan 6) untuk setiap program studi secara independen. Tersedia fitur \textit{auto-split} yang membagi total harga secara merata ke sejumlah cicilan yang dipilih, serta fitur salin konfigurasi antar program studi. Tampilan manajemen program studi ditunjukkan pada Gambar \ref{fig:4.m15.prodi}.\par
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\textwidth]{figure/bab4/m15-program-studi.png}
+	\caption{Halaman Manajemen Program Studi dengan Konfigurasi Harga Cicilan}
+	\label{fig:4.m15.prodi}
+\end{figure}
+
+\begin{lstlisting}[language=Java, caption={Endpoint konfigurasi harga cicilan per program studi}, label={kode:4.m15.prodi}]
+// AdminController.java
+@PutMapping("/admin/api/program-studi/{id}/cicilan-prices")
+@PreAuthorize("hasRole('ADMIN_PUSAT')")
+public ResponseEntity<?> setCicilanPrices(
+        @PathVariable Long id,
+        @RequestBody CicilanPricesRequest req) {
+    ProgramStudi prodi = prodiRepo.findById(id).orElseThrow();
+    // req berisi hargaCicilan1 s.d. hargaCicilan6
+    // Validasi: jumlah semua cicilan tidak boleh melebihi harga total
+    prodi.setHargaCicilan1(req.getHargaCicilan1());
+    prodi.setHargaCicilan2(req.getHargaCicilan2());
+    // ... s.d. setHargaCicilan6
+    prodiRepo.save(prodi);
+    return ResponseEntity.ok("Harga cicilan berhasil diperbarui");
+}
+\end{lstlisting}
+
+% ------------------------------------------------
+\subsubsection{Modul 16 --- Manajemen \textit{System Links}} \label{IV.M16}
+% ------------------------------------------------
+
+Admin Pusat dapat mengelola tautan eksternal sistem (YouTube, Google Drive, Google Form, URL lainnya) melalui antarmuka CRUD. Tautan yang aktif ditampilkan secara dinamis di halaman publik melalui \textit{endpoint} publik, menggantikan tautan yang sebelumnya dikodekan statis. Tampilan manajemen \textit{system links} ditunjukkan pada Gambar \ref{fig:4.m16.syslinks}.\par
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\textwidth]{figure/bab4/m16-system-links.png}
+	\caption{Halaman Manajemen \textit{System Links} di Dasbor Admin Pusat}
+	\label{fig:4.m16.syslinks}
+\end{figure}
+
+\begin{lstlisting}[language=Java, caption={Endpoint CRUD system links dan endpoint publik untuk footer dinamis}, label={kode:4.m16.syslinks}]
+// SystemSettingsController.java
+// CRUD hanya boleh dilakukan ADMIN_PUSAT (di bawah /admin/api/ -> authenticated)
+@GetMapping("/admin/api/system-links")
+@PreAuthorize("hasRole('ADMIN_PUSAT')")
+public ResponseEntity<?> getAllLinks() {
+    return ResponseEntity.ok(systemLinkRepo.findAll());
+}
+
+@PostMapping("/admin/api/system-links")
+@PreAuthorize("hasRole('ADMIN_PUSAT')")
+public ResponseEntity<?> tambahLink(@RequestBody SystemLinkRequest req) {
+    // Validasi format URL sebelum disimpan
+    // Tipe: YOUTUBE, GOOGLE_DRIVE, GOOGLE_FORM, EXTERNAL
+    SystemLink link = SystemLink.builder()
+        .nama(req.getNama()).tipe(req.getTipe())
+        .url(req.getUrl()).isActive(true).build();
+    return ResponseEntity.ok(systemLinkRepo.save(link));
+}
+
+// PublicApiController.java - endpoint publik untuk footer halaman camaba
+@GetMapping("/api/public/system-links/active") // -> permitAll()
+public ResponseEntity<?> getActiveLinks() {
+    return ResponseEntity.ok(
+        systemLinkRepo.findByIsActiveTrue());
+}
+\end{lstlisting}
+
+% ------------------------------------------------
+\subsubsection{Modul 17 --- Manajemen Informasi Kontak} \label{IV.M17}
+% ------------------------------------------------
+
+Admin Pusat dapat memperbarui informasi kontak institusi (alamat, telepon, email, jam layanan) yang ditampilkan secara dinamis di \textit{footer} seluruh halaman publik. Sistem menggunakan pola \textit{singleton record}: hanya ada satu baris data kontak yang selalu diperbarui. Tampilan manajemen informasi kontak ditunjukkan pada Gambar \ref{fig:4.m17.kontak}.\par
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.85\textwidth]{figure/bab4/m17-kontak.png}
+	\caption{Halaman Manajemen Informasi Kontak di Dasbor Admin Pusat}
+	\label{fig:4.m17.kontak}
+\end{figure}
+
+\begin{lstlisting}[language=Java, caption={Endpoint pembaruan informasi kontak institusi dengan pola singleton record}, label={kode:4.m17.kontak}]
+// PublicSettingsController.java
+@PutMapping("/admin/api/contact-info")
+@PreAuthorize("hasRole('ADMIN_PUSAT')")
+public ResponseEntity<?> updateContactInfo(
+        @RequestBody ContactInfoRequest req) {
+    // Pola singleton: ambil record pertama, jika tidak ada buat baru
+    ContactInfo info = contactInfoRepo.findFirst()
+        .orElse(new ContactInfo());
+    info.setAlamat(req.getAlamat());
+    info.setTelepon(req.getTelepon());
+    info.setEmail(req.getEmail());
+    info.setJamLayanan(req.getJamLayanan());
+    info.setUpdatedAt(LocalDateTime.now());
+    contactInfoRepo.save(info);
+    return ResponseEntity.ok("Informasi kontak diperbarui");
+}
+
+// Endpoint publik---footer semua halaman memanggil ini saat load
+@GetMapping("/api/public/contact-info") // -> permitAll()
+public ResponseEntity<?> getContactInfo() {
+    return ResponseEntity.ok(contactInfoRepo.findFirst().orElse(null));
+}
+\end{lstlisting}
+
+% ------------------------------------------------
+\subsubsection{Modul 18 --- Ekspor Data} \label{IV.M18}
+% ------------------------------------------------
+
+Admin dapat mengekspor data PMB dalam format CSV, JSON, atau cetak. Tersedia empat halaman ekspor terpisah: formulir pendaftaran, data daftar ulang, hasil akhir, dan hasil akhir per gelombang. Setiap halaman memiliki panel filter dan \textit{preview} tabel sebelum data diekspor. Tampilan halaman ekspor ditunjukkan pada Gambar \ref{fig:4.m18.ekspor}.\par
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\textwidth]{figure/bab4/m18-export.png}
+	\caption{Halaman Ekspor Data Formulir Pendaftaran}
+	\label{fig:4.m18.ekspor}
+\end{figure}
+
+\begin{lstlisting}[language=Java, caption={Endpoint ekspor data formulir dalam format CSV dengan baris header}, label={kode:4.m18.ekspor}]
+// AdminController.java
+@GetMapping("/admin/api/export/formulir")
+@PreAuthorize("hasAnyRole('ADMIN_PUSAT', 'ADMIN_VALIDASI')")
+public ResponseEntity<String> exportFormulirCSV(
+        @RequestParam(required = false) String gelombang,
+        @RequestParam(required = false) String status) {
+    List<AdmissionForm> data = formRepo.findWithFilter(gelombang, status);
+
+    StringBuilder csv = new StringBuilder();
+    // Baris header CSV
+    csv.append("No,Nama,Email,Program Studi,Gelombang,Status\n");
+    for (int i = 0; i < data.size(); i++) {
+        AdmissionForm f = data.get(i);
+        csv.append(String.format("\"%d\",\"%s\",\"%s\",\"%s\",\"%s\",\"%s\"\n",
+            i + 1, f.getFullName(), f.getStudent().getUser().getEmail(),
+            f.getProgramStudi1(), f.getPeriod().getNama(),
+            f.getStatus().name()));
+    }
+    return ResponseEntity.ok()
+        .header(HttpHeaders.CONTENT_TYPE, "text/csv; charset=UTF-8")
+        .header(HttpHeaders.CONTENT_DISPOSITION,
+            "attachment; filename=\"formulir-export.csv\"")
+        .body(csv.toString());
+}
+\end{lstlisting}
+
+% ------------------------------------------------
+\subsubsection{Modul 19 --- \textit{Customer Service Chat Widget}} \label{IV.M19}
+% ------------------------------------------------
+
+Modul ini menyediakan saluran komunikasi langsung antara camaba dan admin melalui antarmuka sistem PMB. Tombol \textit{floating chat} di pojok kanan bawah dasbor camaba menampilkan \textit{badge} merah berisi jumlah pesan belum terbaca. Pesan baru dideteksi secara otomatis setiap 5 detik menggunakan strategi \textit{timestamp-based polling}. Tampilan \textit{chat widget} ditunjukkan pada Gambar \ref{fig:4.m19.chat}.\par
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.75\textwidth]{figure/bab4/m19-chat.png}
+	\caption{Tampilan \textit{Customer Service Chat Widget} di Dasbor Camaba}
+	\label{fig:4.m19.chat}
+\end{figure}
+
+\begin{lstlisting}[language=Java, caption={Endpoint pengiriman pesan dan penghitungan pesan belum dibaca untuk polling}, label={kode:4.m19.chat}]
+// Pesan diletakkan di CamabaController karena merupakan fitur camaba
+// tapi admin juga punya akses melalui AdminController
+@PostMapping("/api/camaba/messages/send")
+public ResponseEntity<?> kirimPesan(
+        @RequestBody MessageRequest req,
+        Principal principal) {
+    AdminMessage msg = AdminMessage.builder()
+        .senderEmail(principal.getName())
+        .receiverEmail(req.getReceiverEmail())
+        .content(req.getContent())
+        .sentAt(LocalDateTime.now())
+        .isRead(false)
+        .build();
+    return ResponseEntity.ok(messageRepo.save(msg));
+}
+
+// Polling: hanya ambil pesan BARU setelah timestamp terakhir
+@GetMapping("/api/camaba/messages/unread-count")
+public ResponseEntity<?> hitungBelumDibaca(Principal principal) {
+    long count = messageRepo.countByReceiverEmailAndIsReadFalse(
+        principal.getName());
+    return ResponseEntity.ok(Map.of("count", count));
+}
+\end{lstlisting}
+
+% ------------------------------------------------
+\subsubsection{Modul 20 --- Lupa dan Reset Kata Sandi} \label{IV.M20}
+% ------------------------------------------------
+
+Modul ini memungkinkan pengguna yang lupa kata sandi untuk meminta tautan reset melalui email. Tautan mengandung token unik dengan masa berlaku terbatas yang memvalidasi identitas pengguna sebelum mengizinkan penggantian kata sandi. Tampilan halaman lupa kata sandi ditunjukkan pada Gambar \ref{fig:4.m20.forgotpw}.\par
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\textwidth]{figure/bab4/m20-forgot-password.png}
+	\caption{Halaman Lupa Kata Sandi dengan Verifikasi melalui Email}
+	\label{fig:4.m20.forgotpw}
+\end{figure}
+
+\begin{lstlisting}[language=Java, caption={Endpoint lupa kata sandi dan reset kata sandi di AuthController}, label={kode:4.m20.forgotpw}]
+// AuthController.java - semua di bawah /api/auth/** -> permitAll()
+@PostMapping("/forgot-password")
+public ResponseEntity<?> forgotPassword(
+        @RequestBody ForgotPasswordRequest req) {
+    // 1. Cari user dengan email tersebut
+    // 2. Generate UUID sebagai token reset, simpan di password_reset_tokens
+    // 3. Set expired_at = sekarang + 1 jam
+    // 4. Kirim email berisi link: /reset-password?token=UUID
+    authService.sendResetPasswordEmail(req.getEmail());
+    return ResponseEntity.ok("Email reset kata sandi telah dikirim");
+}
+
+@PostMapping("/reset-password")
+public ResponseEntity<?> resetPassword(
+        @RequestBody ResetPasswordRequest req) {
+    // 1. Validasi token: ada, belum digunakan, belum expired
+    // 2. Hash password baru dengan BCrypt
+    // 3. Update password user, tandai token sebagai used
+    authService.resetPassword(req.getToken(), req.getNewPassword());
+    return ResponseEntity.ok("Kata sandi berhasil diubah");
+}
+\end{lstlisting}
+
+% ============================================================
+\subsection{Evaluasi dan Perbaikan Iterasi 1} \label{IV.I1.Evaluasi}
+% ============================================================
+
+Setelah seluruh dua puluh modul diimplementasikan, dilakukan evaluasi menyeluruh melalui pengujian fungsional oleh tim pengembang dan demonstrasi langsung kepada pihak klien (Pusat Sistem Informasi UHN). Evaluasi ini menghasilkan sejumlah temuan dan perbaikan yang dilaksanakan sebelum prototipe Iterasi 1 dianggap selesai. Ringkasan temuan dan perbaikan tersebut disajikan pada Tabel \ref{table:4.evaluasi_iterasi1}.\par
+
+\begin{longtable}{|p{0.2\textwidth}|p{0.3\textwidth}|p{0.3\textwidth}|c|}
+	\caption{Temuan Evaluasi dan Perbaikan pada Iterasi 1}
+	\label{table:4.evaluasi_iterasi1}\\
+	\hline
+	\textbf{Modul} & \textbf{Temuan} & \textbf{Perbaikan} & \textbf{Status} \\
+	\hline
+	\endfirsthead
+	\hline
+	\textbf{Modul} & \textbf{Temuan} & \textbf{Perbaikan} & \textbf{Status} \\
+	\hline
+	\endhead
+	Registrasi (M1) & Token verifikasi email kadaluarsa tidak bisa diperbarui & Endpoint \texttt{resend-verification} ditambahkan & Selesai \\
+	\hline
+	Autocomplete SMA (M6) & Basis data sekolah tidak mencakup semua sekolah swasta & Kolom \texttt{sekolah\_manual} untuk input alternatif ditambahkan & Selesai \\
+	\hline
+	Validasi Ujian (M8) & Bukti ujian offline tidak bisa dilihat langsung dari modal & \textit{Embedded preview} berkas ditambahkan dalam modal validasi & Selesai \\
+	\hline
+	Cicilan (M9) & Nominal cicilan tidak akurat akibat pembulatan & Selisih pembulatan diserap oleh cicilan terakhir & Selesai \\
+	\hline
+	Harga Cicilan (M15) & Pengisian manual untuk 26 program studi memakan waktu & Fitur salin konfigurasi antar program studi ditambahkan & Selesai \\
+	\hline
+	Hasil Akhir (M14) & \textit{Bug}: kolom \texttt{nomorRegistrasi} NULL menyebabkan penyimpanan gagal & Auto-generate nomor registrasi format \texttt{REG-YYYYMMDD-ID} sebagai \textit{fallback} & Selesai \\
+	\hline
+	System Links (M16) & Tidak ada validasi format URL; \textit{footer} masih statis & Validasi \textit{regex} URL ditambahkan; \textit{footer} diperbarui menggunakan \textit{fetch} & Selesai \\
+	\hline
+	Informasi Kontak (M17) & Perubahan tidak terlihat tanpa \textit{refresh} halaman & \textit{Toast notification} menginformasikan pengguna untuk me-\textit{refresh} & Selesai \\
+	\hline
+	Ekspor Data (M18) & CSV tanpa baris \textit{header}; \textit{preview} lambat untuk data besar & Header CSV ditambahkan; \textit{preview} dibatasi maksimal 100 baris & Selesai \\
+	\hline
+	Chat Widget (M19) & \textit{Polling} membebani server saat banyak pengguna aktif & \textit{Timestamp-based polling} diterapkan untuk efisiensi & Selesai \\
+	\hline
+	Email Cicilan & Email berisi \textit{field} yang tidak perlu (Cicilan 1 DP) & Email disederhanakan: hanya BRIVA, total harga, jumlah cicilan & Selesai \\
+	\hline
+\end{longtable}
+
+Temuan terpenting pada evaluasi Iterasi 1 adalah \textit{bug} kritis pada modul Hasil Akhir (M14) yang menyebabkan dokumen NPM dan KTM Sementara tidak muncul di dasbor camaba. Investigasi mendalam menemukan bahwa akar permasalahan terletak pada \textit{constraint} basis data: kolom \texttt{nomor\_registrasi} bersifat \texttt{NOT NULL UNIQUE}, namun \textit{front-end} mengirimkan string kosong yang kemudian diabaikan oleh kode \textit{back-end}, sehingga entitas \texttt{HasilAkhir} baru tidak memiliki nilai untuk kolom tersebut dan penyimpanan gagal secara senyap (\textit{silent exception}). Perbaikan dilakukan dengan menambahkan logika \textit{fallback}: apabila nilai \texttt{nomorRegistrasi} kosong dan entitas belum memiliki nomor registrasi, sistem secara otomatis menghasilkan nomor sementara dengan format \texttt{REG-YYYYMMDD-NNNNNN} berdasarkan tanggal sistem dan ID formulir, sebagaimana ditunjukkan pada Kode \ref{kode:4.hasilakhir_fix}.\par
+
+\begin{lstlisting}[language=Java, caption={Perbaikan logika fallback auto-generate nomorRegistrasi di AdminController}, label={kode:4.hasilakhir_fix}]
+// AdminController.java - endpoint PUT /admin/api/hasil-akhir/nomor-registrasi/{id}
+if (request.getNomorRegistrasi() != null 
+        && !request.getNomorRegistrasi().isEmpty()) {
+    hasilAkhir.setNomorRegistrasi(request.getNomorRegistrasi());
+} else if (hasilAkhir.getNomorRegistrasi() == null 
+        || hasilAkhir.getNomorRegistrasi().isEmpty()) {
+    // Fallback: auto-generate agar NOT NULL constraint terpenuhi
+    // Format: REG-20260419-000042 (tanggal + ID formulir)
+    String autoReg = "REG-"
+        + LocalDate.now().format(DateTimeFormatter.ofPattern("yyyyMMdd"))
+        + "-" + String.format("%06d", formValidationId);
+    hasilAkhir.setNomorRegistrasi(autoReg);
+    log.info("[HASIL-AKHIR] Auto-generated: {}", autoReg);
+}
+\end{lstlisting}
+
+% ============================================================
+\section{Hasil Pengujian} \label{IV.Hasil_Uji}
+% ============================================================
+
+Bagian ini menyajikan hasil pengujian sistem secara menyeluruh yang dilakukan setelah seluruh iterasi pengembangan selesai. Pengujian mencakup \textit{Black Box Testing}, \textit{Integration Testing}, dan \textit{System Usability Scale} (SUS) sebagaimana dirancang pada Subbab \ref{III.SkemaPengujian}.\par
+
+% ============================================================
+\section{Analisis Hasil Penelitian} \label{IV.Analisis}
+% ============================================================
+
+Bagian ini menyajikan analisis terhadap hasil implementasi dan pengujian sistem, termasuk perbandingan dengan penelitian terdahulu serta evaluasi kesesuaian sistem terhadap kebutuhan fungsional dan non-fungsional yang telah ditetapkan.\par
+
